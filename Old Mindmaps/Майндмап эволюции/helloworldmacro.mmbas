@@ -1,0 +1,97 @@
+'#Language "WWB-COM"
+
+Option Explicit
+
+Sub Main
+  Dim latintext As String
+  Dim encodedlatintext As String
+  Dim regexResult As String
+  Dim strPattern As String
+  Dim IE As Object
+  Dim enUrl As String
+  Dim ruUrl As String
+  Dim enTitleFound As String
+  Dim ruTitleFound As String
+  Dim objShellWindows As Object
+  Dim X As Long
+  Dim finalText As String
+  'extract latin text
+  latintext = ActiveDocument.Selection.PrimaryTopic.Text
+  If InStr(latintext, ")") <> 0 Then
+    latintext = Mid(latintext, InStr(latintext, "(") + 1, InStr(latintext, ")") - InStr(latintext, "(") - 1 )
+  End If
+
+  If InStr(latintext, "Ч") <> 0 Then
+    latintext = Mid(latintext, 1, InStr(latintext, "Ч") - 1 )
+  End If
+
+  If InStr(latintext, vbLf) <> 0 Then
+    latintext = Mid(latintext, 1, InStr(latintext, vbLf) - 1 )
+  End If
+
+  latintext = Trim(latintext)
+
+  'MsgBox "Looking for English version of: " + latintext
+  encodedlatintext = Replace(latintext, " ", "+")
+  enUrl = "https://en.wikipedia.org/w/index.php?search=" + encodedlatintext + "&Title=Special:Search&go=Go"
+  ' english
+  Set IE = CreateObject("InternetExplorer.Application")
+  With IE
+    .Visible = True
+    .Navigate enUrl
+  End With
+
+  Do
+    DoEvents
+  Loop While IE.Busy Or IE.ReadyState <> 4
+
+  If Not IE Is Nothing Then
+    enTitleFound = IE.Document.all.Item("firstHeading").innerText
+    'Set IE = Nothing
+  End If
+  enTitleFound = Trim(enTitleFound)
+
+  'MsgBox "English version found: " + enTitleFound
+
+  ' russian
+  ruUrl = "https://ru.wikipedia.org/w/index.php?search=" + encodedlatintext + "&Title=Special:Search&go=Go"
+
+  'Set IE = CreateObject("InternetExplorer.Application")
+  With IE
+    .Visible = True
+    .Navigate ruUrl
+  End With
+
+  Do
+    DoEvents
+  Loop While IE.Busy Or IE.ReadyState <> 4
+
+  If Not IE Is Nothing Then
+    ruTitleFound = IE.Document.all.Item("firstHeading").innerText
+    'Set IE = Nothing
+  End If
+  ruTitleFound = Trim(ruTitleFound)
+  'MsgBox "Russian version found: " + ruTitleFound
+
+  ' remove non-unique
+
+  ' set the Text
+  finalText = ""
+
+  If Not InStr(enTitleFound, "Search results") <> 0 Then
+    finalText = enTitleFound
+  End If
+
+  If Not InStr(finalText, ruTitleFound) <> 0 And Not InStr(ruTitleFound, "–езультаты поиска") <> 0 Then
+    finalText = finalText + vbLf + ruTitleFound
+  End If
+
+  If Not InStr(finalText, latintext) <> 0 Then
+    finalText = finalText + vbLf + "(" + latintext + ")"
+  End If
+
+  'MsgBox finalText
+  ActiveDocument.Selection.PrimaryTopic.Text = finalText
+  IE.Quit
+  Set IE = Nothing
+End Sub
