@@ -1,0 +1,1 @@
+$('#bcPaint').bcPaint();
