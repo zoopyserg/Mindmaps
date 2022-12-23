@@ -1,0 +1,6570 @@
+λ
+τ
+∂ (partial)
+σ (sm. sigma)
+Λ (big lambda)
+Σ (sigma)
+θ
+√
+∞
+∑ (sum)
+∫
+π
+±
+ɑ
+β
+ɣ
+ƍ
+
+web.mit.edu/18.06
+
+fundamental problem of linear algebra.
+solve a system of linear equations.
+n equations and n unknowns.
+
+So. Ways to solve it.
+1) I can solve it one row at a time.
+2) I can solve it one column at a time.
+3) Or I can solve it in a matrix form.
+
+E.g. 1
+2x - y = 0
+-x + 2y = 3
+
+|2 -1||x| = |0|
+|-1 2||y|   |3|
+A * x = b
+
+A is always a matrix of coefficients.
+
+So let's draw a picture for case 1 (row at a time).
+I plot two charts (solutions for each eqn).
+Their intersection will be the solution of the system.
+
+linear = line.
+This is a "row picture".
+1st way to solve the system.
+
+
+Now.
+2nd way.
+A "column" picture. Look at the columns.
+x * |2 | + y * |-1| = |0|
+    |-1|       |2 |   |3|
+	
+note that we're asking now for a way to combine two vectors to get a third vector.
+I't called "linear combination of the columns".
+So now we plot vectors <2, -1> and <-1, 2> and ask how many times I need to add <-1, 2> to how many times of <2, -1> to get <0, 3>.
+What's interesting is there are INFINITELY MANY solutions now (many numbers of x's and many numbers of y's, all used to get <0, 3>).
+
+Another example:
+2x - y + 0z = 0
+-x + 2y - z = -1
+0x - 3y + 4z = 4
+
+A = |2 -1 0 |
+    |-1 2 -1|
+	|0 -3 4 |
+
+b = |0 |
+    |-1|
+	|4 |	
+	
+Solution of each eqn is a plane.
+Their intersection is a point.
+
+But look at column picture:
+x |2 | + y |-1| + z |0 | = |0 |
+  |-1|     |2 |     |-1|   |-1|
+  |0 |     |-3|     |4 |   |4 |
+  
+this is now a linear combination of three vectors.
+draw these 3 vectors.
+combine them with the right combination to produce the answer.
+so you can now see that x and y should be zero, and z = 1.
+
+потом он шото там вроде искал решение "для всех b", но я не понял.
+
+this was an "invertible" (good) matrix.
+so every plane is unique.
+if they're not unique, I get a bad matrix (the one I can't find a soluton for).
+as there aren't enough unique equations to solve the system.
+
+same problems with n-dimentional vectors.
+they shouldn't be coplanar.
+
+Ax = b could be solved a column at a time:
+|2 5||1| = 1|2| + 2|5| = |12|
+|1 3||2|    |1|    |3|   |7 |
+
+Or a dot product way (by one row at a time):
+2*1 + 5*2, 1*1 + 3*2.
+
+It could also be solved by elimination.
+
+So. When we do column wise, we sum the v1 and v2 vectors to get the result.
+And then scale that result by x and y to get our result on RHS.'
+That's where we get x and y from.
+
+Third method - matrix form - is a bit unclear.
+smth like <v1, v2> = A.
+oh wait. no. it's simple Ax = b form, where we find an inverse matrix. I know this.
+
+So matrices is a digital way to solve same things that calculus and diff. eq. would solve in analog (continuous) way.
+
+so Lin. Al. consists of:
+vectors
+matrices
+subspaces
+
+What do you do with vectors:
+linear combination (multiply by a scalar number, add, substract).
+u v w: x1 u + x2 v + x3 w = b
+suppose:
+u = <1, -1, 0>
+v = <0, 1, -1>
+one isn't a multiple of the other.
+they can be multiplied by any number (so each one forms a line).
+so all of their combinations will form a plane.
+suppose:
+w = <0,0,1>
+so now we move those vectors to be the columns of a matrix:
+|u v w|:
+|1  0 0||x1|   |x1   |
+|-1 1 0||x2| = |x2-x1| (this is a "first difference matrix")
+|0 -1 1||x3|   |x3-x2| 
+
+(that also seems to be called a "triangular" system).
+
+combinations of the columns.
+so that difference matrix is "b" in this case.
+
+here for <x1, x2, x3> we can plug in any combination of 3 numbers and calculate the result from that "b" formula.
+
+then he says "let's say I know b, but don't know x"
+to find x we need to go backwards.
+un-solve it (solve it in reverse):
+
+|x1|   |b1          |
+|x2| = |b1 + b2     | (a sum matrix)
+|x3|   |b1 + b2 + b3|
+this is exactly a matrix times b:
+|1 0 0||b1|
+|1 1 0||b2|
+|1 1 1||b3|
+
+(this is the answer)
+that's an inverse.
+
+Ax = b
+x = A^-1 b
+
+(only if there IS an inverse)
+so we transform forward and backward.
+
+calculus works only with ONE operation: derivative. and its inverse. the integral.
+
+Another example.
+C = 
+|1 0 -1||x1|   |x1-x3|
+|-1 1 0||x2| = |x2-x1|
+|0 -1 1||x3|   |x3-x2|
+
+it is ansolvable.
+because there are many ways we can get <0,0,0> result
+(easy test).
+in fact, <c, c, c> always gives <0, 0, 0> no matter what c is.
+
+this is an example of a "subspace"
+
+another test is if I add the rows I get:
+0 = b1 + b2 + b3.
+
+physical meaning would be masses and forces on them.
+and that the system does not have any external forces going into it.
+they all balance each other.
+
+Cx = 0 means "there is no way back from 0, once you get to 0 you're stuck".
+so no inverse.
+
+there are many solutions that are not on the solution plane.
+so if the vectors are independant the results fill in the whole space. and those vectors are called "bases" of that space. such matrix (that contains only bases vectors of a space) is always invertable.
+but if vectors are dependent the result does not fill all space (and you get a subspace).
+the result of getting ALL combinations of ALL vectors of the matrix (no matter if it's a full space, or just say a plane in 3D space) is a subspace
+
+then he continues to manipulate the fact that the sum of all "b"s is zero.
+
+A subspace is a bunch of vectors and all of their combinatinos.
+So if the answer is out of the solution range then the result is not a subspace.
+
+Subspace just means "the result has less dimentions than the space".
+
+some examples of subspaces:
+the whole space, plane, line (these two are "proper" subspaces), point (origin).
+so dimentions of a subspace of a 3d space could be: 3 (full), 2(plane), 1(line), 0(point)
+
+x = x_p + c x_s (x particular + c * x special)
+
+Null space is marked by N(A)
+rank is smth you know
+
+... 2 ...
+elimination (in matrix language).
+normally it succeeds.
+it's used in every software.
+
+Ex.
+x + 2y + z = 2
+3x + 8y + z = 12
+0x + 4y + z = 2
+
+|1 2 1||x|   |2 |
+|3 8 1||y| = |12|
+|0 4 1||z|   |2 |
+
+Purpose 1. Knock out (eliminate) x.
+By multiplying 1st eqn. by 3 and subtract it from the 2nd eqn:
+
+Element that we will be multiplying to eliminate is called a Pivot.
+
+|1 2 1 |
+|0 2 -2|
+|0 4 1 |
+RHS will be filled in later.
+
+3rd eqn is 0 anyway so we skip it.
+
+2nd pivot is 2 (2y in 2nd eqn).
+here we want to clean up (3,2) position (2nd element of 3rd row).
+In other words, (2,2) should be the only place that has non-zero value.
+everything else should have 0 y's.
+so we multiply 2nd by 2 and substract it from the 3rd:
+
+|1 2 1 |
+|0 2 -2|
+|0 0 5 |
+
+3rd pivot is 5z.
+
+this new matrix is called U.
+(Upper Triangular).
+
+The whole purpose was to get from A to U.
+btw. Pivots CAN't be 0.
+So if I get 0, I pick different pair of rows to find the pivot (say substract a different eqn from eqn I want to clean up - say 3rd from 2nd instead of 1st from 2nd).
+If I still got 0, and I couldn't find any other 3qn, then I would not solve it (as the matriz is then not invertible).
+
+note that determinant of U is just multiplying pivots by each other (1 * 2 * 5) 
+
+Now let's do the same thing with the RHS (with b).
+|2 |    |2|    |2  |
+|12| => |6| => |6  |
+|2 |    |2|    |-10|
+
+Call it "c".
+b turns to c
+A turns to U.
+
+So final eqn is:
+x+2y+z=2
+  2y-2z=6
+     5z=-10
+	 
+z = -2
+y = 1
+x = 2
+
+Now let's write the operations in matrix language.
+(elimination steps).
+|1 2 1|
+|3 8 1|
+|0 4 1|
+remember that:
+A * <3, 4, 5> = 3 * col1 + 4 * col2 + 5 * col3.
+Do the same idea with rows.
+For that we just multiply it from the LEFT.
+<1, 2, 7> * A = 1*row1 + 2*row2 + 7*row3
+(combines the rows).
+
+so using this, let's see how to solve the same problem.
+step 1 (substracting 1st row from 2nd) looks like so:
+|1 0 0 ||1 2 1|   |1 2 1 |
+|-3 1 0||3 8 1| = |0 2 -2| 
+|0 0 1 ||0 4 1|   |0 4 1 |
+
+call the 1st matrix e_21 (for elimination of 2 by using 1)
+
+step 2 was substract 2x2nd from 3rd
+|1 0 0 ||1 2 1 |   |1 2 1 |
+|0 1 0 ||0 2 -2| = |0 2 -2| 
+|0 -2 1||0 4 1 |   |0 0 5 |
+
+(so we put "- multiplyer" into the position 3 2)
+
+All together looks like so:
+E_32 * (E_21 * A) = U.
+(E_32 * E_21) * A = U.
+In other words, we can't mess with the order of matrices.
+But we can change the order of multiplication by moving the parentecies.
+So. Multiply (E_32 * E_21).
+A "permutation" matrix is a matrix that exchanges rows (changes their order in the matrix A).
+An example would be:
+|0 1||a b| = |c d|
+|1 0||c d|   |a b|
+(so it's a mirrod identity matrix).
+
+if I wanted to exchange columns, I would use permutation matrix on the right:
+|a b||0 1| = |b a|
+|c d||1 0|   |d c|
+
+but we need rows now.
+so.
+
+A * B is not B * A.
+
+(E_32 * E_21) is not the best way.
+Best way is to think not how to get from A to U.
+But how to get from U to A.
+Inverse.
+|1 0 0 |
+|-3 1 0|
+|0 0 1 |
+find a matrix that undoes this step.
+that adds the row instead of substracting it.
+its inverse matrix.
+|1 0 0||1 0 0 |   |1 0 0|
+|3 1 0||-3 1 0| = |0 1 0|
+|0 0 1||0 0 1 |   |0 0 1|
+
+E^-1 * E = I.
+
+instead of "multiplying by a number and substracting" just multiply by -numer.
+
+...3...
+matrix multiplication.
+A * B = C.
+Multiply row from A (say A3) by col B (say B4) to get an element C_3_4
+so C_34 = a_31*b_14 + a_32 * b_24 + ... = ∑a_3k*b_k4, k = 1 to n
+shapes of matrices should be:
+m x n * n x p = m x p
+cols A = rows B
+
+so A times 1st col of B is 1st col of C.
+So we have p columns sitting next to each other side by side.
+
+rows of C are rows of B times A.
+so m x 1 * 1 x p = m x p.
+|2|           |2 12|
+|3| * |1 6| = |3 18|
+|4|           |4 24|
+
+4th way:
+AB = sum (cols of A * rows of B).
+(all these are different ways of multiplying the matrices).
+
+|2 7|   |1 6|   |2|        |7|
+|3 8| * |0 0| = |3||1 6| + |8||0 0| = same abswer
+|4 9|           |4|        |9|
+
+5th way: blocks
+(we look not at numbers but at groups of numbers, at blocks, say if matrix is 20x20, and blocks are 10x10).
+|A1 A2| * |B1 B2| = |A1B1+A2B3 A1B2+A2B4|
+|A3 A4|   |B3 B4|   |A3B1+A4B3 A3B2+A4B4|
+
+Which means that we can simplify the multiplication by multiplying small pieces of matrices, and then put them together into one matrix.
+It works. And not many people see.
+
+So again, 5 ways:
+- by cols
+- by rows
+- by cols times rows
+- by blocks
+(what's the fifth one?)
+
+Inverses (for sq. mtx first):
+A^-1 A = I = A A^-1 (sq. only)
+if A^-1 exists
+that's a "left inverse".
+But for sq. mtx inverse could be on the rigth.
+this is invertable mtx's
+0 det = non invertable mtx
+I can't find a vector x with Ax = 0.
+so if Ax = 0 and x is not 0, that means I can't go back from 0 using A inverse. it's Irreversable transformation.
+Say, we need to find an inverse.
+|1 3||a c| = |1 0|
+|2 4||b d|   |0 1|
+
+so we need to solve 2 systems:
+A * col j of A^-1 = col j of I.
+so.
+
+He keeps mentioning:
+Gauss (I think it's "elimination" method)
+Jordan
+
+Gauss-Jordan method follows (solves 2eqns et once).
+|1 3||a|   |1|
+|2 7||b| = |0|
+
+|1 3||c|   |0|
+|2 7||d| = |1|
+
+|1 3 : 1 0|
+|2 7 : 0 1|
+
+And now we do "elimination" (turn the left part to an identity matrix).
+And right part will turn to inverse.
+
+|1 3 : 1 0|
+|2 7 : 0 1| => (1st * -2)
+|1 3 : 1  0|
+|0 1 : -2 1| => (gauss would quit but jordan said "keep going") - use eliminatoin upwords, subtract eqn. 2 from eqn 1 by multiplying it by 3.
+|1 0 : 7  -3|
+|0 1 : -2 1 |
+ha. nice.
+we got A^-1.
+a lot simpler than det.
+that works because we multiplied both sides by a whole bunch of elimination matricies.
+we skipped the process of writing elimination matricies.
+
+So EA = I, E = A^-1.
+
+Omg. I get it.
+That A^-1 is our elimination matrix that turns A to I.
+
+E[AI] = [IA^-1]
+
+column of 0s or row of 0s means it is not invertable
+
+Again.
+We write:
+[A : I] and perform elimination steps to turn A to I. Then I will turn to A^-1.
+
+...4...
+the goal is a "big formula of elimination".
+A = LU.
+
+Suppose A is invertable.
+Suppose B is invertable.
+(AB)(B^-1 A^-1)=I.
+Notice the order.
+"If you take of your shoes and socks, then the best way to reverse it is first put socks back on and then put shoes back on".
+
+if I transpose a matrix, what is its inverse?
+E.g. say AA^-1 = I
+What if I transpose all of these?
+(A^-1)^T A^T = I
+(note that the order changed)
+
+This is helpful with A = LU (find out how A and U are connected).
+Suppose:
+A = 
+|2 1|
+|8 7|
+
+E_21 = 
+|1  0|
+|-4 1|
+
+U =
+|2 1|
+|0 3|
+
+E_21 * A = U
+
+So...
+A = LU
+L would be an inverse of E_21.
+|2 1| = |1 0||2 1|
+|8 7|   |4 1||0 3|
+
+(it's simple - just change sign before 4) because it just adds back what E_21 substracted.
+L stands for "Lower Triangular".
+(when U stood for "upper")
+
+|1 0||2 0||1 1/2|
+|4 1||0 3||0  1 |
+that's another form of the same stuff, just simplified
+)as diagonals are now simpler)
+
+let's move to 3x3.
+E_32 E_31 E_21 A = U (no row exchange for now).
+A = E_21^-1 E_31^-1 E_32^-1 U = LU (L is that product of inverses).
+
+Suppose:
+E_21=
+|1  0 0|
+|-2 1 0|
+|0  0 1|
+
+E_32 =
+|1 0  0|
+|0 1  0|
+|0 -5 1|
+
+E_32 * E_21 = 
+|1  0  0|
+|-2 1  0|
+|10 -5 1|
+(EA = U)
+
+inverces:
+|1 0 0||1 0 0|   |1 0 0|
+|2 1 0||0 1 0| = |2 1 0| = L (A = LU).
+|0 0 1||0 5 1|   |0 5 1|
+
+I don't calculate any of these inverses because I know what they mean.
+
+So note how many steps we need to do to do elimination.
+on n x n matrix A.
+
+say n = 100.
+so matrix is 100x100.
+1st step will be: make 0's in 1st column.
+so it's down to 99x99.
+during that step I had to multiply by smth and subtract.
+let's count those two as one operation.
+and that was something I had to do for each row (subtract 1st row from 3rd, 1st row from 15th etc.)
+so that's 100^2 steps.
+so 100^2 was just for the 1st pivot.
+(I don't follow, I thought 100).
+
+Now do the 2nd pivot.
+About 99^2.
+
+3rd will be 98^2 etc.
+
+So the total number of operations is:
+n^2 + (n-1)^2 + (n-2)^2 + ... + 1^2.
+
+so I'm adding n terms, each of which is n^2.
+but not quite.
+n's are reducing.
+So that's (1/3 n^3) order.
+note that's an integral of n^2.
+
+That all was vector A.
+
+Vector B is just one column. So it is n^2.
+So the cost for entire RHS (b) is n^2.
+
+So price of A is higher than price of B.
+
+Now let's allow row exchange.
+What happens if there is row exchange (if 0 comes up in pivot position).
+that's now using permutations (and transposes).
+
+Permutations are matrices for which I need to do one or more row exchanges.
+so say I want to know all the possible matricies that will just rearrange someones rows.
+say for 3x3.
+The formula for all of them is:
+|1    |
+|  1  |
+|    1|,
+
+|0 1 0|
+|1 0 0|
+|0 0 1|,
+
+|0 0 1|
+|0 1 0|
+|1 0 0|,
+
+|1 0 0|
+|0 0 1|
+|0 1 0|,
+
+|0 1 0|
+|0 0 1|
+|1 0 0|,
+
+|0 0 1|
+|1 0 0|
+|0 1 0|.
+
+So 6 of them.
+6 kinds of permutation matrices for any 3x3 matrix.
+
+If I multiply any of these two together, the third one is on the list.
+The inverces of each one are also in the list.
+So this is a little family / group of inverse functions.
+
+Some of them are their own inverses.
+
+P^-1 = P^T.
+
+Now how many P's are for any 4x4 matrix?
+24.
+(why 24? he didn't say. someone shouted out. there should be some formula).
+for 3x3 it was 6, and for 4x4 it was 24
+
+Как-то чем дальше в дебри лин. алгебры тем больше заик с нервным тиком.
+
+Multiplication on the left:
+1st row stays the same
+2nd row: -coefficient
+3rd row: same
+
+|1     |
+|-a 1  |
+|0  0 1|
+
+they don't really even write 0's.
+
+elimination matricies all over the place for now.
+which are still used to find "invert" matrix.
+
+The formula for LU above (with E invertions) is actually important.
+
+So the L is easy to compute - just multiply together all the E's.
+there was the example where one E had a zero at 3,1, another E had zero at 2,1, third one  - at 3,2.
+and after multiplying he just combined them.
+So into say position 3,1 he put a non-zero value from the other two E's.
+But keep in mind that I'm not sure yet if multiplication of E's is always that simple.
+
+The only time when Pivot is allowed to be 0 is that when it's the last row and we don't have to do the row exchange.
+
+...5...
+start of actual linear algebra
+permutations
+switching raws.
+can be done many times.
+what happens to A = LU?
+L = 
+|1 0 0|
+|a 1 0|
+|b c 1|
+
+U =
+|1 a b|
+|0 1 c|
+|0 0 1|
+
+that's only possible if there are no raw exchanges.
+
+how do I account for them? (allow them)
+
+pivots close to zero are numerically bad.
+
+so A = LU because PA = LU.
+
+P (permutation matrix) is identity matrix with reordered rows.
+n! possibilities of how many permutations are possible for n x n matrix.
+this is the answer to my question "what's the formula for 3x3 = 6 and 4x4 = 24".
+n! possible raw shifts in any n x n matrix.
+
+P^-1 = P^T
+
+|1 3|^T    |1 2 4|
+|2 3|    = |3 3 1|
+|4 1|
+
+General formula for the transpose transform:
+(A^T)_ij = A_ji
+
+In a lot of applications symmetric matricies show up.
+In symmetric matricies transposing doesn't change the matrix.
+
+Example of a symmetric matrix.
+|3 1 7|
+|1 2 9|
+|7 9 4|
+
+Such matricies are not changed by transposing.
+
+It's also useful to notice that there are cases where the transpose gave the inverse (the case with P^-1 = P^T)
+
+In that example the 3x2 matrix is far from symmetric.
+But multiply P^T * P*-1 and you get a symmetric matrix.
+In other words:
+R^T R is always symmetric.
+
+Ex.
+|1 3||1 2 4| = |10 11 7|
+|2 3||3 3 1|   |11 -  -|
+|4 1|          |7  -  -|
+
+Why R^T R is always symmetric?
+take the transpose and see that it didn't change.
+(R^T R)^T = 
+the rule of transposes: the order gets reversed.
+= R^T R^TT = R^T R
+
+that's the check without using numbers.
+that's the end of permutations, transposes and symmetry.
+starting a new topic.
+
+Vector spaces.
+so we can multiply vectors by scalar and can add them.
+to legitimately talk about spaces we are required to be able to add, multiplied by numbers and some other rules need to be satisfied.
+A space of vectors is a banch of vectors that allows to use operations of adding and multiplying vectors within that space.
+Example:
+R^2 (all 2-dim. vectors with real components: <3, 2>, <0, 0>, <pi, e>, ...)
+here I can add them a component at a time.
+you know the picture of a sum (the parallelogram)
+R^2 here is an x-y plane. all its vectors are there.
+if I remove say <0, 0> (point removed), that won't be a vector space any more (vector cancellation disappeared, multiplying by 0 disappeared etc, a disaster).
+
+Ex.
+R^3 - all 3D vectors (with 3 REAL components).
+Note, <3, 2, 0> is R3 vector, not R2. It doesn't lose 3D quality just because of 3rd component being 0.
+R^n space is a space where vectors are with n real components.
+
+there are 8 rules of addition and multiplication (you have them in the mindmap).
+the question is can we do any addition and multiplication and still stay within the space.
+
+Example:
+1/4 R^2 (only positive x's and y's).
+Can I add them? yes.
+Can I multiply by scalers? Not always (e.g. not negative ones).
+So it's not closed space.
+Look at vector spaces inside R^n.
+
+a vector space inside R^2.
+subspace of R^2.
+I have to be able to multiply any vector by 2, 1/2, 0, -1 etc and still be within the space.
+So I have to stay on the line that goes along that vector.
+So a LINE inside R^2 that goes through the origin is an example of R^2 subspace.
+The line that doesn't go through origin would be an example of a line that is not a subspace of R^2 (as I can't stay along that line by adding the vectors that go from origin to any dot on that line).
+
+So here's the list of subspaces of R^2.
+1) all of R^2
+2) any line that goes through origin. (L)
+
+Note that that line is not R^1.
+It's still R^2 line (even though I can't get out of it).
+That's because the vectors still have 2 components.
+
+3) zero-vector alone (only). Called Z.
+
+A Rule is knowing that the element by its own sutisfies the rule.
+
+R^3 subspaces would be:
+- R^3
+- plane through 0
+- line through 0
+- zero vector
+
+that's all true for n dimentions.
+but for the matricies there can be special subspaces.
+
+let's look at prev. ex.
+|1 3|
+|2 3|
+|4 1|
+
+those are (remember) the two base vectors in 3D space (in R^3)
+to be able to call it a subspace I must be able to add vectors that lay in that space.
+E.g. I have to be able to add 1 of 1st col + 3 times 2nd col and still stay on the subspace.
+
+so columns in R^3 and ALL their linear combinations form a subspace.
+call it a "column space" C(A)
+so all linear combinations of the base vectors (col 1 and col 2).
+so a subspace is a plane that is formed by those two vectors.
+
+if those two columns were on the same line, then the subspace would be a line.
+that's a central idea of how to form a space from a matrix.
+column space is all linear combinations of all columns.
+
+space (anything)
+linear space (linear combinations of elements should stay in space)
+linear subspace (subset of a linear space that also satisfies those conditions)
+
+then they start talking about those spaces using set notation (unions etc).
+so that line is v1, they describe v1 intersection v2.
+then they say that v1 intersection v2 is not the plane
+a lot of set stuff.
+
+...6...
+vector spaces, subspaces.
+column space of a matrix
+null space of a matrix.
+
+vector space is a bunch of vectors where you can add any two vectors in the space and the result stays in the space, or you can multiply a vector by any constant and it stays in the space.
+any of their multiples and sums stay in the space.
+
+Ex.
+3D space.
+its space is R^3.
+its subspaces (subspaces of R3, spaces inside R3 that still make up a vector space of their own, vector spaces inside a vector space) are:
+- plane P through <0,0,0> (if there are two vectors on it, their sum stays on the plane)
+- line L through <0,0,0>
+- point <0,0,0> (origin)
+
+suppose I have these two subspaces P and L.
+what will be its union?
+P∪L (all vectors in P or L, or both).
+is it a subspace? or is not?
+it's not a subspace.
+because if say I take a vector on P and add to it a vector from L - I leave this space.
+what about intersection?
+P∩L.
+(vectors that are in BOTH P and L).
+is this a subspace?
+(that's just an origin point).
+so for R3 yes. origin is a subspace.
+but what about all cases?
+Arbitrary subspaces S and T of space R^n.
+S∩T is also always a subspace.
+as it satisfies the rule (I stay within S and T because the original spaces were in S and T).
+sum and scaling means that if the elements I sum and scale are originally within my subpsaces, then their results are also a subspace.
+cv + dw (c and d are constants).
+
+Now.
+Column space of a matrix A.
+Ex.
+|1 1 2|
+|2 1 3|
+|3 1 4|
+|4 1 5|
+
+the columns are vectors (bases).
+the column space of A is a subspace of R4 (4 components).
+C(A) = R4
+
+columns 1 2 3 and all their linear combinations are in a subspace.
+we can't cover the whole R4 (4D space) as we only have 3 vectors.
+but how bigger is R4 than C(A).
+
+Does Ax=b always have a solution for every b?
+No.
+Why?
+Because Ax=b is 4 equations. and only 3 unknowns.
+Ax = |1 1 2||x1| = |b1|
+     |2 1 3||x2|   |b2|
+	 |3 1 4||x3|   |b3|
+	 |4 1 5|       |b4|
+	 
+There are many b's that are not a combination of those 3 columns.
+This will be a "plane" inside R4.
+But for some b I can solve it.
+That's what I'm interested in.
+
+Which b are ok?
+Which b allow to solve this system??
+
+b = <0,0,0,0>
+
+now. this is:
+ x1 + x2 + 2x3 = 1
+2x1 + x2 + 3x3 = 2
+3x1 + x2 + 4x3 = 3
+4x1 + x2 + 5x3 = 4
+
+as you can see we only can solve it if one of b's is zero.
+
+simpler solution:
+Ax = |1 1 2||1| = |1|
+     |2 1 3||0|   |2|
+	 |3 1 4||0|   |3|
+	 |4 1 5|      |4|
+	 
+it works because it means "1 of the 1st column + 0 of 2nd column + 0 of 3rd column".
+wow. so easy now to work with systems.
+
+Ax = |1 1 2||0| = |1|
+     |2 1 3||1|   |1|
+	 |3 1 4||0|   |1|
+	 |4 1 5|      |1|
+	 
+see. any number of any columns work.
+
+So.
+I can solve this system only when b is in C(A).
+in other words, when RHS is in the column space.
+sounds almost like a tautology. I can solve it only for results for which I can solve. 
+anyhow. B should be in C(A).
+
+are those 3 columns independant? does each column introduce smth new?
+can I throw away any columns and get the same column space?
+I can. I can throw away column 3 (<2, 3, 4, 5>).
+Because it's a sum of the other 2 columns.
+
+Later we'll call the 1st column a pivot column, and 3rd column will not be a pivot column.
+
+I could also throw away 1st column and keep the 3rd.
+
+But the convention is to keep the 1st column, and the next column that is not producing smth new is the one that should be removed.
+
+So now we see that C(A) is a 2-dimentional subspace of R4.
+
+Ok. 
+new topic.
+Nullspace.
+Same matrix.
+
+Ax = |1 1 2||x1| = |0|
+     |2 1 3||x2|   |0|
+	 |3 1 4||x3|   |0|
+	 |4 1 5|       |0|
+	 
+here comes a completely different subspace.
+nullspace of A.
+It contains not columns. It contains x's. All x's that solve the eqn (word "null" means here "those that solve Ax=0").
+Solutions of the formula above.
+So a nullspace is a subspace of R3 (as in that example there are only 3 x's).
+And column space is in R4.
+
+So in n x m matrix, C(A) is n and N(A) is m.
+
+We will do the elimination at some point.
+Again.
+Solve this.
+Ax = |1 1 2||x1| = |0|
+     |2 1 3||x2|   |0|
+	 |3 1 4||x3|   |0|
+	 |4 1 5|       |0|
+	 
+find one solution.
+x = 0.
+so it has a chance to be a vector space.
+find N(A).
+
+N(A) contains: <0,0,0>,<1,1,-1>,<c,c,-c> - so c<1,1,-1>.
+and that's it. there are no other solutions.
+is it a subpsace?
+N(A) = c<1,1,-1>
+is this a subspace?
+that's a line through the origin in R1 that stays along the vector <1,1,-1>.
+Line in R3.
+NullSPACE. means "subspace". as conditions of a subspace are satisfied by a nullspace (a space of solutions to Ax=0).
+so. if I have x and x*, then x+x* is always a subpsace.
+if Ax=0 and Ax*=0, then x+x* is a subspace of A.
+as if Av=0 and Aw=0 then A(v+w)=0. As matrix rules allow me to rewrite it to Av+Aw. that's called a "distributive law".
+if A(v)=0 then A(12*v)=0. because by matrix laws of linearity I'm allowed to write that "12" outside of braces.
+
+Let's look again at this:
+Ax = |1 1 2||x1| = |1|
+     |2 1 3||x2|   |2|
+	 |3 1 4||x3|   |3|
+	 |4 1 5|       |4|
+	 
+(it's not a null space, as there are non zeros on RHS).
+
+Do the solutions form a subspace?
+
+Solutoins: <1,0,0>, <0,-1,1>
+
+They (the solutions of this) don't form a subspace.
+Because the zero vector is not a solution.
+It doesn't go through the origin.
+
+There are many solutions. But they don't form a subspace.
+
+So to conclude.
+Column space is all linear combinations of columns (which is a subspace only if it goes through 0).
+Null space is all the solutions of Ax=0.
+
+subspace = subset.
+
+once we know it's "linear" (sum of multiplications by coefficients) we write it using matrix.
+so xy=z is not a matrix.
+the proof would be that it does not scale linearly.
+<1,1,1> is a solution, but <2,2,2> isn't.
+<2,2,4> is. so you see, we can't just multiply vectors by a constant.
+it gets out of space.
+so it's not a space.
+0 always needs to be in space to call it a subspace.
+
+
+...7...
+describe all vectors in C(A) and N(A).
+turn the idea into an algorythm.
+algorythm for solving Ax=0.
+
+A = |1 2 2 2 |
+    |2 4 6 8 |
+	|3 6 8 10|
+	
+column 2 is not independant (it is a multiple of colum 1.
+3rd row - 1st row + 2nd row
+all that should come out of elimination
+extend elimination to rectangular case where we continue even if there are zeroes in pivot position.
+
+When I do elimination I'm not changing the null space (solutions).
+RHS keeps the zeroes.
+
+ok so here we go.
+eliminating.
+
+|1 2 2 2|
+|0 0 2 4|
+|0 0 2 4|
+
+there is zero in 2.2 and 3.2. 
+that says that this column is the combinatino of the earlier columns.
+but I don't stop here.
+go on to the next.
+2nd pivot will be now 2.3 (the 2 in the second row)
+
+|1 2 2 2|
+|0 0 2 4| = U
+|0 0 0 0|
+
+It's not really "upper triengular" but it's in this "echelon" form (starecase form).
+
+so it has only 2 pivots (1.1 and 2.3).
+the number of pivots is called the "rank" of the matrix.
+in this case the rank is 2.
+
+Solve this now:
+Ux = 0.
+
+There are 3 equations and 4 unknowns.
+So there certainly are some solutions.
+what are they.
+
+pivot columns are the columns with the pivot.
+there are 2 pivot columns.
+
+other columns (columns without a pivot) are called "free columns".
+
+UX = 0.
+
+Say I assign 1 to x2 and 0 to x4.
+in other words, my eqn. looks like this:
+
+|1 2 2 2||-| = |0|
+|0 0 2 4||1|   |0|
+|0 0 0 0||-|   |0|
+        ||0|   |0|
+		
+* so what, free columns now don't affect the value and can accept any variables?
+
+let's write it out.
+x1+2x2+2x3+2x4=0
+2x3+4x4=0
+
+the point is...
+I can find x1 and x3 by back substitution.
+the new thing is there are 3 variables that can take any value.
+and I will systematically make a choice "1 and 0".
+so x1 and x3 are unknowns.
+but we SET x2 to be 1, and x4 to be 0.
+from our equations we get this:
+
+|1 2 2 2||-2| = |0|
+|0 0 2 4||1 |   |0|
+|0 0 0 0||0 |   |0|
+        ||0 |   |0|
+		
+x3=0 from 2nd eqn
+x1=-2 from 1st eqn.
+
+that just means "-2 of 1st column + 1 of 2nd col. is zero".
+
+This is one vector in a null space.
+I found one.
+
+But I can choose any multiple of this.
+
+So x = c<-2, 1, 0, 0>
+
+this now describes a line in a 4d space.
+this line is in the null spae.
+is it the whole null space?
+it's not.
+there are 2 free variables here.
+I made a choise <1, 0>, but I could also choose <0, 1> for them.
+so the algorythm is:
+- do elimination
+- if there is a non-zero pivot you just continue.
+- if there is a zero pivot, and below it there is a non-zero, you switch rows.
+- if there is a zero pivot and below it all are also zeroes, you take the next column pivot in the same row and make a note that that zero pivot column is a "free" column.
+- find pivot columns and free variables
+- for free variables assign 1 for one of them, and 0 for the rest.
+- and complete the solution (solve the system of eqns).
+- then you set 1 for the other free col. 
+
+ok got it.
+set the other value.
+x = <-, 0, -, 1>
+what's x3 here? from that system?
+then x3 = -2 (from 2nd eqn)
+and x1 = 2 (from 1st eqn).
+that's in the null space.
+that means "2 of col 1 minus 2 of col 3 plus 1 of col 4 is zero".
+that's another vector in the null space.
+
+now what's the entire null space?
+
+special solutions.
+they are "special" because I gave special values to 3 variables.
+also their multiples.
+and their combinations (sums).
+
+N(U) = c <-2, 1, 0, 0> + d<2, 0, -2, 1>
+or in other words, solutions of Ux=0 are c <-2, 1, 0, 0> + d<2, 0, -2, 1>
+N(U) = such x for which Ux=0.
+
+null space contains exactlu all combinations of special solutions.
+how many special solutions are there? one for every free variable.
+and how many free variables? The rank, the number of pivots.
+
+
+so if matrix has n columns, we have should have n variables.
+and if rank is say r = 2
+then we get n-r (n-2) free variables (special solutions).
+
+that is a complete algorythm of finding all the solutions for Ax = 0.
+
+Let's clean up theat "echelon" form. make it as good as it can be.
+A "reduced row echelon" form.
+
+so we had that matrix.
+|1 2 2 4|
+|0 0 2 4|
+|0 0 0 0|
+
+row of zeroes appeared because row 3 was a combination of the other rows.
+do elimination upwords (zeroes above and below the pivots)
+
+subtract 1 of 2nd from the 1st row.
+we get:
+|1 2 0 -2|
+|0 0 2 4 |
+|0 0 0 0 |
+
+clean up even one more step.
+now make pivots equal to 1.
+divide the eqn by the pivot (that won't change the solutions).
+
+|1 2 0 -2|
+|0 0 1 2 | = R
+|0 0 0 0 |
+
+that doesn't change the solution because on RHS we have zeros.
+
+So now we have 1's in the pivot pt.
+so for reduced matrix there are two extra steps:
+
+- elimination upwords
+- divide each rows by its pivot. 
+
+Note that Reduced form contains an identity matrix:
+|1 0|
+|0 1|
+
+that's sitting in the rows.
+that's why they are PIVOTS. stuff is rotating around them.
+
+Now our system looks like this:
+Rx =0
+x1 + 2x2 - 2x4 = 0
+x3 + 2x4 = 0.
+
+The solutions are still the same.
+as I did only stuff I'm allowed to do.
+But now...
+If I plug in special values (say let x2=1 and x4=0) I see this in the pivot columns:
+1 0
+0 1
+and this in the free columns:
+2 -2
+0 2
+
+and a row of zeros below.
+the point:
+there are now two parts of the matrix:
+- free part (in free cols) - F
+- identity part (in pivot cols) - I
+
+they switch signs because they pop up on the other side of the eqn.
+
+again.
+R = |I F|
+    |0 0|
+	
+this form is typical for reduced row echelon form.
+
+I has r pivot columns
+F has n-r free columns.
+
+What's now special solutions?
+Rx=0
+I can do them all at once.
+Null space matrix.
+(cols = special solutions).
+RN=0.
+
+Something something, I don't get it.
+Multiply R(A) - reduced matrix - by N(A) - null space matrix - and get a zero matrix.
+
+N = |-F|
+    |I |
+	
+I can tell he sees some patterns, and I feel they are there. But I don't get it yet.
+
+|IF||x_pivot| = 0
+    |x_free |
+	
+so we get:
+x_pivot = -F x_free.
+
+best form. 
+
+Another example (to make it more clear).
+A = |1 2 3 |
+    |2 4 6 |
+	|2 6 8 |
+	|2 8 10|
+	
+There will be not 3 pivots. As 3rd col is a sum of the other 2.
+Expecting 2 pivots (cols 1 and 2).
+3rd is expected to be a "free" column.
+elimination will also find the reduced rows.
+|1 2 3|
+|0 0 0|
+|0 2 2|
+|0 4 4|
+
+2nd pivot is a 0. do row exchange.
+|1 2 3|
+|0 2 2|
+|0 0 0|
+|0 4 4|
+
+use pivot 2.2
+|1 2 3|
+|0 2 2|
+|0 0 0|
+|0 0 0|
+
+This is a form U (echelon form).
+
+Rank is 2.
+r=2.
+again.
+
+What about null space.
+How many special solutions are there?
+2 pivot columns (1st and 2nd)
+1 free column (3rd).
+
+3-2 = 1 free col.
+
+What's in the null space?
+give the free variable to a convenient value of 1.
+if I set it for 0, I get all zeros, no progress.
+
+x = |-|
+    |-|
+	|1|
+
+Equations are now:
+x1 + 2x2 + 3x3 = 0
+2x2 + 2x3 = 0
+
+and I use x3=1.
+then x2=-1
+and x1=-1
+
+the special answer is now <-1,-1,1>
+
+I can now plug this x into my system.
+-1 row1 -1row2 + row3 = 0.
+yep. true.
+
+but the solution is not juts one vector. but all its scales:
+x = c * <-1, -1, 1>
+
+this is the N(A) null space of A.
+
+later there will be bases of a null space.
+
+next step: Reduced row echelon form:
+clear out above the pivot:
+|1 0 1|
+|0 2 2|
+|0 0 0|
+|0 0 0|
+
+divide each row by its pivot value.
+|1 0 1|
+|0 1 1| = R
+|0 0 0|
+|0 0 0|
+
+So. Identity matrix is:
+|1 0|
+|0 1|
+
+F =
+|1|
+|1|
+
+two zero matricies are:
+|0 0|
+|0 0|
+
+and
+|0|
+|0|
+
+so the form is|
+|I F|
+|0 0|
+
+Now look at x.
+x = c<-1,-1,1>
+
+x has an identity (number 1) in the "free" part (part that will be plugged into the "free" part).
+and has -1,-1 in pivot variables.
+
+what did back subst. give? 
+
+it gave minus F guys (there was 1, 1, but now it's -1 -1).
+
+so x = c |-F|
+         |I |
+
+This is the null space matrix (a guy whose columns are the special solutions).
+their free vars have a special value 1
+and pivot vars have -F.
+
+I see the connection but I can't see the process of them going there.
+perhaps I will see it later in a mindmap.
+
+that's it for Ax=0.
+there will be more about Ax=b.
+but that will be later.
+
+If I put a constraint in something that has 3 degrees of freedom (3d) I get something that has 2 degrees of freedom (2d).
+
+...8...
+Ax=b.
+Same steps.
+Same goal. 
+Just for b, instead of for 0.
+
+я не очень понимаю пока как это юзать в жизни.
+т.е. производные - понятно. оптимизация.
+а тут что?
+что такое солушн? тут не оптимизация. тут мы находим (пока что) только какой х удовлетворит уравнение. всё. если не равно - скажет "нет решения".
+оптимизаций тут пока нету.
+
+if the combination of elements of LHS gives zeroes, then the combination of all RHS must give 0's.
+Same matrix.
+
+|1 2 2 2  : b1|
+|2 4 6 8  : b2| (augumented matrix, matrix [A b])
+|3 6 8 10 : b3|
+
+So eliminate.
+|1 2 2 2 : b1      |
+|0 0 2 4 : b2 - 2b1|
+|0 0 2 4 : b3 - 3b1|
+
+Pivots are the same.
+Pivot columns are the same.
+
+|1 2 2 2 : b1          |
+|0 0 2 4 : b2 - 2b1    |
+|0 0 0 0 : b3 - b2 - b1|
+
+0 = b3 - b2 - b1.
+that's the condition for solvability.
+that has to be satisfied in order to be able to solve this equation.
+Say,
+b = |1|
+    |5|
+	|6|
+	
+We get:
+|1 2 2 2 : 1|
+|0 0 2 4 : 3|
+|0 0 0 0 : 0|
+
+now proceed solving 2eqns with 4 unknowns.
+
+Solvability.
+condition on b.
+Ax = b is solvable when b is in C(A).
+Describing the same thing in other words, if a combination of rows of A gives the zero row, then the same combination of components of b has to be zero. (that b3 - b2 - b1 = 0 part)
+
+Then the story is the same as in other courses:
+x_complete_solution = x_nullspace_solution (=0) + x_particular_solution (=b for any free x)
+
+let's find a complete solution for Ax = b.
+
+step 1. x_p (x_particular) = ...
+- set all free variablas to zero.
+- solve Ax=b for the pivot variables.
+
+x1 + 2x3 = 1
+     2x3 = 3
+	 
+x1 = -2
+x3 = 3/2
+
+so. our one particular solution is:
+x_p = |-2 |
+      |0  |
+	  |3/2|
+	  |0  |
+	  
+plug it into the original system to see that it is the correct answer.
+
+that's x_particular
+
+now find all solutions.
+
+2) x_nullspace
+
+x = x_n + x_p
+
+why does this formula show up in all mathematics?
+
+because it shows up everywhere where there's linearity.
+
+A x_p = b
+A x_n = 0
+A(x_p + x_n) = b
+
+If I have one solution, I can add anything in the null space and I still have a correct RHS b.
+
+so.
+x_complete = x_particular (what we just found) + x_nullspace (N(A) that we found in the previous section).
+
+x_complete = |-2 | + c_1 |-2| + c_2 |2 |
+             |0  |       |1 |       |0 |
+			 |3/2|       |0 |       |-2|
+			 |0  |       |0 |       |1 |
+			 
+x_particular does not need a constant multiplier.
+because it solves Ax_p = b
+
+so that's "one guy + a subspace".
+
+now.
+Plot all the solutions in R4.
+
+in this case, it's a 2D subspace in R4 that doesn't go through the origin, because it goes through x_p (it's been shifted to go through x_p instead of going through 0).
+
+So the solution is a vector that goes from the origin and goes to the x_p point on a subspace plane.
+
+Now. let's talk about m x n matrix A of rank r.
+r (rank) - number of pivots.
+how are m, n and r related?
+I always know that r <= m. r <= n (because I can't have more pivots than columns or rows).
+Full column rank (rank as big as it can be): r = n.
+(I believe I already have smth about ranks).
+What does it tell about the solution?
+That means there's a pivot in every column. r = n.
+So there are 0 free variables.
+Then N(A) will have only the zero vector. there are no free variables to give other values.
+And the solution to Ax=b will be just x_particular (if there IS a solution).
+Which will be called a "unique" solution (if it exists).
+0 or 1 solution, if r = n.
+this fact has many-many applications in reality.
+it is very useful to know that there's just one solution x_p.
+
+Example.
+|1 3|
+|2 1|
+|6 1|
+|5 1|
+
+what's the rank of that matrix?
+2 (2 pivots).
+
+Reduced row echelon form would be:
+|1 0|
+|0 1|
+|0 0|
+|0 0|
+
+2 independent rows and the other rows are the combinations of the 1st two.
+this is a case of full-column rank.
+
+if x_p = |1|
+         |1|
+		 
+then RHS would be the sum of cols:
+|4|
+|3|
+|7|
+|6|
+
+Now let's look at "full row rank".
+r = m.
+How many pivots? m
+
+what happens if I do elimination?
+I get m pivots.
+so every row will have a pivot.
+
+what about solvability? (for which RHS can I solve it).
+I can solve Ax=b for every b (as there are no zero rows).
+so the solution EXISTS.
+
+so how many free variables are there?
+n-r, n-m free variables.
+
+ok so Example.
+let's transpose the prev. exmpl.
+|1 2 6 5|
+|3 1 1 1|
+
+what's its rank?
+2.
+2 pivots.
+
+what will be the reduced row echelon form?
+|1 0 - -|
+|0 1 - -|
+([I F] with no zero rows).
+
+now. last case.
+r=m=n.
+
+Example
+A = |1 2|
+    |3 1|
+
+it's square.
+it's full rank (both full column rank and full row rank).
+it's invertable
+
+so r=m=n means it's ALWAYS invertable.
+
+R (reduced row echelon form) = I.
+
+null space of this matrix is the zero vector only.
+
+what are the conditions for solvability?
+if RHS is b:
+b = |b1|
+    |b2|
+what are the conditions on b1 and b2? none at all.
+Any b will not make it leave the space.
+OMG. I get it.
+
+Since Rank = n, there's one unique solution.
+
+table
+
+r=m=n.
+R = I.
+1 solution to Ax = b.
+square invertable case.
+
+r = n < m
+R = |I|
+    |0|
+0 or 1 soluton to Ax = b.
+
+r = m < n
+R = |I F| (it's not always split, F could be mixed into the I, only if I rearrange columns I get |I F| form)
+there's always infinitely many solutions (we don't have any 0 rows). 
+
+r < m, r < n
+R = |I F|
+    |0 0|
+there's either no solutions (if we don't get 0 = 0 for some b's), or infinitely many solutions
+
+this is the summary.
+the rank tells you everything about the number of solutions.
+it doesn't tell the values of solutions (for that you go into the matrix)
+
+...9...
+key lecture
+key ideas of linear independence or dependence.
+basis for a subspace
+dimention of a subspace.
+
+we talk about a bunch of vectors being independent
+the vectors will be a basis.
+and the dimention will be some number.
+
+suppose I have a matrix A, and Ax=0.
+m < n (a lot of columns, not so many rows).
+So a small number of equations and a lot more unknowns.
+more unknowns than equations.
+
+conclusion is that there's something in a nullspace of A other than just a zero vector.
+so there is some non-zero x's for which Ax=0 will be solvable.
+- elimination
+- echelon form
+- find free columns.
+- reduce rows
+
+there will be free variables. at least one.
+and to those variables I can assign non-zero values without changing the result.
+(OH. so when I change free variables I stay in the space).
+
+- solve for pivot vars.
+- find a solution (that will be not "all  zeros").
+
+Independence.
+Direct meaning: 
+vectors x1, x2, ..., xn are linearly independent.
+
+the question is "do any combinations give zero".
+if there is some combination that is zero, they are dependent.
+
+if no combination gives a zero vector [c1x1 + c2x2 + ... + cnwn != 0] (except zero combination, when all c's are 0) then vectors are independent.
+otherwise they are dependent.
+
+Example
+say I'm in 2D space.
+vector V and vector 2V.
+they are dependent. one vector is twice the other.
+because:
+2v1 - v2 = 0.
+
+Example 2.
+Suppose there's a vector V1, and V2 is zero vector.
+they are dependent again.
+0V1 + 6V2 = 0.
+
+if one of vectors is a zero vector then it's always dependent.
+
+Example 3.
+V1 and V2 that are not parallel and go in different directions. they are independent.
+Now say add V3 that goes down.
+they are dependent.
+why?
+because of m < n discussed in the beginning of the lecture:
+A = [V1 V2 V3].
+Say: 
+A = |2 1 2.5|
+    |1 2 -1 |
+	
+it's 2x3.
+m < n.
+
+we know there's 3 vars and two equations.
+so there's some combination for which we get a zero vector when we use a non-zero x.
+because that non-zero vector will be the free variable.
+
+so they are dependent if there is something in the null space.
+
+repeat when v1,..., vn are columns of A.
+
+they are independent if the nullspace of A is only the zero vector.
+they are dependent if there's something else in the null space (if Ac=0 for non-zero vector c in the null space).
+
+in other words.
+rank of matrix of independent vectors is r = n. < no free variables.
+rank of matrix of dependent vectors is r < n < has free variables
+
+Span.
+What does it mean for vectors to SPAN a space?
+in a nutshell, if we have vectors, and all their combinations form a subspace, then THOSE VECTORS SPAN this subspace/space.
+So "vectors v1, ..., vl span a space S" means the space consists of all combinations of those vectors.
+So columns of a matrix span a space.
+S is the smallest space which contains vectors v1, ..., vl.
+"span" means "take all those vectors and their combinations and put them into one space".
+
+I'm interested in vectors that span a space and are independent.
+and those "vectors" that "span" this space (whose linear combinations form this space) are "bases" of this space.
+"basis" means I have "just right" number of vectors.
+Enough but not too many.
+
+so basis has two properties:
+- they are independent
+- they span the space
+
+let's put together these two properties.
+
+Example.
+Space is R3.
+One basis is:
+|1| |0| |0|
+|0| |1| |0| - that's the "standart basis" / obvious base.
+|0|,|0|,|1|
+
+that's not the ONLY basis. But that's a basis.
+are they independent?
+yes:
+|1 0 0||x1|   |0|
+|0 1 0||x2| = |0|
+|0 0 1||x3|   |0|
+can't have free x's. can't solve for anything except when c's (coefficients) are all zero.
+
+in the language of matricies, these are a column of an identity matrix.
+what's the null space of an identity matrix?
+only a zero vector.
+so they are independent:
+Ix=0 means x = 0 is the only solution.
+
+Let's look at another base of R3.
+|1| |2|
+|1| |2|
+|2|,|5|
+are they independent?
+yes.
+do they span R3?
+no. because there are vectors of R3 that are not covered by combineation of these.
+but they are a basis for a space which is a plane inside R3.
+but a 3rd vector in it would make it non-basis (as 2 equations + 3unknowns, m < n argument above).
+ 
+
+|1| |2| |3|
+|1| |2| |3|
+|2|,|5|,|7|
+are they independent?
+no, the 3rd is the sum of the other two.
+so it's not a basis of R3.
+|1| |2| |3|
+|1| |2| |3|
+|2|,|5|,|8|
+not a basis because this matrix is not invertible.
+it has 2 identical rows. its rows are dependant
+row space is 2-dimentional.
+2 row pivots.
+
+|1| |7|  |31|
+|2| |11| |5|
+|5|,|17|,|8|
+
+Works.
+It's a basis.
+Independent and spans the space.
+so the space is the same, only the bases point to different directions.
+vectors give a basis if nxn matrix with them is invertable.
+
+So there are many-many basis for R3.
+But they all have something in common.
+all the basis have a same number of (independent) vectors.
+for R3 the number of vectors is 3.
+for Rn there are n vectors.
+Eveery basis of a space has the same number of vectors.
+they number says how big is the space.
+how many vectors do I have to have to define this space.
+so if there are 6 degrees of freedom but you have 7 vectors - that's too many (m < n, not basis).
+if we have 5 vectors, that's not enough vectors to define a space.
+has to be "just right".
+
+that number "6" is called a "dimention" of that space.
+the "dimention" is the number of vectors needed to define a space.
+
+To summarize
+- independence (looks at combinations not being zero)
+- spanning (all the combinations)
+- basis (combines independence and spanning)
+- dimention of a space (number of vectors in any basis of the space)
+
+Example.
+Space is C(A)
+|1 2 3 1|
+|1 1 2 1|
+|1 2 3 1|
+
+Do they SPAN the column space of that matrix?
+yes (by definition of a column space)
+
+are they independent?
+no. there's something in the nullspace N(A).
+a vector that combines these columns and produces a zero column
+
+One vector in N(A) is:
+|-1|
+|-1|
+|1 |
+|0 |
+
+what's the basis for this column space?
+most natural answer is "pivot columns" (columns 1 and 2).
+!!!! (^^^^^^^^)
+
+so rank of the matrix is 2.
+
+Thm:
+2 = rank(A) = # of pivot columns = dimention of C(A) 
+^^^^^^^^^^^
+note, it's not a dimention of a matrix A, but a dimention of a space C(A)
+note also that is not a rank of a subspace. it's a rank of a matrix.
+
+tell me another basis for the column space of this matrix.
+we could take columns 1 and 3 as a basis.
+or columns 2 and 3 as a basis.
+or columns 2 and 4.
+or it could be not made out of these columns at all. say, 2 * col1 as V1 and sum of all columns as V2.
+|2| |7|
+|2| |5|
+|2|,|7|
+
+these are independent.
+the key point is to get the right number of a space.
+if you know the dimention of C(A) you have to pick that number of columns:
+dim(C(A)) = 2.
+so we need 2 independent vectors to define basis of C(A).
+so.
+dim(C(A)) = r.
+dimention of a column space is the rank.
+
+Now the null space.
+What is the dimention of the null space?
+so here are some vectors from a null space:
+|-1| |-1|
+|-1| |0 |
+|1 | |0 |
+|0 |,|1 |
+(one would be not enough because then it wouldn't span the rank/dimention. we need 2).
+
+(he's set the free variables first - the variables of "1 for some free column and 0 for other free columns". and found the rest from looking at the matrix.)
+
+N(A) vectors are telling me what combinations of what columns give 0.
+in what way the columns are dependent.
+are they the basis for N(A)? Do all other combinations of null space consist of these two vectors?
+yes.
+
+what's the dimention of N(A)?
+the dimention of a null space is the number of free variables.
+dim(N(A)) = n-r (number of rows minus rank).
+^^^^^^^^^^^^^^^^^^
+
+wow.
+ok so steps in finding the dimention.
+1) find the basis for the vector space (using elimination find rows with pivots - they will be independent ones).
+free columns still span the same space that initial columns did before the elimination. but you only need the pivot columns.
+we might use the rows before or after elimination as basis, but keep in mind that during elimination you could switch the columns or rows to get pivots, what would mess up if we used the switched values as the basis (if E.g. we put vectors as rows, not as columns).
+putting vectors as rows or as columns builds a transpose of a matrix. so the same number of pivots.
+if I put vectors as columns, not as rows - then I change the column space during elimination, and thus can't use anymore the vectors (columns) as my basis. number of pivots is the same, but all these substractions basically did "subtract x of V1 from y of V2" if we did elimination in a matrix, whose COLUMNS are vectors. so obviously we get vectors that have nothing to do with the original matrix. 
+A good proof of that is that last rows may become 0's, when in the original matrix that's "Z" values of vectors v1, v2 etc. and they probably were not zeros.
+In this case, you may only use vectors of the ORIGINAL matrix as your basis (and not the eliminated ones), whose position is the same position as the position of pivot columns in the eliminated matrix.
+
+To be able to use them, put ROWS as your vectors. This way you will subtract X of V1 from X of V2. and Y of V1 from Y of V2. This does not change the column space (the properties). as a vector is difference between two points.
+so yeah, if you look for the vectors, put them as rows.
+
+2) the number of basis vectors is the dimention.
+
+to conclude:
+we find pivot columns.
+if vectors were rows, we may use rows from Original or Eliminated matrix (of the same position that a pivot row is).
+if vectors were columns, we may not use the eliminated matrix columns, only the original matrix columns.
+
+
+...10...
+four subspaces that come with a matrix (there's column space and null space, and 2 to go).
+- column space C(A)
+- null space N(A)
+- row space C(A^T) (space that rows span, that all linear row combinations form)
+- null space of A^T: N(A^T) (there's no perfect name for this, but usual name is "Left Null Space").
+
+row space...
+rows are the basis for the row space when they are independent
+if they are dependent.
+I don't like working with row vectors. as so far I worked with column vectors.
+so how to I get from row vectors to column vectors? I transpose the matrix.
+so row space is all combinations of columns of A^T.
+that allows to use the notation C(A^T)
+
+so where are those spaces?
+when A is m x n.
+
+N(A) contains vectors with n components, solutions when x = 0. so null space is in R^n (n-dimentional space)
+C(A) contains vectors with m components, so it is in R^m (m-dimentional space)
+C(A^T) contains R^n vectors 
+N(A^T) contains R^m vectors.
+
+Picture.
+
+R^n [row space]                 [column space]                    R^m
+              [null space]                   [null space of A^t]
+		   
+let's understand these spaces. as that's like a half of linear algebra.
+
+let's first find the basis for each of those spaces.
+what's the systematic way of finding them?
+and what's their dimension? (dimention of these spaces).
+
+answer these questions for each of those 4 spaces.
+
+let's start with dimension.
+
+let's start with C(A).
+dim(C(A)) = rank r (produce the basis using row reduction, finding pivots, look at columns of A on those positions for which we found pivots, see that there are r vectors in that basis, and that r is our dimension).
+so basis of C(A) is pivot columns
+dimantion is it's rank r (the number of basis vectors).
+the proof will be later.
+
+dim(C(A^T)) = rank r (it is also r). same r that was for dim(C(A)).
+so dim(C(A)) = dim(C(A^T)) = r. 
+like it could be not obvious from columns but obvious from rows, and this way you can find faster if the matrix has full rank or not full rank. so non-full rank will mean columns are dependent.
+
+dim(N(A)) = n-r
+we took the matrix A, got it into the form U or reduced form R and found special solutions from free variable, and they are in the null space, and they (these special solutions, each of which comes from a free variable) form a basis for the null space.
+so special solutions are the basis for N(A).
+and there are n-r of them.
+
+so in R^n there are 2 subspaces.
+one of size r, another of size n-r.
+(r is a number of independent variables, and n-r is the number of free variables).
+
+dim(N(A^T)) = m-r (calculated the same way as N(A), but A here is transposed).
+
+that was an easy answer of the dimensions.
+now check for the basis.
+
+Example
+|1 2 3 1|    |1  2  3 1|    |1 2 3 1|    |1 0 1 1|    |I F|
+|1 1 2 1| => |0 -1 -1 0| => |0 1 1 0| => |0 1 1 0| => |0 0| = R.
+|1 2 3 1|    |0  0  0 0|    |0 0 0 0|    |0 0 0 0|
+
+It was a column space.
+Note, C(R) is NOT C(A). Different column spaces.
+The reason is what I've said before (I'm substracting x's from y's inside the same vector)
+But Row space stays the same.
+
+What's the basis for the row space of R?
+It will be the row space of the original A.
+the basis of row space of R and A are first two rows of R. not of A.
+|1 0 1 1|
+|0 1 1 0|
+so it's spaned by 3 rows.
+but the basis is 2 rows. these 2 rows.
+reversing the steps proves that basis rows of R are basis of rows of A.
+
+so null space N(A^T).
+they are the solutions (y's) to this eqn:
+A^T y = [0].
+here's how to solve it.
+1) transpose the eqn (on the right 0 vector gets transposed, on the left they come in opposite order).
+(A^T y = [0])^T
+y^T * A^TT = 0^T
+y^T * A = 0
+
+so we have a row vector y^T multiplied from the LEFT by A.
+That's why N(A^T) is called a "left null space".
+
+so how do we get a basis for this "left null space".
+it's not obvious right away. 
+but here's how.
+from A (initial) to R (reduced) there were some steps.
+and I want to know what was the whole matrix that took me from A to R (so multiplication of those substraction matrices).
+
+Remember Gauss-Jordan?
+Let's do it again.
+take A that is m x n.
+rref[A_(m x n) : I_(m x m)] -> [R_(m x n) : E_(m x n)] where E is matrix that notes what we did to get from A to R.
+so all this row reduction stuff turns out to be the same thing as multiplying by E:
+
+rref[A_(m x n) : I_(m x m)] = E [A_(m x n) : I_(m x m)]
+
+(as that E took I to E, so it was E).
+
+So. we get:
+EA = R.
+(E is a matrix that takes me from A to R).
+ 
+ Now remember this formula:
+ A^-1 * A = I.
+ 
+ You see, here E plays the role of A^-1, and R plays the role of I.
+ so A^-1 * A = I. is a special case of EA = R (that can be rectangular now, and does not really have to be invertable, as in the A^-1 A = I form they had to be square and invertable).
+ 
+ so.
+ from previous example.
+ |-1 2 0||1 2 3 1|   |1 0 1 1|
+ |1 -1 0||1 1 2 1| = |0 1 1 0|
+ |-1 0 1||1 2 3 1|   |0 0 0 0|
+ E      *    A     =     R
+ 
+ from this we can figure out the left null space and its dimention.
+ the rank of the matrix A is 2.
+ and dimention of the left null space is m - r.
+ so 3 - 2 = 1 - there's one dimentional matrix that can produce zero rows for A^T y = 0.
+ that will be the basis.
+ so basis has only one vector.
+ and what's that vector?
+ it's the LAST row of E: |-1 0 1| (- 1st row + 3rd row = zero row).
+ you see it. From the left row coefficients say which rows to add or subtract.
+ "from the left" we combine rows.
+ "from the right" we combine columns.
+ 
+ so we had to keep track of E.
+ But at least we didn't have to transpose A and start all over again.
+ 
+ those are our 4 subspaces.
+ 
+ new topic.
+ a new type of a vector space.
+ say "all 3x3 matrices".
+ my matrices are the vectors now.
+ 
+ every matrix is now a vector.
+ they are vectors in my vector space because they obey the rules.
+ They allow to be added and multiplied by scalar numbers.
+ I can take combinations (say 3A + 5B). 
+ Also, adding zero matrix doesn't change the value.
+ Multiplying by I or by 1 doesn't change the value.
+ So all of those things are still working if my vectors were matrices (n-dimentional vectors).
+ 
+ A + B, c * A. Not interested in AB for now.
+ 
+ ok so 3x3 matricies.
+ 
+ how about subspaces?
+ let's call it M.
+ Matrix of all 3x3 matrices is M.
+ what is its subspace?
+ here they are:
+- All upper triengular matrices
+- All symmetric matrices
+- Intersection of all subspaces
+- Diagonal matrices
+
+What are the dimension of these subspaces?
+in order to produce dimension you have to produce the basis.
+what are their basis?
+next lecture.
+for now just say that the dimension of all diagonal matrices is 3.
+because here are some 3x3 diagonal matrices:
+|1 0 0|  |1 0 0|  |0 0 0|
+|0 0 0|  |0 3 0|  |0 0 0|
+|0 0 0|, |0 0 0|, |0 0 7|
+
+let's say they are basis.
+they are independent. and they span a space (their linear combinations form a space).
+so it's stretching the idea from R^n to R^(nxn)
+
+cool.
+
+so if we have A = B * C, then pivots of C(A) can be either pivots of B or pivots of C (should give the same thing).
+
+so if we draw a picture again.
+there's space 1 that contains C(B^T) and N(B).
+and there's space 2 that contains C(B) and N(B^T)
+And B (transformation matrix) kills N(B) and takes everything else from 1 to 2.
+And B^T kills N(B^T) and takes everything else from space 2 to space 1.
+sort of geometrical meaning of B not as a "matrix" but as a function that brings stuff from world A to world B.
+
+...11...
+So. Matrices instead of vectors. Inside a matrix.
+We so far talked about n-dimentional space.
+But now we talk about nxn spaces.
+
+Vector space part does not require to be able to multiply vectors.
+there were different types:
+symmetric 3x3, upper triangular 3x3 etc.
+we talk about adding. again. adding. multiplying is not required.
+
+so what's the basis and dimension of these subspaces.
+the dimention for all 3x3 matrices (basis for M where M = all 3x3's) is:
+9.
+
+9 is the number of vectors I need to describe all 3x3 matrices.
+9 vectors:
+|1 0 0|  |0 1 0|  |0 0 1|       |0 0 0|
+|0 0 0|  |0 0 0|  |0 0 0|       |0 0 0|
+|0 0 0|, |0 0 0|, |0 0 0|, ..., |0 0 1|
+
+these a vectors foro the symmetric 3x3's.
+what's the dimension? 
+only 3 out of these 9.
+as only 3 out of these 9 are symmetric (1st, last and the middle one with 1 in the center).
+
+So again.
+dim(M) = 9.
+dim(subspace S of symmetric matrices of M) = 6 (3 for diagonal + 3 entries that are symmetric above and below the diagonal).
+dim(subspece U of upper-triangular matrices of M) = 6 (in this case the bases of M contain also the bases of U, but for S it wasn't the case - not all bases of S were the bases of M).
+S∩U (symmetric and upper-triangular) = diagonal matrices.
+dim(S∩U) = dim(diagonal matrices) = 3
+
+Union S∪U wouldn't work (described 4 lectures ago) - as I leave a space.
+
+S + U - sum of any elements of S (symmetric) + any elements of U (upper-tri). It IS a subspace. I get ALL 3x3 matrices from this sum.
+dim(S+U) = 9.
+dim(S) = 6, dim(U) = 6.
+so the formula is:
+dim(S) + dim(U) = dim(S∩U) + dim(S+U)
+6+6 = 3+9.
+
+!!!^^^^^^^^^^^^^^^^^^!!
+
+one more example.
+suppose I have this:
+d^2 y
+----- + y = 0
+d x^2
+
+y = c1 cos x + c2 sin x
+
+that's a vector space.
+what's a basis of that space?
+cos x and sin x are the basis.
+this is a special solution to Ax=0.
+dim(solution space)=2 (sin and cos). 
+
+there can be others (e^ix etc). but they are not unique. only these are unique.
+
+so note that cos and sin don't look like vectors.
+they are functions.
+but we can call them vectors (because we can call them and add them).
+
+the rank (of this).
+what do we know about it?
+
+let's look at rank 1 matrices.
+it's simple.
+A_(2x3) = |1 4  5|
+          |2 8 10|
+		  
+for this matrix to have rank 1 the second row should be a multiple of the 1st one.
+basis for the row space is the 1st row.
+basis for the column space is also 1 (also rank). so all the other columns are multiples of 1st column.
+
+so:
+|1| |1 4 5| 
+|2|
+
+this is another way to write the same thing.
+
+every rank 1 matrix has a form UV^T (some column by some row).
+^^^^^^^^!
+
+rank 1 matrices are builing blocks for all matrices.
+If I have any matrix (5x17 matrix of rank 4) - I can make it a combination of 4 rank 1 matrices. and I can produce each of those rank 1 matrices from multiplying some column by some row.
+
+in other words:
+say M = all 5x17 matrices.
+subset of rank 4 matrices.
+is that a subspace?
+if I add 2 rank 2 matrices, is it's sum going to be rank 4?
+no. Not always.
+It could easily become a rank 5 matrix.
+so rank(A+B) >= rank(A) + rank(B).
+max rank can be 5 in this case (because I have 5x17 matrices).
+
+rank 1 matrix could also be not a subset
+
+I didn't not quite understand it as there was echo.
+
+Suppose I'm in R4.
+v = |v1|
+    |v2|
+	|v3|
+	|v4|
+
+S = all vectors v in R4 with v1+v2+v3+v4 = 0.
+
+is it a subspace? yes.
+because they can be multiplied by constant and get the same result (gee. the echo. I barely inderstand him)
+
+the dimension is 3.
+
+is this the null space of a matrix A?
+Av=0?
+
+it is a null space of matrix A = c|1 1 1 1|
+
+so when I speak of S I speak of null space of A.
+A's rank is 1.
+general formula:
+dim(N(A)) = n - r = 4 - 1 = 3.
+
+Basis for the null space? special solution.
+to find special solution you need free variables.
+free variables here are vars 2 3 and 4.
+
+3 special solutions.
+|-1|  |-1|  |-1|
+| 1|  | 0|  | 0|
+| 0|  | 1|  | 0|
+| 0|, | 0|, | 1|
+
+these are the special 3 null vectors.
+
+what's the column space of A?
+C(A) is a subspace of r = 1.
+
+C(A) = R1.
+N(A^T) = {0}
+
+3 + 1 = 4 = n (num of cols)
+1 + 0 = 1 = m (num of rows)
+
+yeah I missed like 30% of the lecture. 
+
+Graphs.
+what's a graph.
+this isn't calculus (like a sine curve).
+Graph is a bunch of nodes and edges connecting the nodes.
+say there are 5 nodes that are interconnected.
+that's a graph.
+
+Graph = {nodes, edges}
+
+say there are 5 nodes and 6 edges.
+So there's SOME 5x6 matrix that will tell us everything we need to know about this graph.
+!^^^^^^^^^^.
+
+Suppose the graph isn't just 5-node. Suppose every person in this room is a node.
+And suppose there is an edge between each two people if those two people are friends.
+100 nodes and a lot of edges.
+that's a graph.
+
+A similar graph would be for the whole country.
+260 million nodes. and edges between friends.
+
+and the question for that graph is how many steps does it take to get from anybody to anybody.
+what 2 people are furtherst apart from each other.
+
+how many people do I need to go through to get to a president, or this teacher.
+the answer is like 2-6.
+
+distance between nodes. along the edges.
+small world.
+
+with a few short cuts the distances come down immediately.
+so my distance to Clinton comes down by 3 by taking linear algebra course.
+
+or another graph: Internet. Nodes are sites, links are edges.
+
+So. Matrix of matricies is a matrix of functions.
+
+(A+B)x = Ax + Bx.
+(cA)x = c(Ax)
+
+you should be able to multiply by 0 and get 0.
+
+...12...
+applications.
+Real Linear Algebra uses matrices that come from somewhere.
+It's not making it up.
+We just receive the structure that comes from somewhere else, and use it as a structure.
+E.g. chemistry (professor level).
+How much of each element goes into the reaction, and how much goes out.
+By row reduction they get a clear picture of the reaction.
+
+Or in software.
+
+Plan:
+Graphs of networks.
+Incidence Matrices.
+Kirchhoff's Laws.
+
+So. Graphs.
+Graph = {nodes, edges}
+
+1 - 4
+| \ |
+2 - 3
+
+Here's a graph.
+
+n = 4 (4 nodes / columns).
+m = 5 (5 edges / rows).
+
+give a direction for every edge (+ or - direction).
+
+1 → 4
+↓ ↘ ↑
+2 → 3
+
+(say if there's current flowing on these edges, I know if it's positive or negative by looking if it flows with the arrow or against an errow).
+
+the key word here will be a "potential".
+"difference". "current". but current is just one possibility.
+it works for any row.
+(OMG dude. the rules of flows between infinitely many nodes).
+
+It could be a hidrawlic network pumping water.
+Or it could be a design of a bridge and calculating stress.
+Many different kinds of flows between items.
+
+So let's make a matrix that tells what's going on in this graph.
+It is called Incidence Matrix.
+
+So. Every row is an edge.
+     n1 n2 n3 n4
+A = |-1  1  0  0| edge 1 (from 1 to 2)
+    |0  -1  1  0| edge 2 (from 2 to 3)
+	|-1  0  1  0| edge 3 (from 1 to 3) 
+	|-1  0  0  1| edge 4 (from 1 to 4)
+	|0   0  -1 1| edge 5 (from 3 to 4)
+	
+1st tree rows form a loop (subgraph).
+number of elements in the loop and their position are crutial.
+if I look at rows 1, 2, 3 - are they independent? 
+if I add row 1 to row 2 I get row 3. so they are not independent.
+Loops correspond to linearly dependent roes (oh wow).
+
+Those -1 1 mean "1 unit of stuff flows from (node of position in column 1 for example) to (a node in a position of column 3). 
+So in this case, col. 1 would get -1, and col. 3 would get +1 (or just 1).
+It would mean that it flows from node 1 to node 3.
+
+Obviously, if there's a BIG graph, there's a BIG matrix.
+But there would be a LOT of zeros, as each row only has two numbers (in and out) and the rest are zeros.
+number of non-zeros is 2*m (2 * number of rows, each row has 2 numbers).
+so there's a LOT of structure here.
+and real problems (that come from real life) have a lot of structure
+
+questions.
+1) what about null space N(A).
+look at the columns.
+are they independent?
+if they are, only the 0 vector is in the null space.
+it says what combinations of columns how to combine to get 0.
+Let's solve Ax = 0.
+|-1  1  0  0||x1| = 0
+|0  -1  1  0||x2|
+|-1  0  1  0||x3|
+|-1  0  0  1||x4|
+|0   0  -1 1|
+
+Ax = |x2 - x1| = 0.
+     |x3 - x2|
+	 |x3 - x1|
+	 |x4 - x1|
+	 |x4 - x3|
+	 
+We created a matrix that computes the differences on every edge. The differences of potentials.
+x = x1, x2, x3, x4 (those are potentials at the nodes).
+multiply by A and you get those 5 components:
+x2-x1, ... (those are potential differences, differences in potential across the edges).
+
+when are those differences zero?
+I'm looking for N(A).
+Of course, if all x's are 0 is one case.
+but there's more.
+constant potential:
+x = |1|
+    |1|
+    |1|
+    |1|
+	 
+the differences will be zero, so it will give 0.
+that was the basis of the null space.
+
+and the whole null space will be:
+x = c|1|
+     |1|
+     |1|
+     |1|
+
+a line in 4D space going through the origin.
+dim N(A) = 1.
+
+what does it mean physically?
+it means that the potentials can only be determined up to a constant.
+
+this could be used to rank football teams.
+or model a flow of heat from higher to lower temperature.
+
+that c is an arbitrary constant.
+same as in integral we had +c.
+
+the rest (the actual work) is done by x's.
+
+the typical conclusion would be to ground node 4 after this.
+to set its potential to 0.
+
+if we do so, we set column 3 to 0, so column 4 disappears and we get 3 columns and they are all independent.
+
+what's the rank?
+there's 3 independent columns. 
+any 3 columns are independent.
+so rank = 3.
+
+column space (combination of 1st 3 columns form the other 2.).
+
+let's look at null space N(A^T).
+A^T y = 0 is probably the main eqn. of applied mathematics.
+A is 4x5.
+dim(N(A^T)) = m - r = 2
+
+let's write out the transpose and this formula.
+|-1  0 -1 -1  0||y1| = |0|
+|1  -1  0  0  0||y2|   |0|
+|0   1  1  0 -1||y3|   |0|
+|0   0  0  1  1||y4|   |0|
+                |y5|   |0|
+
+so let's find a basis.
+
+so now we bind potentials (x2-x1 etc) to currents (y1, y2 etc) through that arbitrary constant c.
+this is something called Ohm's law.
+
+A^T y = 0 is Kirchoff's current law (KCL).
+
+-y1 -y3 -y4 = 0.
+
+so these "y's" are currents along the edges now.
+and this formula says that net flow is 0, nad that all flow goes out.
+
+y1 - y2 = 0 <- balance
+
+y2 + y3 - y5 = 0 <- balance
+
+y4 + y5 = 0 <- balance, total flow is zero.
+
+so charge doesn't accumulate at the nodes, it travels around.
+
+so what's N(A^T) from looking at the graph?
+
+so that models how the current can flow in the network without collecting at any of them.
+
+so. basis.
+
+| 1| (suppose 1 amp travels on edge 1)
+| 1| (from KCL)
+|-1|
+|0 |
+|0 |
+
+That's all from KCL.
+Any current around the loop satisfies KCL.
+
+| 0|
+| 0|
+| 1|
+|-1|
+| 1|
+
+which would mean there are 2 loops.
+loops are in the null space. geez. I get it.
+solutions to A^T y = 0 are loops (I say what parts of the loop go in circles).
+
+there's no more vectors in the basis (others are not independent).
+
+so non independent columns come from a loop.
+
+so pivot columns in this A^T will be columns 1, 2 and 4.
+those will be independent parts of the flow across the network.
+they have NO LOOP.
+
+dependencies came from loops.
+pivot columns form a graph without a loop.
+a graph without a loop is called a tree.
+
+tree is a graph with no loops.
+
+in other words
+dim N(A^T) = m - r.
+is the same as saying
+# loops = # edges - (# nodes - 1)
+(as rank = n - 1 because of that 1,1,1,1 vector there was one dependency, so we needed to exclude it).
+or in other words:
+# nodes - # edges + # loops = 1.
+0-dim. points - 2-dim. connections + 2-dimentional areas = 1.
+and it works for every graph.
+that's Euler's formula.
+
+linear algebra proves Euler's formula.
+his formula is this great topology fact.
+
+Let's look at another graph.
+
+. - .
+| / |
+. - .
+ \./
+ 
+ 5 nodes - 7 edges + 3 loops = 1.
+ 
+ e = Ax <- potential
+ y = Ce <- current
+ A^Ty=0 <- KCL.
+ 
+ that's the structure of applied math.
+ 
+ the only thing missing is the current source (battery, current source etc.).
+ 
+ A^T y = f would say f is a current source.
+ 
+ let's put them together.
+ x is unknown
+ A is graph matrix.
+ C - physical constant in Ohm's law.
+ y = A^T.
+ A^TCAx = f.
+ 
+ that's the basic eqn. from applied math in equilibrium.
+ where the last step is a balanc eqn
+ 
+ time is not a part of this eqn.
+ newton's law isn't in this eqn.
+ 
+ this is a simplified model.
+ 
+ 
+ Trace of a matrix is (A^T A)
+
+ it's interesting how a matrix is at the same time:
+ - a system of equations
+ - a graph
+ - a transformation
+ - a group of vectors
+ - a group of numbers
+ etc.
+ 
+ in other to compute null space without using elimination, look at the graph.
+ assign each node an electric potential.
+ if we collect all electric potentials in vector x
+ then Ax is a vector with as many components as there are edges.
+ potential differences across potentials of the graph.
+ Ax = 0 means across the graph the sum of all potential differences is 0.
+ all potentials are constants.
+
+ so N(A) is spanned by |1|
+                       |1|
+                       |1|
+                       |1|
+                       |1|
+
+Oh. so A is all the potentials.
+A^T is all the currents.
+
+now what about N(A^T).
+look at current flowing across the edges.
+
+A^T y (where each y is a current on each edge) equals total current across the graph.
+So A^T y = 0 means there's balance across the circuit.
+
+so look at the loops.
+mark them with round arrows.
+you pick a direction (from smaller to bigger numbers), and you just write down into the matrix the flow which you see along each edge.
+each loop is a separate vector. so...
+
+y = |1 |  |0 |
+    |1 |  |-1|
+	|-1|  |0 |
+	|0 |  |1 |
+	|0 |  |1 |
+	|0 |, |1 |
+	
+the big loop will be the sum of subloops, so you don't need to treat it as basis.
+
+now.
+A^T A.
+diagonal matrix entries.
+1 1 entry is magnitude of the 1st column
+2 2 entry is magnitude of the 2nd column
+magnitude ^2 entry is the magnitude something-something. His accent is horrible. Stupid russian instructor.
+
+number of edges that go into the node are a degree of the node.
+Tr(A^T A) will be the sum of the degrees of the graph.
+2 (2 edges go into node 1) + 3 (3 edges go into node 2) + 3 + 2 + 2 = 12 (sum of degrees of nodes).
+
+So we computed a linear algebra object without doing algebra (elimination etc.) but just by looking at the graph.
+
+...13...
+Review of Ist part of the LA course (1/3rd of the course).
+
+suppose U,V,W are non-zero vactors in R7. they span a subspace. what are the possible dimensions?
+1, 2 or 3.
+
+suppose we have matrix U_(5x3) with r=3. what's the null space?
+|. . .|
+|. . .|
+|. . .|
+|. . .|
+|. . .|
+
+N(U) = 3, as those 3 columns are pivots (rank = 3). no columns are zero vector. so the only vector in N(U) is <0,0,0>
+
+-
+B = | R|
+    |2R|
+
+echelon form = |R|
+               |0|
+			   
+C_(10x6) = |R R|
+           |R 0|
+	
+echelon form = |R  R| -> |R  0| -> |R 0|
+               |0 -R|    |0 -R|    |0 R|
+
+rank(B) = 3.
+rank(C) = 6
+
+dim(N(C^T)) = 10 - 6 = 4
+
+there are tasks to form matrix from its basis.
+
+If A = n x n (the matrix is square)
+and N(A) = {0} (its null space is just a zero vector)
+then N(A^T) = {0} (it's transpose's null space is also zero vector).
+
+invertible blocks of a matrix don't mean that the full matrix is invertible.
+
+if B * B = 0, it doesn't mean that B = 0.
+E.g. this:
+|0 1|*|0 1| = |0 0|
+|0 0| |0 0|   |0 0|
+
+suppose A is nxn with indep. cols.
+is Ax=b always solvable.
+yes. because it's full rank. all cols have pivots.
+so it's invertable.
+
+-
+B = |1 0 0||1 0 -1 2|
+    |0 1 0||1 1 1 -1|
+	|1 0 1||0 0 0 0 |
+
+find B without doing multiplication.
+what's the basis for the null space?
+Bx = 0.
+B_(3x4). 
+N(B) will be in R4.
+1st part is invertible (they somehow see it by looking at the rows, I don't get it, I try to calculate the descriminant in my head, which is often too difficult).
+
+N(C*D) = N(D) if C is invertible.
+so we just find null space of 2nd part.
+using the same old "find basis" steps.
+we just skipped the 1st multiplier because it's invertible.
+once we have a basis, we do x_p + x_n and get B.
+
+if A, B same 4 subspaces then A = cB?
+no. E.g. A and B are any invertable 6x6.
+
+-
+Why can't vector be a row and also in a null space?
+v = |1| can't be in the nullspace and be a row. why not?
+    |2|
+	|3|
+
+that's because then I would have this:
+|1 2 3||1|   |0| <- 1st number can't be zero in this case, it will be 14.
+|- - -||2| = |0|
+|- - -||3|   |0|
+
+Null space is PERPENDICULAR to the row space.
+
+so when we subtract 1st row from 3rd row we multiply it by E_31 on the left (where in 3.1 position we have -coefficient).
+E can be written under the arrow like a function.
+only full rank is invertible.
+
+trivial solution is "all zeros".
+multiplying E's to get a single matrix that takes us from A to U means combining them together.
+
+... UNIT II ...
+... 14 ...
+orthigonality.
+90 degrees angle between subpaces.
+orthogonal (perpendicular) vectors.
+in n-dim. space the angle between them is 90 degrees.
+they form a right triangle.
+their dot product x y = 0.
+matrix form of dot product is: x^T y = 0.
+n dimentions.
+|x|^2 + |y|^2 = |x+y|^2
+this fact should connect to x^T y = 0.
+|x|^2 = x1^2 + x2^2 + ... = x^T x.
+x = |1|
+    |2|
+	|3|
+
+|x|^2 = 14
+
+y = |2 |
+    |-1|
+	|0 |
+	
+|y|^2 = 5
+
+x+y = |3|
+      |1|
+	  |3|
+	  
+|x + y|^2 = 19.
+x^T y = 0.
+
+x^T x + y^T y = (x+y)^T(x+y) <- true only for right angle.
+expand:
+x^T x + y^T y = x^T x + y^T y + x^T y + y^T x
+so from expanded form we see x^T x and y^T y cancel.
+so we get:
+0 = x^T y + y^T x.
+x^T y is no different from y^T x (for vectors).
+so:
+0 = 2x^T y
+0 = x^T y
+which is saying that THE DOT PRODUCT OF ORTHOGONAL VECTORS IS ZERO.
+same thing.
+cool.
+
+so. now look at subspaces.
+subspace S orthogonal to subspace T.
+
+let's say a wall is infinite subspace (vertical) and floor is another subspace that is horizontal.
+put origin (of the world) at some point.
+are they orthogonal?
+it means, EVERY vector in S IS orthogonal to EVERY vector in T.
+so wall and floor are NOT orthogonal. vector on the wall and vector on the floor could have weird (non-90-deg) angles between them. E.g. vector in their intersection is not orthogonal to itself.
+so they should not intersect in NON-zero vector.
+
+row space is orthogonal to null space.
+why?
+because null space has all Ax = 0.
+and x is orthogonal to 1st row of A (from definition row 1 * x1 = 0, row 2 * x2 = 0 etc.)
+x is orthogonal to 2nd row of A.
+etc.
+
+all their combinations (of rows) are also in the row space.
+
+c1 row1^T x + c2 row2^T x + ... = 0.
+
+say
+    |1 2 5 | |x1| = |0|
+             |x2|
+	         |x3|
+n = 3
+r = 1
+dim N(A) = 2.
+
+N(A) is a plane that's perpendicular to |1 2 5|
+
+null space and row space are orthogonal complements in R^n.
+
+that means N(A) contains ALL vectors that are perpendicular to the row space.
+this is 1st part of fund. theorem of linear algebra.
+or part 2.
+part 3 will be about bases.
+that's coming up:
+solve Ax = b when there are no solutions.
+(get best possible solutons).
+e.g. for case m > n.
+lots of data points and very little unknowns.
+too many equations with noise at RHS (measurment error).
+this is a streight forward linear algebra problem.
+oh... ok.
+"best solution".
+of course you could throw away n equations from m equations.
+but that's not satisfactory, they may have useful information.
+we want all the measurments to get the maximum information.
+
+A is typically rectangular.
+there will be a matrix that will play a key role.
+
+A^T A.
+it's square (nxm mxn) and symmetric [(A^T A)^T = A^T A].
+is it invertable? if not, what's its null space?
+
+A^T A x = A^T b.
+that will be the main eqn in this unit.
+this will be my "best" solution.
+Ax = b is solvable only if b is in column space of A.
+
+A^T A is not always invertible (e.g. one column is a multiple of the other).
+
+там фигурирует какое-то S perp.
+S^T только Т перевёрнутая вверх ногами. 
+наверно имеется ввиду "перпендикулярное спейсу S".
+а может просто название.
+
+... 15...
+so that "best solution" is an equivalent of "best fit line" in 2D calculus.
+Projection.
+Project vector b on vector a.
+find point p on a closest to b.
+the connection will now be orthogonal.
+that's "best point".
+that "distance" between a and b is the error (how much I'm wrong).
+e = b - p.
+using basic algebra would lead to lousy formulas (more lousy than linear algebra's).
+p = x a (vector a made smaller).
+a^T(b - xa) = 0.
+that is saying that a is perpendicular to that distance vector (the one that connects b to closest point).
+simplify it.
+x a^T a = a^T b.
+x = (a^T b) / (a^T a).
+p = ax.
+p = a (a^T b) / (a^T a) = [a (a^T) / (a^T a)] * b
+angles are there but we don't need angles, we look at vectors.
+p is a projection.
+note, if I double b, my p will also double.
+but if I double a, p doesn't change.
+so there's some "projection matrix" P acting on b.
+p = Pb.
+P = aa^T / a^T a.
+
+they don't cancel (the order is different).
+because a^T a = |a|^2 and aa^T is a full matrix (column by row).
+
+C(P) is a line through a.
+rank(P) is 1.
+
+is it symmetric? yes. transpose of bottom and top is same thign.
+P^T = P.
+
+what happens if I do a projection twice?
+it should be on the same point:
+P^2 = P.
+those are two properties that say that I'm looking at a projection matrix.
+now let's move to four dimentions.
+Ax = b may have no solutoins.
+instead we solve this:
+Ax = p (p is projection of b on column space). as it may actually work (geometrically). it exists. it's closest to b.
+so I have a plane of solutions C(A) and I have b that's not in a plane.
+and I project b on that plane to get p.
+the right angle is the way to find it.
+we do know the basis for the plane (say a1 and a2).
+they don't have to be perpendicular but have to be independent.
+so that's the plane of a1 and a2.
+if b is in C(A) then p = b.
+but there's this height (error) e = b - p.
+e is perpendicular to plane.
+p = x1a1 + x2a2.
+so putting it all together we get:
+|a1 a2| = Ax = P.
+|.. ..|
+
+find x.
+(here he's using x hat: x^ - but I don't wannna bother using UTF).
+
+a1^T (b-Ax) = 0
+a2^T (b-Ax) = 0.
+
+|a1^T|(b-Ax) = |0|
+|a2^T|         |0|
+
+A^T(b-Ax) = 0.
+so (b-Ax) = e.
+what subspace is it in?
+e is in N(A^T) from this formula.
+thus, e is perpendicular to C(A).
+A^TAx = A^T b.
+that's the formula for x (remember, it's x hat).
+x = (A^T A)^-1 A^T b.
+p = Ax = (A(A^TA)^-1 A^T) b.
+messy but not bad.
+in 1D it looked like this: aa^T / a^Ta.
+but in n=dimentional, you see that projection matrix is:
+P = A(A^TA)^-1 A^T.
+
+AA^-1(A^T)^-1A^T = I.
+because A is not a squRE MAtrix. it doesn't have an inverse.
+
+btw note how in matrices, A^-1 is the same thing, that in 1D would be "1/a" (so that -1 power still works, even though in matrices it's a complex inverse operation, that's just observation).
+
+if i'm projecting b on the whole space, then projection is the identity.
+then this formula (with I) is correct.
+but if I project on a subspace, then I have to use that formula (P).
+requirements:
+P^T = P.
+P^2 = P.
+
+so test P^2.
+
+AA^-1(A^T)^-1A^T * AA^-1(A^T)^-1A^T = AA^-1(A^T)^-1A^T (the middle cancels out).
+
+
+so suppose we have a problem.
+A|1| = |1|
+ |2|   |2|
+ |3|   |2|
+
+find a best fit line.
+line with smallest errors at points x = 1, 2 and 3.
+so find b = C + D(t).
+C + D = 1
+C + 2D = 2
+C + 3D = 2.
+we can't solve this system (we can't put a line through these 3 points).
+but we can find the best fit line.
+|1 1||C| = |1|
+|1 2||D|   |2|
+|1 3|      |2|
+
+this is a typical case.
+no solution.
+so we solve Ax = p instead.
+A^T A x = A^T b.
+so "magically" when I multiply both sides by A^T I get a best fit line instead of a strict solution.
+that's the key point.
+from something unsolvable I go to a best fit line.
+to the point with nearest points to the column space.
+
+... 16 ...
+continuation...
+if b in C(A) then Pb = b.
+if b is perpendicular to C(A) then Pb = 0.
+these are two extreme cases.
+test of the 2nd case is symple. 
+Pb = A(A^T A)^-1 A^T b = 0 (as A^T b = 0).
+for the 1st case, "in the column space" means "combination of columns" means "A times some x".
+Pb = A(A^T A)^-1 A^T A x (where Ax = b) so everything except Ax will cancel and we get Pb = b.
+so we have col. space plane, null space plane. and a vector b that does not belong to one or the other.
+it's projection on null space is e, and it's projection on col. space is p. so e + p = b.
+
+p = Pb
+e = (I-p)b perpendicular space.
+
+so b = Pb + (I-p)b.
+
+so let's go back to finding best fit line.
+overall error will be minimized.
+
+C + D = 1
+C + 2D = 2
+C + 3D = 2.
+
+т.е. чувак. я бы решил своё длинное уравнение продажи айфонов этим методом намного (вроде как) быстрее. хз.
+ладно это оффтоп.
+
+|1 1||C| = |1|
+|1 2||D|   |2|
+|1 3|      |3|
+
+minimize Ax - b = e.
+
+so minimize this:
+|Ax - b|^2 = |e|^2
+
+so we have these 3 little errors in this example.
+so I'm trying to minimize this:
+e1^2 + e2^2 + e3^2
+
+this is a BIG part of statistics.
+there this best fit line is called "linear regression"
+
+suppose one of those errors was way off.
+the line wouldn't be the best. it will have a giant error.
+that "huge error" would be called an "outlier". that could destroy the potentially useful formula.
+
+so.
+
+points ON the line are p1 p2 p3, and they are the points that would solve the system of equations.
+it turns our system into a solvable one.
+
+find x = |C| and p.
+         |D|
+		 
+that's x hat.
+x hat means "best line, but not the solution line".
+
+A^T A x = A^T b.
+that's the most important eqn in statistics, estimation and other eqn's that deal with error, noise and data points.
+
+|1 1 1||1 1| = |3  6|
+|1 2 3||1 2|   |6 14|
+       |1 3|
+	   
+it should be symmetric, invertable (and later there will be more criteria).
+
+|1 1 1||1 1||1| = |3  6 :  5|
+|1 2 3||1 2||2|   |6 14 : 11|
+       |1 3||2|
+	   
+3C + 6D = 5.
+6C + 14D = 11.
+
+these are called the "normal" equations (I guess because the distance are NORMAL to the actual solution)
+so that's the solution for C and D.
+a best solution. from data points we got a continuous system.
+
+let's use calculus for the same problem.
+e1^2 + e2^2 + e3^2
+(C+D-1)^2 + (C + 2D - 2)^2 + (C + 3D - 2)^2.
+minimize this.
+
+the way to do it is partial derivatives with respect to C and with respect to D.
+so partial deriv. with respect to C will give 3C + 6D = 5.
+and with respect to D will give 6C + 14D = 11.
+Same thing.
+
+3C + 6D = 5.
+6C + 14D = 11.
+
+from here...
+elimination gives this.
+2D = 1.
+D = 1/2.
+C = 2/3.
+
+best line:
+2/3 + 1/2t.
+(it was C + Dt).
+
+e1 = 1/6
+e2 = - 2/6
+e3 = 1/6
+
+that's our "error vector".
+omg. 3D vector for the error.
+the vector that projects b onto null space N(A).
+I want p + e = b.
+
+what do we know about this vector e?
+
+b = p + e.
+|1| = |7/6 | + |-1/6|
+|2|   |10/6|   | 2/6|
+|2|   |13/6|   |-1/6|
+
+they are perpendicular (p and e).
+p * e = 0 (which is also true).
+|0| = |7/6 | * |-1/6|
+|0|   |10/6|   | 2/6|
+|0|   |13/6|   |-1/6|
+
+but it's perpendicular to another vector.
+to a vector in column space.
+1 1 1.
+
+dot product with 1 1 1 will be 0.
+and it's perpendicular to 1 2 3.
+(by "it" I mean "e" - the error vector).
+
+so in a nutshell we solved this system:
+A^T A x = A^T b
+p = Ax.
+
+Let's go back to the first lectures.
+if A has indep. columns then A^T A is invertable.
+let's think why. 
+in other words let's prove it.
+
+suppose A^T A x = 0.
+then what conclusion do I want to reach?
+I want to show that x must be zero.
+there are 2 ways to do it.
+let's look at one way.
+take dot product of both sides with x.
+x^T A^T A x = 0.
+
+geometrically it makes sense that it's zero.
+because I get this:
+(Ax)^T (Ax) = 0.
+and it DOES equal zero.
+|Ax|^2 = 0.
+that's the length of the vector Ax squared.
+so Ax = 0.
+so I conclude that x has to be zero (assuming A has indep. columns).
+x = 0.
+
+Cols are definitely independent if they're perpendicular unit vectors.
+like ijk vectors.
+|1 0 0|
+|0 1 0|
+|0 0 1|
+
+other word for "perp. unit vectors" are "orthonormal vectors".
+
+another example.
+if we have 3 points
+(1,1),(2,5),(-1,-2)
+
+then our data will be this:
+A = |1  1|
+    |2  4|
+	|-1 1|
+	
+x = |C|
+    |D|
+	
+b = |1 |
+    |5 |
+	|-2|
+	
+1 4 1 are squares of 1 2 -1. so 2nd col of A is a square of 1st col.
+
+that's oh wait.
+this is an example to find a quadratic eqn. not linear.
+we build this system:
+ct + dt^2 = y.
+where y are coords of b.
+that's why 2nd col is a square of the 1st.
+
+the rest is the same steps.
+	
+so this way we get a "best fit quadratic eqn".
+say y = 11/2 t - 5/2 t^2.
+
+... 17 ...
+last lecture on orthogonality
+orthogonal (orthonormal) basis
+orthogonal matrix
+
+q_i, q_j etc where every 1 is orthogonal to other q, and i != j etc (they are all unique).
+so the dot product between each q and each other q is 0.
+each q is not orthogonal to itself.
+make them unit vectors (normal / normalized / unit length).
+
+how does orthonormal vectors simplify calculations?
+
+1st of all they never overflow or underflow.
+
+how to make them normal?
+Gram - Shmidt.
+
+Q = |q1 ... qn|
+
+(Q is a matrix of orthonormal vectors).
+
+Q^T Q = |q1 | |q1 ... qn| = I.
+        |...|
+		|qn |
+		
+this happens to any matrix with orthonormal columns, not just square but also rectangular etc.
+rows * columns are simple to compute (since they are either orthagonal or equal).
+
+we've seen:
+- triangular matrices
+- diagonal matrices
+- permutation matrices
+- row echelon forms
+- projection matrices
+- and now we see matrices with orthonormal columns (call it orthonormal matrices, but that's not a convention, the convention is to use this name only for square matrices with orthogonal columns).
+
+when it's square, it has an inverse.
+so Q^T Q = I tells us that Q^T is Q^-1.
+
+examples.
+permutation:
+Q = |0 0 1|
+    |1 0 0|
+	|0 1 0|
+
+Q^T = |0 1 0|
+      |0 0 1|
+	  |1 0 0|
+	  
+Q^T Q = I.
+
+another simple example:
+
+Q = |cos Θ  -sin Θ|
+    |sin Θ   cos Θ|
+	
+Q = 1/√2 |1  1|
+         |1 -1|
+		 
+Q = 1/2 |1 1  1  1 | (Elemar? Edemar? Matrix... able to do it with 2, 4, 16 etc). but noone knows which size of matrices allow -1 and 1). Some sizes nobody knows if it could or could not be (say for size 5, by size I mean the size in the denominator in the front to make it unit).
+        |1 -1 1  -1|
+        |1 1  -1 -1|
+        |1 -1 -1 1 |
+	
+these qere all square. but it can be rectangilar:
+(first make the matrix and then calculate the length of the column, in this case √(1^2 + 2^2 + 2^2)
+Q = 1/3 |1 -2|
+        |2 -1|
+	    |2 2 |
+	
+1st two columns would be orthonormal basis for 2D space they span in 3D space). so they span the plane in 3D.
+since they're orthagonal, there's no combination that gives zero.
+
+now, if I want to have a 3rd column, I could either put a 3rd independent vector (Gram Shmidth calculation). Or I could just put same vector with different signs:
+
+Q = 1/3 |1 -2 2 |
+        |2 -1 -2|
+	    |2 2  1 |
+
+They are orthonormal.
+and there is no square root.
+
+the punishing thing in gram smidth is because I want these vectors to be unit vectros, I'm always dividing by length, so I always get a square root.
+Gram Smidth always ends up having square roots.
+
+Qhat's the good of having the Q? What formulats become easier?
+Suppose Q has orthonormal columns (Q always means "a matrix that has orthonormal columns", it's a convention)
+Project it on its column space.
+
+P = Q(Q^TQ)^-1 Q^T (it had A's, now it has Q's).
+
+in the middle there's an identity. so we get
+P = QQ^T.
+
+Let's check its properties.
+suppose it's square, and it's Q (independent orthonormal matrix).
+then column space is the identity matrix.
+so QQ^T = I if Q is square.
+if it's not square, then..
+- it's symmetric (should be symmetric).
+- (QQ^T)^2 = QQ^T (if you project and project again, you should not move the second time)
+which is true because QQ^T = I (change the order of braces and Q^TQ falls out as identity: (QQ^T)(QQ^T) = (Q)(Q^TQ)(Q^T) = (Q) I (Q^T) = QQ^T
+
+A^T Ax = A^Tb
+now A is Q
+
+Q^T Qx = Q^Tb
+Ix = Q^Tb
+x = Q^Tb
+From this we get:
+x_i = q_i^T b (an important formulat for a big part of mathematics).
+in other words, in orthonormal coordinate system, the number we look for is a dot product of that unit vector with the vector along it.
+it binds numbers and vectors.
+in a freakin different way.
+
+2nd part of lecture:
+start with independent vectors and make them orthonormal.
+Gram-Shmidt calculation.
+the goal is not the same as in triangular elimination.
+there goal was "make it triangular". here the goal is "make them orthogonal".
+start with vectors a, b.
+any indeoendent vectors.
+
+/b
+\a
+
+that might be independent vectors in 12-dim. space.
+produce out of that q1 and q2. orthonormal vectors.
+Gram-Shmidt tells how.
+step 1. get from any two vectors (a, b) to orthogonal vectors (A, B).
+a is fine
+b is not ok (not orthogonal to a).
+to get it orthogonal, we look at projection (in the a direction) and get the other part. 
+e.g. we projected onto a vector to get A component, but now we want the second component (which is orthogonal).
+so that B is the error vector e.
+B = b - projection.
+B = b - (A^Tb/A^TA)A
+that's the "Gram's" part of this formula.
+step 2. get ortnonormal from orthagonal.
+q_1 = A/|A|, q_2 = B/|B| (Shmidt part of the formula).
+
+how to check if its perpendicular?
+multiply by A^T and get 0.
+
+A^T B = A^T(b - A^Tb/A^TA A) = 0.
+
+I have to take a 3rd vector to make sure that we have this system down.
+
+Now look at 3 vectors.a, b, c.
+Everything will be the same, q_3 = C/|C|
+
+and vectors ABC.
+A and B are found the similar way.
+Now the problem is to find C.
+it has to be perpendicular to A and to B.
+find C.
+C = c - b component - a component.
+C = c - A^Tc / A^T A A (projection in A direction) - B^Tc / B^T B B (projection in B direction)
+
+so we get C that is perpendicular to A and to B.
+
+now we divide it by its length to get unit vector.
+
+Example.
+a = |1|
+    |1|
+	|1|
+	
+b = |1|
+    |0|
+	|2|
+
+(not orthogonal).
+A = a.
+B = |1| - A^Tb/A^TA (which is 3/3) |1| = |0 |
+    |0|                            |1|   |-1|
+	|2|                            |1|   |1 |
+	
+Q = |q1 q2| = |1/√3  0    |
+              |1/√3  -1/√2|
+			  |1/√3  1/√2 |
+			  
+this is the result that comes from the original matrix using Gram Shmidt
+original wasL
+A = |1 1|
+    |1 0|
+	|1 2|
+	
+how does column space of Q relate to the column space of A?
+between the two column spaces?
+this is the same column space.
+because B is a combination of b and a.
+the original basis was perfectly fine, but it wasn't orthonormal.
+and the one we have now is orthonormal.
+
+one final point 
+just like in elimination.
+we learn the steps and we can do it.
+but then we go back and look at it as an "elimination matrix".
+A = LU was the elimination matrix.
+now do the same thing for Gram-Smidth.
+noone is gonna write out these formulas. 
+they gona write the relation between A and Q.
+A = QR.
+where R is a Gram-Shidth formula.
+|a1 a2| = |q1 q2||a1^Tq1  a2^Tq1|
+                 |a1^Tq2  a2^Tq2|
+
+R is always upper-triangular.
+a1^Tq2 is always 0.
+because we constructed q's in a way to always be perpendicular to a.
+connection is always upper triangular matrix.
+
+so make "next" independent vector (column) orthonormal to ALL previous ones.
+by substracting from that column the projections of previous columns onto it.
+and check that it is orthagonal by calculating dot products of this vector with all previous vectors.
+
+... 18 ...
+square matrices.
+Determinant and Eigenvalues.
+Determinant is a magic number associated with every square matrix.
+Matrix is invertable if det. is not 0.
+Matrix is singular if det. is 0.
+don't start with formula.
+start with 3 properties of det.
+1) determinant of I = 1.
+2) what happens if you exchange two rows of the matix. It reverses the sign of det.
+so we know det.'s of matrices received from row exchange of I matrices. So we know every permutation matrix of I.
+det P = 1 (if # of exchanges was even) or -1 (if # of exchanges was odd).
+oh.
+he said that || and [] mean different things about matrices (perhaps () also means a 3rd thing).
+
+|1 0| = 1
+|0 1|
+
+|0 1| = -1
+|1 0|
+
+Jus a reminder:
+|a b| = ad - bc.
+|c d|
+But we don't look at it yet.
+
+the point of properties is that they gonna give me determinant for n by m.
+
+3) (key property) 
+3a) if I multiply one of the rows by a number t, 
+|ta tb|
+|c   d|
+factor t comes out:
+t|a b|
+ |c d|
+ 
+3b) linear function of the each row separately if all the other rows stay the same (gives sum of determinants).
+|a+a' b+b'| = |a b| + |a' b'|
+|c       d|   |c d|   |c   d|
+
+note, det(A+B) != det A + det B
+
+only one row (each row).
+this 3b property works for any row.
+but each row separately.
+these are our 3 properties.
+
+so 3) says that determinant is a linear function of the each row separately (can factor out each coefficient, can split into sums).
+
+Everything else comes from 1st three properties.
+
+4) if two rows are equal, det. = 0.
+det |1 0| = 0. 
+    |1 0|
+	
+same for n by n (say 7x7).
+to get 4) from 1st 3 rules, use 2) (exchange).
+like if I exchange I should flip sign.
+but flipping two equal rows does not change signs.
+so I flip and don't flip the sign at the same time.
+the only way to have it is to have 0.
+
+5) if I subtract a multiple of some row i from some row k.
+(say to get elimination).
+the determinant DOESN'T CHANGE!
+so ALL steps of elimination DON'T change the determinant.
+
+det |a       b| = det |a b| + det |a     b| = det |a b| - det l|a b| = det |a b| - l * 0 = det |a b|
+    |c-la d-lb|       |c d|       |-la -lb|       |c d|        |a b|       |c d|               |c d|
+	
+each step used one of 3 rules.
+	
+6) row of 0's -> det A = 0.
+5 |0 0| = |5*0 5*0|
+  |c d|   |c     d|
+	  
+so I can do elimination, I can do triangular matrix.
+now.
+
+7) triangular.
+|d1         |
+|0  d2      |
+|0  0  d3   |
+|0  0  0  d4|
+
+it's determinant is a product of d's.
+d1 * d2 * d3 * ... * dn.
+
+so now the machined approach to ANY determinant would be:
+step 1: elimination
+step 2: product of pivots (d1 * d2 * ...).
+
+this is how ANY determinant can be calculated.
+product of pivots.
+
+but remember that elimination may have had to do a row exchange.
+so we get +/- determinant.
+
+ok. prove this pivot product rule.
+how to prove that nothing else matters except pivots?
+
+I can eliminate backwards (from bottom to top) and make everything except pivots to be 0.
+so we have pivots:
+
+|d1 0  0  0 |
+|0  d2 0  0 |
+|0  0  d3 0 |
+|0  0  0  d4|
+
+and now by one of the rules, we can factor out each d:
+d4 d3 d2 d1 |1 0 0 0|
+            |0 1 0 0|
+            |0 0 1 0|
+            |0 0 0 1|
+
+that was assuming none of d's is 0.
+
+but if one of d's IS 0 then we get a row of 0's. 
+and then we see that det is 0.
+
+det A = 0 exactly when A is singular.
+invertability vs non invertability.
+
+thus, det A != 0 when A is invertable.
+
+so formula of a determinant is A -> U -> D -> d1*d2*d3*...
+
+this formula is much more practical than ad - bc.
+
+|a b| -> |a         b| = ad - bc.
+|c d|    |0 d - c/a b|
+
+9) determinant of the product is product of determinants
+det AB = (det A)(det B).
+Example:
+det A^-1 = ...
+A^-1 A = I.
+take det. of both sides.
+you get:
+(det A^-1)(detA) = 1.
+det A^-1 = 1/det A (note that this works only if A is invertable (if det. != 0))
+(geez, geometrically it makes sense. since det. is saying "how the area changes", so if I reduced the area by 2, obviously its inverse will multiply area by 2).
+from this we can easily compute the inverses of diagonal matrices:
+|2 0|^-1 = |1/2   0|
+|0 3|      |0   1/3| (just from looking at det A^-1).
+another example:
+det A^2 = det AA = (det A)^2.
+det 2A = det 2I A = 2^n det A.
+
+10) det A^T = det A.
+ha.
+det |a b| = det |a c|
+    |c d|       |b d|
+	
+from this I already know what to do if I haev a COLUMN OF ZEROS. transpose, columns become rows, do the exchange, transpose back. 
+there's nothing special about rows that isn't equally true about columns.
+
+let's look at proof of 10).
+so prove |A^T| = |A| by using rules 1-9 to get |U^TL^T| = |LU|.
+so we need to prove this:
+|U^T||L^T| = |L||U|
+
+L is lower triangular matrix with 1's on the diagonal.
+so it's determinant is 1.
+
+det. of L^T is also 1 (it's just flipped).
+we're left with U and U^T.
+and so U's were received by eliminating A's.
+So U's are triangular.
+and we already know that for U and U^T det. will be the product of pivots.
+
+so a proof is if there is nothing I can put into it to break it.
+
+so det. is DEFINED by properties 1-3 and HAS properties 4-10.
+
+1-3 props. gives a LOT simpler solutions than ad-bc.
+
+then there's an example of Vaderman's determinant:
+(b-a)(c-a)(c-b)
+derived from just these properties on the matrix where 1st column is say 1, 2nd - a^2, 3rd - a^3.
+
+skew-symmetric matrix: opposite sides have different signs.
+|0 -3 -1|
+|3 0  -4|
+|1 4   0|
+
+property of skew symmetric matrices:
+|D| = |D^T| = |-D| = -1^n |D|
+so note, if n is odd, we get |D| = - |D| which means D is 0.
+But if n is even, we get |D| = |D| (not necessarily 0).
+
+... 19 ...
+2nd lecture on determinants.
+formula for the determinant.
+cofactor formula.
+
+|a b| = |a 0| + |0 b| = |a 0| + |a 0| + |0 b| + |0 b| = |a 0| + |0 b| = |a 0| - |c 0| = ad - bc.
+|c d|   |c d|   |c d|   |c 0|   |0 d|   |c 0|   |0 d|   |0 d|   |c 0|   |0 d|   |0 b|
+
+this is the method.
+that can be applied to any size of matrices.
+
+so...
+step 1: split (any matrix) to n pieces.
+say |a b c| would be |a 0 0| + |0 b 0| + |0 0 c|...
+n^n.
+but a lot of them would be zeros.
+when do I NOT have zeros?
+survivors have one entry from EACH ROW AND EACH COLUMN.
+so it's like having permutations.
+for 3x3 matrix: a11 a22 a33 - a11 a23 a32 - a12 a21 a33 + a12 a23 a31 + a13 a21 a32 - a13 a22 a31.
+even though we do have positiv det's for left to right diagonals and right to left ones have minus sign, it wouldn't be true for 4x4 matrix.
+
+let's now find the big formula for the n by n determinant.
+det A = ∑ ± a_1ɑ a_2β a_3γ ... a_nɷ
+        n! terms.
+		(ɑ, β, γ, ..., ɷ) = permutation of (1, 2, ..., n).
+		
+n! comes from the fact that 1st column can be chosen in one of n ways.
+the other symbols in this row and column will be 0.
+2nd column can be chosen in n-1 ways (all the other values in its row/column will be 0)
+3rd = n-2...
+etc.
+
+from this formula I can get those 3 main properties.
+
+Example of usage.
+4x4 matrix.
+
+|0 0 1 1|
+|0 1 1 0|
+|1 1 0 0|
+|1 0 0 1|
+
+n! terms.
+we could use elimination.
+
+det A = ∑ ± a_1ɑ a_2β a_3γ ... a_nɷ
+        n! terms.
+		(ɑ, β, γ, ..., ɷ) = permutation of (1, 2, ..., n).
++ or - is tetermined by the number of exchanges.
+
+(4, 3, 2, 1) -> +
+(3, 2, 1, 4) -> -
+there are no more ways.
+
+so det = 0.
+out of 24 terms only 2 were non-zero.
+
+but was there a simpler way to see that its det. is 0?
+say combination of rows?
+there are.
+
+ok, so now the 2nd part.
+
+Cofactor formula.
+
+we've just found a formula for nxn.
+cofactor means find a determinant of n-1 by n-1.
+
+det = a11(a22a33 - a23 a32) 
++ a12(...)
++ a13(...)
+
+so split it into smaller parts.
+
+so those numbers that go along with a11 a12 a13 etc (the parts in perentecies) are called cofactors.
+
+So the cofactor is the determinant of the "smaller guy" (a 2x2 matrix that isn't in a_11's row and column).
+so the determinant of "all OTHER rows & columns".
+
+if we get a12(a21 a33 - a23 a31) that was supposed to be negative, we put that negative signs inside the cofactor (inside the braces).
+a12(-a21 a33 + a23 a31)
+
+so cofactors are...
++/- Determinant of OTHER rows/columns (the ones that don't include the current a_ij).
+
+so +/- det (of size n-1 with row i and col j erased).
+
+call this determinant C_ij.
+C_ij is a + if i+j is even, and it's a - if i+j is odd.
+
+then he gave this checker board pattern:
+|+ - + - +|
+|- + - + -|
+|+ - + - +|
+|- + - + -|
+|+ - + - +|
+
+this cofactor is called "minor cofactor" before you find the sign.
+
+so. cofactor formula.
+det A = a_11 C_11 + a_12 C_12 + ... + a_1n C_1n (that was along row 1).
+       + ...
+	   + a_i1 C_i1 + a_i2 C_i2 + ... + a_in C_in (that's for row i)
+	   
+this is cofactor formula.
+
+some people would start the course from this formula.
+and use it to build up to all the properties.
+
+example for 2x2:
+|a b| = ad + b(-c)
+|c d|
+
+but pivot formula is really important.
+the big formula just does everything with one step.
+geometrically, product of pivots is what I want to know when I look for a determinant.
+
+Another example:
+A_4 = 
+|1 1 0 0|
+|1 1 1 0|
+|0 1 1 1|
+|0 0 1 1|
+
+|A_1| = 1
+|A_2| = 0
+|A_3| = -1
+(это были примеры под-матриц размером 1х1, 2х2 и 3х3 - начиная с позийии верхнего левого угла, т.е. 1 1)
+
+|A_4| = 1 * |A_3| - 1 |A2|
+
+so the formula is:
+
+|A_n| = |A_n-1| - |A_n-2|
+
+|A_1| = 1
+|A_2| = 0
+|A_3| = -1
+|A_4| = -1
+continue the pattern (next one is the difference of previous two)
+|A_5| = 0
+|A_6| = 1
+|A_7| = 1
+
+So what we've got.
+determinants have these series.
+they have period 6 after which they start repeating.
+
+I'm not sure what he wanted to show by this. a determinant spattern for this specific matrix or what.
+
+another method of finding the determinant is expand the matrix as a dot product of vector by anaother matrix, and then det. will be dot product of that vector with cofactors of that second matrix (???)
+
+you can eliminate many rows in one step, instead of expanding out every step (and rewriting everything else that didn't change in this step).
+
+... 20 ...
+final vector on determinants.
+application.
+
+let's start with formula for inverse of 2D.
+|a b|^-1 = 1/det |d -b|
+|c d|            |-c a|
+
+which is ok when there IS a determinant (there IS an inverse).
+
+now let's find a formula for 3x3 or nxn.
+
+remember cofactors? 
+d on RHS is a cofactor of a.
+-b is a cofactor of C (odd position, so minus).
+etc.
+
+A^-1 = 1/det(A) C^T (where C is a matrix of cofactors)
+
+Look at 3x3.
+|a b c|^-1 = 
+|d e f|
+|g h i|
+
+note that determinant contains n entries and C contains n-1 entries (we skip first row and first column).
+
+let's check.
+AC^T = (det A)I.
+to make sure this formula is correct.
+
+|a11 ... a1n||c11 ... cn1|
+|...........||...........| = (note that this will give a11c11 + a12c12 + ... + anncnn (which is a cofactor formula for the determinant) this will be for the diagonal entries, and all the non-diagonal entrie will cancel out because it's cofactors, and taking a dot product of say 1st row of A and last column of C^T is the same as aking a determinant of a matrix whose 1st and last rows are identical, so it will be zero = 
+|an1 ... ann||c1n ... cnn|
+
+|det A.0........0|
+|................|
+|0....det A.....0|
+|................|
+|0.....0....det A|
+
+now what happens if I want make an infinitely small change to the 1.1 element of A? I look at det. and at C^T.
+
+Ax = b
+x = A^-1 b = 1/det A C^T b.
+Cramer's rule is a way of looking at this formula.
+
+first of all, each element always gets divided by determinant.
+let's look at elements individually.
+x1 = (det B1)/(det A) <- numberator is the 1st element of C^T b.
+x2 = (det B2)/(det A)
+...
+
+B1 = |b-column n-1-columns-of-A| = A with column 1 replaced by b.
+because if I take a determinant of |b-column n-1-columns-of-A| - it gives me C^T b.
+= C11b1 + C21b2 + ...
+expanding it will give C^Tb
+this is Cramer's rule.
+
+Bj = A with column j replaced by b.
+
+xj = (det Bj) / (det A)
+
+which looks simple, but takes "approximately forever" (lol, approximately forever).
+
+it allows find an inverse using algebra (complex algebra), when the eliminatino would require an algorythm.
+
+Cramer's approach are nice formulas but not a way to go.
+don't use them.
+use elimination.
+
+so. applications of the det. are:
+1. formula for A^-1
+2. cramers rule for x=A^-1 b.
+3. |det A| = volume
+
+ok.
+final topic for this lecture.
+Volume.
+
+claim.
+det A = volume of a box.
+
+ok plot a box A.
+points:
+(0,0,0)
+(a11,a12,a13) - coords and row 1 of matrix
+(a21,a22,a23) - coords and row 2 
+(a31,a32,a33) - coords and row 3 of matrix
+
+a sign will say if this is a right sided box or left handed box (to the right or to the left of the origin).
+
+take a spacial case.
+A = I.
+prove that the volume is 1 and that the determinant is 1.
+and get 1 = 1.
+and that will be a proof.
+
+so. the "identity" box. a unit cube.
+or even better. "orthonormal" box (unit vectors perpendicular to each other). it's same unit cube, just rotated. That is called Q.
+
+so. unit cube with volume 1.
+is its det. 1 or -1?
+
+Q^T Q = I.
+Those are the unit orthonormal cubes.
+But why its det. is always 1?
+
+take determinants of both sides.
+det (Q^T Q) = det I.
+(by rule 9)
+|Q^T||Q| = 1
+(by rule 10)
+|Q|^2 = 1.
+so profe complete. determinant = volume.
+
+Now expand this to rectangles.
+a rectangle that is 2 times wider then cube. double 1 edge.
+if I double the edge, the volume doubles.
+determinant also doubles (rule 3a - constants factor out).
+
+now let's look at non-right angles.
+check if volume also satisfies 3b.
+prove this:
+|det A| = volume of box.
+we've already proven property 1 (about I), 
+property 2 (reverse rows +/-)
+proven 3a (constant factoring)
+now prove 3b for the box: linearity of one row.
+|a+a' b+b'| = |a b| + |a' b'|
+|c       d|   |c d|   |c   d|
+
+in other words, that's the parallelogram.
+|
+|/_/__
+
+find the formula for the area of a parallelogram.
+base * height (horrible squares).
+but now we know that our formula is the determinant.
+ad - bc. that's our formula.
+no length, no angles...
+
+the area of a triangle is now a half of determinant of parallelogram.
+1/2 (ad - bc).
+
+this is a GOOD formula for the area of a triangle.
+instead of those other formulas with angles, heights etc.
+
+
+e.g. put a random triangle in space.
+with ANY 3 corners.
+these 6 numbers determine the area.
+we put its 3 dots into matrix A and do this:
+1/2 det A.
+|x1 y1 1|
+|x2 y2 1|
+|x3 y3 1|
+
+that works too. (flattened triangle in 3d).
+omg simplified geometric interp. of a determinant.
+
+same thing with the pyramid. or tetrahydron.
+1/3 det A where A is a matrix with 4 points that define it.
+the reason of that is that we draw a cube defined by those 3 points.
+and see that each of 3 sides is divided by tetrahedron edges by 2.
+that's why 1/3.
+
+I mean it can easily be the n-dimentional shape whose dots we know. and if we want to know it's "volume" we do this.
+But there's not much info so far about n-dimentional volumes.
+I don't have time to watch the same stuff all over again.
+
+... 21 ...
+Eigenvalues/eigenvectors (1st lecture).
+square matrices.
+special numbers 
+det(I-λI)=0.
+trace = λ1+λ2+...+λn.
+what are these numbers?
+Eigen vector. what is it?
+
+So I have a matrix A.
+What does it do?
+It adds on vectors. It multiplies vector x.
+Ax.
+In goes a vector x.
+Outcomes a vector Ax.
+It's like a function.
+
+Interesting ones are those that come out pointing the same direction they came in.
+That is not typical.
+Most vectors Ax point in different direction than x.
+But in some cases Ax is parallel to x.
+And those are "eigenvectors".
+So Ax is some multiple of x.
+Ax = λx.
+These are special.
+Most vectors are not eigen vectors.
+λ can be real, zero or even imaginary number.
+Let's look at vector Ax = 0.
+what are the eigen vectors of 0?
+they are in null space.
+Ax = 0.
+So if A is singular then it moves some non-zero vectors into zero.
+Then λ = 0 is an eigen value.
+λ = 0 is not special. it totally can be zero.
+How do we find them?
+I can't use elimination (Ax = b). Because λ and x are both unknowns.
+
+Suppose we have a plane.
+And a matrix P that projects somethong to this plane is a projection matrix.
+What are x's and λ's for a projection matrix?
+
+Suppose we have a vector b.
+That is not on the plane.
+P projects it onto a plane.
+Is Pb an eigen vector?
+no. it wasn't on the plane and now it's on the plane.
+direction changed.
+
+but what vectors are eigen vectors in this case?
+those that were already in the plane.
+those will satisfy:
+Px = x.
+λ = 1 here.
+
+are there any other?
+yes. the plane is 2D.
+there should be at least one more.
+Ax could be perpendicular to the plane.
+that projects to 0.
+Px = 0x, so λ=0.
+
+another example. a permutation matrix.
+A = |0 1|
+    |1 0|
+	
+what vector can I modify with this matrix and end up in the same dierction (perhaps just change the scale).
+this matrix swithes first 2 components of a vector.
+x = |1|
+    |1|
+	
+Ax = |1|
+     |1|
+	 
+λ = 1.
+
+this is a 2x2 matrix, so there should be a 2nd eigen vector.
+
+λ = -1
+x = |-1|
+    |1 |
+	
+Ax = |1 |
+     |-1|
+	 
+So Ax = -x.
+
+some facts:
+1) nxn matrices will have n eigen values.
+2) sum of eigen values = sum of the elements on the diagonal.
+
+O_o.
+So for nxn matrix A with a_nn elements, 
+∑λ_n = ∑a_nn
+
+How to solve Ax = λx ?
+Bring to LHS:
+(A-λI)x = 0.
+
+A-λI must be singular. Otherwise the only way to get (A-λI)x = 0 would be to have x = 0.
+
+Thus, |A-λI| = 0.
+(should be 0 to be able to solve)
+
+this is a characteristic equation (eigen equation).
+
+Find λ first.
+I'll find n λ's.
+They don't have to be unique, they can be repeated (which can cause trouble).
+But for now hope they don't repeat.
+
+once we find λ's, finding x will be a "doable job".
+
+Ok.
+Example.
+
+A = |3 1|
+    |1 3|
+
+the more special properties I add into the matrix (e.g. make it symmetric, constant along diagonal etc) the more special I get eigen values.
+In this case, λ's will be real numbers.
+
+ok so. shift the diagonal by λ.
+det(A-λI) = |3-λ 1  | = (3-λ)^2 - 1 = λ^2 - 6λ + 8 = (λ-4)(λ-2)
+            |1   3-λ|
+in the received equation, 6 is a trace (sum of diagonals: 3+3)
+8 in this case is the determinant.
+
+so eigen values are:
+λ1 = 4
+λ2 = 2
+
+now go for the eigenvectors.
+
+they are these guys in the null space when I make the matrix singular by shifting the diagonal by 2 or by 4.
+so. subtract 4 from the diagonals.
+|-1 1|
+|1 -1|
+this matrix should be singular.
+x is in the null space.
+Ax1 = λx1
+
+x1 = |1|
+     |1|
+
+now what about the other value?
+A-2I.
+|1 1|
+|1 1|
+it's singular.
+there's not just one eigen vector here, there's the whole line of eigen vectors.
+I just want the basis.
+basis would be x2 = |-1|
+                    |1 |
+
+these are my 2 eigenvalues/eigenvectors
+
+A = |0 1|
+    |1 0|
+	
+λ1 = 1
+x1 = |1|
+     |1|
+	 
+λ2 = -1
+x2 = |-1|
+     | 1|
+
+so now compare...
+|0 1|
+|1 0|
+and
+|3 1|
+|1 3|
+
+we shifted A by 3I.
+what happened to the eigenvalues when I added 3I to A?
+it added 3 to the eigen values.
+and NOTHING happened to eigen vectors.
+
+observation:
+if I add 3I to A, it's eigen vectors don't change, and eigen values are 3 times bigger.
+(A+3I)x = λx+3x =(λ+3)x.
+x is the same for both matrices.
+
+got it.
+
+suppose I add another matrix.
+A "not so great" case.
+suppose I know the matrix A has vectors.
+If Ax = λx and B has eigen values ɑ, what will happen if I do A + B?
+
+will it be (A+B)x = (λ+ɑ)x ? 
+NO.
+when B was 3I that worked.
+But this case doesn't work.
+there is no reason to believe that x is also an eigen vector of B.
+that might be a different vector.
+so in reality we have this system:
+Ax = λx
+By = ɑy.
+which is now clear why that sum rule is rubbish.
+so...
+A+B
+AB
+they are NOT eigenvalues of A+B or AB. they are not linear.
+eigenvectors are not linear. there is no linearity rule.
+
+another example.
+A rotation matrix.
+Q.
+90 degree rotation.
+the way to compute it.
+|cosθ -sinθ|
+|sinθ  cosθ|
+where our θ is 90 degrees.
+Q = |0 -1|
+    |1  0|
+	
+this is an orthogonal matrix.
+trace = sum of the eigen values = sum of diagonals = 0 in this case.
+!!! one more important fact.
+determinant = 1 = product of eigenvalues = λ1λ2.
+
+geometrically this is a rotation by 90 deg. so 4 rotations and any vecor comes back to where it was.
+λ's will be also with trouble.
+λ1+λ2 = 0
+λ1λ2 = 1.
+
+det(Q-λI) = |-λ -1| = λ^2 + 1 = 0.
+            |1  -λ|
+			
+λ1 = i
+λ2 = -i.
+
+they add to zero and they multiply to 1.
+even though the matrix was perfectly real.
+
+this can happen.
+complex numbers have to enter this course at this moment.
+they are complex conjugate pairs of each other.
+you switch the sign of the imaginary part and get the same thing.
+they come in pairs.
+
+so if the matrix is symmetric then λ's will stay real.
+but if we move far away from symmetric, we get into complex numbers.
+and when we get purely into "anti-symmetric" (above = -below) - we get purely imaginary values.
+
+there's another even worse possibility.
+suppose...
+A = |3 1|
+    |0 3|
+	
+What are eigen-values/vectors?
+it's triangular.
+so for triangular the eigenvalues are always on the diagonal.
+3 and 3.
+here:
+det(A-λI) = |3-λ 1  | = (3-λ)(3-λ)
+            |0   3-λ|
+			
+λ1 = 3
+λ2 = 3
+
+the problem here is eigenvectors.
+find eigenvectors.
+(A-λI)x = |0 1||x| = 0
+          |0 0|
+
+it should be a singular matrix.
+x1 = |1|
+     |0|
+	 
+x2 = |?| (it should be <1, 0> but it's not independent)
+
+there is no second independent eigenvector.
+because the second eigenvalue is the same.
+this has only one line of eigen vectors instead of two.
+
+! another fact.
+for A^-1 eigenvalues will be 1/λ where λ is eigenvalues for A.
+
+... 22 ...
+2nd lecture on eigenvalues.
+so.
+Diagonalize the matrix to get eigen values.
+S^-1 A S = Λ
+(Λ is a diagonal matrix where each value on a diagonal is a λ value.
+S is eigen value matrix.
+Suppose we have n linearly independant eigenvectors of A.
+Put them in the columns of S (eigenvector matrix).
+What happens when you multiply A*S?
+AS = A|x1 x2 x3 ... xn| = ...
+
+so we do one column at a time.
+what is x?
+it's the eigen vector.
+so we get this:
+
+... = |λ1x1 ... λnxn| = |x1 ... xn||λ1 0... 0| = SΛ
+                                   |0 λ2....0|
+						       	   |.........|
+							       |0 0 ...λn|
+								   
+AS = SΛ
+
+this is about independent eigen vectors.
+that is needed for S to be invertable.
+
+AS = SΛ
+S^-1 AS = Λ
+(works only if S is invertable).
+
+it could also be multiplied on the right.
+A = SΛS^-1
+
+that can be used instead of LU etc. (?).
+
+example.
+A^2.
+
+if Ax = λx.
+then
+A^2x = λAx = λ^2x.
+
+so eigenvalues of A^2 are λ^2.
+vectors x don't change.
+
+another way:
+A^2= SΛS^-1SΛS^-1 = SΛ^2S^-1 - says the same thing as previous formula, just in a matrix form. gives Λ with lambdas squared.
+
+same for k dimentions.
+A^k = S Λ^k S^-1
+
+stuff will keep cancelling.
+
+so eigenvalues are a great way to calculate the powers of a matrix.
+
+100th power whatever.
+
+There's a theorem from this eig. picture:
+A^k -> 0 as k -> infinity if all |λ_i| < 1.
+that information (about matrix reducing) is not present in the pivot.
+that information is present in the eigenvalue.
+
+diagonalization needs independent eigenvectors.
+otherwise we can't get to a diagonal matrix Λ.
+so Λ exists only if S^-1 makes sense.
+
+A definitely has n indep. eig. vectors when all λ's are different (if they don't repeat).
+
+Repeated eigenvalues mean I may or may not have n indep. eigenvectors (I might, but I have to check).
+e.g. 10x10 identity matrix.
+all eigenvalues are 1.
+but it does have 10 indep. vectors (each column).
+
+but if say it is triangular...
+|2 1|
+|0 2|
+then there is trouble.
+
+eigenvalues are the 1st thing to do with the matrix.
+eigenvalues here are 2 and 2.
+|2-λ   1|
+|0   2-λ|
+
+λ1 = 2
+λ2 = 2
+
+A - 2I = |0 1|
+         |0 0|
+		 
+null space here is only 1-dimentional.
+algebraic multiplicity is 2.
+in other words, there are two roots of a polinomial.
+but geometric multiplicity (that looks for vectors) gives only one vector.
+|1|
+|0|
+
+u_k+1 = Au_k.
+Start with u_0.
+u_1 = Au0.
+u_2 = A^2 u0.
+u_k = A^k u_0.
+
+the next section will solve a system of differential equations.
+this case is simple. 1st order system. goes up only one level. OH. 
+and the solution is just that (what I've found).
+
+but how would I discover u_100.
+
+to really solve, write:
+u0 = c1 x1 + c2 x2 + ... + cn xn.
+Now multiply by A.
+Au0 = c1 λ1 x1 + c2 λ2 x2 + ... + cn λn xn
+A^100 u0 = c1 λ1^100 x1 + c2 λ2^100 x2 + ... + cn λn^100 xn = Λ^100 S c
+
+then he said smth about u_100 (that to get it I need to expand this 100 times), but I didn't get it.
+
+Example.
+Fibonacci.
+0,1,1,2,3,5,8,13,...
+Find 100th number.
+omg. ok.
+and answer how fast are they growing.
+
+whatever that matrix is, it's values are not less than 1 because it's growing.
+the answer to how fast they grow lies in the eigen values.
+F_k+2 = F_k+1 + F_k.
+
+it's a 2nd order (like 2nd order diff. eqn).
+for now I want to introduce the 1st order eqn.
+introduce this:
+u_k = |F_k+1|
+      |F_k  |
+
+F_k+1 = F_k+1 will be my second eqn. in the system.
+
+so now we have a system:
+F_k+2 = F_k+1 + F_k.
+F_k+1 = F_k+1
+
+u_k+1 = |1 1||F_k+1| = |1 1|u_k (this matrix is taken from that system of equations - more specifically from the right hand sides)
+        |1 0||F_k  |   |1 0|
+
+that trick turned my 2nd order problem into 1st order system.
+
+find eigenvalues/eigenvectors.
+A = |1 1|
+    |1 0|.
+	
+it's symmetric.
+so the eigenvalues will come out real, and eigenvectors will come out orthogonal.
+
+what do I know about this?
+|A-λI| = |1-λ  1| = λ^2 - λ - 1 = 0
+         |1   -λ|
+		 
+λ1 + λ2 should = 1
+λ1 * λ2 should = -1
+
+
+compare λ^2 - λ - 1 = 0 to F_k+2 = F_k+1 + F_k which can be rewritten as F_k+2 - F_k+1 - F_k = 0.
+so the eigen values somehow show up in both formulas.
+
+ok so solve.
+λ^2 - λ - 1 = 0
+
+λ = (1 +/- √5)/2
+
+λ1 = 1/2 (1 + √5) ~= 1.618
+λ2 = 1/2 (1 - √5) ~= -0.618
+
+it is diagonalizable (we have two unique eigenvalues, so eigenvectors will be independent).
+
+so how fast the Fibonacci increases?
+eigenvalues are controlling the growth of this sequence.
+the big one controls the growth.
+from the earlier formulas:
+
+F_100 ~= c1 ((1 + √5)/2)^100 + c2 ((1 - √5)/2)^100 (there are only 2 terms, because 2x2)
+
+the second term is something < 1 that is to 100th power. so it's negligible.
+
+this is an example of a problem that is evolving over time.
+it's not static. every step adds a power of something.
+
+ok write eigenvectors.
+
+A-λI = |1-λ 1||λ| = |0|
+       |1  -λ||1|   |0|
+	   
+	   (eigenvector here is |λ|, we found it by specifically looking for what will give me 00 vector.
+	                        |1|
+
+x1 = |λ1|
+     |1 |
+	 
+x2 = |λ2|
+     |1 |
+	 
+u0 = |F1| = |1| 
+     |F0|   |0|
+	 
+so I have to look for:
+c1 x1 + c2 x2 = |1|
+                |0|
+
+eigenvalues already tell you the growth speed.
+but to find a formula you have to write your u0 as combinatino c1 x1 + c2 x2 + ... and follow every eigenvector separately.
+
+so. steps to find powers of matrix A.
+1) find eigenvalues λ from det(A-λI) = 0.
+2) find eigenvectors by plugging λ's into A-λI and solving (A-λI)x = 0 or by elimination.
+3) find formula for power 1: A = SΛS^-1 (where S is a matrix whose columns are eigenvectors found in step 2, and S^-1 is its normalized inverse).
+4) find formula for power k: A^k = S Λ^k S^-1
+5) test step 4 by plugging k = 1 and making sure that it's the same as we've started with (that the result equals to A).
+6) raise it to whatever the power you needed.
+
+first 4 steps are "diagonalizing" (finding a diagonal Λ matrix of λ's).
+
+... 23 ...
+Диф. уравнения.
+How to solve a system of first order constant coefficient linear differential equations.
+du/dt = Au.
+and there will be something about e^At.
+omg yes.
+if you look at a right angle at such ODE's, their solutions are exponential. which is completely a linear algebra problem.
+we had powers, now we look at exponentials.
+example.
+
+du1/dt = -u1 + 2u2
+du2/dt = u1 - 2u2.
+u(0) = |1|
+       |0|
+	   
+step 1. matrix of the system.
+A = |-1 2|
+    |1 -2|
+	
+step 2. find eigenvalues.
+the matrix is singular (2nd column is -2 times the first, and determinant is zero), which tells right away that one of the eigenvalues is:
+λ1 = 0.
+the other value will be from the trace.
+sum of the diagonal is -3, so 
+λ2 = -3
+
+Or I could do it through determinant |A-λI| and get λ(λ+3) = 0. Same thing.
+
+step 3. find eigenvectors.
+for λ1 = 0.
+it's e^0t, which is 1.
+
+for λ2 = -3.
+it's negative (it will disappear, it will be e^-3t which goes to 0 as time grows).
+
+so the solution should have 2 parts. one of them will be constant (steady state), and the other goes to zero.
+
+ok so eigenvectors.
+λ = 0.
+vector in N(A) where I add 0 to the diagonal
+x1 = |2|
+     |1|
+
+Ax1 = 0x1.
+
+the other one.
+
+λ2 = -3.
+vector in N(A) where I add -3 to the diagonal
+A = |2 2|
+    |1 1|
+	
+Ax2 = 0.
+x2 = |1 |
+     |-1|
+
+Ax2 = -3x2.
+
+step 4. solution.
+u(t) = c1 e^λ1t x1 + c2 e^λ2t x2.
+that's the general solution.
+it's a linear combination of two exponential solutions.
+now.
+
+step 5. check if it's correct.
+du/dt = Au. plug in u = e^λ1t x1
+
+λ1 e^λ1t x1 = Ae^λ1t x1
+λ1 x1 = A x1 
+done
+
+those pure solutions (pure exponentials) are the analog of differential equations.
+note.
+we had this:
+c1λ1^k x1 + c2λ2^k x2. 
+for the finite steps u_k+1 = Au_k
+now we have this formula:
+u(t) = c1 e^λ1t x1 + c2 e^λ2t x2
+for the continuous steps.
+
+step 5. find c1 and c2.
+plug in λ's.
+c1 * 1 * |2| + c2 * e^-3t |1 |
+         |1|              |-1|
+		 
+u(0) = |1|
+       |0|
+
+plug in (for above) t = 0.
+
+c1 |2| + c2 |1 | = |1|
+   |1|      |-1|   |0|
+   
+   
+c1 = 1/3
+c2 = 1/3
+
+step 6. put all together.
+
+1/3 * |2| + 1/3 e^-3t |1 |
+      |1|             |-1|
+		
+so steady state is:
+u(∞) = 1/3 |2|
+           |1|
+
+conclusions.
+when do we get stability? 
+u(t) -> 0.
+negative eigenvalues.
+λ < 0.
+we need e^λt.
+
+now. suppose eigenvalues are complex numbers.
+like suppose we have e^(-3t+6i)t.
+how big is it?
+|e^(-3t+6i)t| = e^-3t.
+that's because |e^6it| = 1.
+because it's "cos 6t + i sin 6t", and the abolute value will be sin^2 + cos^2 = 1.
+so complex number doesn't affect the magnitude.
+only real part matters.
+only real part should be < 0.
+
+so.
+Re λ < 0.
+that's what we require for stability.
+
+2) steady state.
+λ1 = 0 and other ones have Re λ < 0.
+
+3) blow up if any Re λ > 0.
+
+So for example if I have matrix A with λ's < 0, then it will be stable.
+But if I do A = (-1) A, then all signs will flip and I have a blow up.
+
+let's look at one case.
+2x2 stability.
+A = |a b|
+    |c d|
+
+need:	
+Re λ1 < 0
+Re λ2 < 0.
+
+trace = a + d = λ1 + λ2 < 0.
+(even if λ's were complex numbers, they would be complex conjugates of each other, and complex part would cancel out if we add everything).
+det = λ1 * λ2 > 0.
+
+trace could be < 0 and still blow up.
+E.g.
+|-2 0|
+|0  1|
+
+sum (trace) is -1 but it blows up.
+that's why we need a determinant condition.
+
+so. look again at this:
+c1 |2| + c2 |1 | = |1|
+   |1|      |-1|   |0|
+   
+it is this:
+|2  1||c1| = |1|
+|1 -1||c2|   |0|
+
+it is this:
+Sc = u(0)
+
+(first matrix is the eigenvector matrix S).
+
+Look again at this.
+du/dt = Au.
+
+this matrix A couples the function and its derivative.
+Now we need to uncouple them.
+
+Set u = Sv.
+(to diagonalize A, to somehow get out of this loop).
+S dv/dt = ASv (where S is the eigenvector matrix).
+dv/dt = S^-1ASv = Λv.
+
+this step turned me from coupling into diagonal matrix.
+Λ is that matrix of eigenvalues.
+
+so...
+dv1/dt = λ1 v1 etc.
+now it's a system of equations but they are NOT CONNECTED.
+that's what "decoupling" means. removing the connection.
+this makes them easy to solve.
+
+the notation for this is:
+v(t) = e^Λt v(0)
+u(t) = S e^Λt S^-1 u(0) = e^At u(0)
+
+this second formula is my e^At.
+
+e^At = S e^Λt S^-1
+
+what does it mean to raise e to a matrix power?
+matrix exponential e^At.
+
+there's a power series (tailor series) for exponentials.
+1 + x + x^2/2 + x^3/6 + ...
+so 
+e^At = I + At + (At)^2/2 + (At)^3/6 + ... + (At)^n/n!.
+there are two tailor series:
+e^x = ∑ x^n / n!
+1/(1-x) = ∑x^n
+
+so this series can be used for matrices:
+(I - At)^-1 = I + At + (At)^2 + (At)^3 + ...
+again. we're finding "inverse" as if we looked for a power.
+
+this works obviously only for small t's.
+as if it blows up, then we get t^n.
+
+we do the same thing for matrices as we did for functions.
+
+|λ(At)|<1.
+
+how do I see that e^At = S e^Λt S^-1 ?
+from those two definitions?
+
+e^At = I + At + (At)^2/2 + (At)^3/6 + ... + (At)^n/n!
+= SS^-1 + SΛS^-1t + SΛ^2S^-1 t^2/2 + SΛ^3S^-1 t^3/6 + ...
+= Se^ΛtS^-1
+
+it assumes that A can be diagonalized.
+there are small subset of degenerate matrices that don't have an inverse, so they won't have Λ.
+
+Λ = |λ1 ...|
+    |... λn|
+	
+e^Λt = |e^λ1t  ...|
+       |...  e^λnt|
+	   
+e^Λt goes to zero if each Re λ < 0.
+
+so on the complex plane, the values of λ have to be on the left part of the plane.
+
+for powers of A to go to zero, λ's have to be inside a unit circle on a complex plane.
+so |λ| < 1.
+
+
+final example.
+y'' + by' + ky = 0.
+2nd order DE.
+how to change it to 2x2 1st order system?
+the same way we did for Fibonacci.
+u = |y'|
+    |y |
+
+u' = |y''| = |-b -k||y'| (-b -k got from y'' = -by' -ky)
+     |y' |   |1   0||y | (1 0 got from trivial artificially added eqn y' = y')
+	 
+	 so for general case, if I wanted to solve 5th order eqn with 5x5 matrix, I would do this:
+|_ _ _ _ _| <- coefficients of 5th order eqn.
+|1 0 0 0 0| <- trivial eqn #1 (eq. y' = y')
+|0 1 0 0 0| <- trivial eqn #2 (eq. y'' = y'')
+|0 0 1 0 0| <- trivial eqn #3 (eq. y''' = y''')
+|0 0 0 1 0| <- trivial eqn #4 (eq. y'''' = y'''')
+
+this matrix goes from 5th order DE to 5x5 1st order system.
+and the eigenvalues that come out will solve the DE.
+wow.
+ok
+
+so we'll have this:
+y''''' - ay'''' - by''' - cy'' - dy' - ey = 0.
+
+|y'''''|   |a b c d e||y''''|
+|y'''' |   |1 0 0 0 0||y''' |
+|y'''  | = |0 1 0 0 0||y''  |
+|y''   |   |0 0 1 0 0||y'   |
+|y'    |   |0 0 0 1 0||y    |
+
+u'(t) = Au(t).
+
+u(t) is a vector, but if we solve this eqn for u we can get all info we need.
+get eigenvalues of A.
+for each one of them find eigenvectors (shift A's diagonal by eigenvalue and solve Ax = 0 as a system of eqns).
+
+then do u(t) = c1 e^λ1t x1 + c2 e^λ2t x2 + ... (where x1 is eigenvector for λ1 etc).
+that's the general solution.
+you can plug in u(0) to get a specific solution.
+
+exp(At) = Se^Λt S^-1
+where S = |x1 x2 ... xn|
+e^Λt = |e^λ1t 0 0 0 0 ...|
+       |0 0 0 0 ... e^λnt|
+
+S^-1 = 1/det(S) C^T where C is cofactors.
+
+note that since e^Λt is a diagonal matrix, that means we need only the 1st column of S^-1.
+we don't need to find an inverse of a full nxn matrix S.
+just the first column.
+
+so. we did powers. now we can do exponentials. thanks.
+)) 
+
+... 24 ...
+applications of eigenvalues.
+Markov matricies.
+A = |.1 .01 .3|
+    |.2 .99 .3|
+	|.7 0   .4|
+
+what makes it a Markov matrix?
+two properties:
+1) every entry is >=0.
+
+Markov matrices are connected to probabilities.
+And probabilities are never negative.
+
+2) All columns add to 1 (sum of elements in each column gives 1)
+if I square the matrix it will be true again.
+powers of my matrices are all Markov matrixes.
+and I'm interested in eigenvalues/vectors.
+
+steady state in DEs was λ = 0.
+then we had e^0t. they were the thing thta stayed steady.
+
+with powers of a matrix λ = 1 is important.
+Markov matrix always has λ = 1 (due to the property that all columns add to 1).
+
+key points:
+1. λ = 1 is an eigenvalue
+2. all other |λ_i| < 1 (in special cases they may be λ=1, but never λ>1)
+u_k = A^k u0 = c1 λ1^k x1 + c2 λ2^k x2 + ...
+this requires a complete set of eigenvectors x.
+from these we see that those that are λ = 1 persist and those that λ < 1 die.
+that λ=1 is the steady state.
+
+so if all components of x1 are > 0 then c1 x1 > 0.
+
+A - 1I = |-.9 .01   .3|
+         |.2  -.01  .3|
+		 |.7  0    -.6|
+
+I shifted its diagonal by 1.
+I believe it's singular.
+that would prove that 1 is an eigenvalue.
+
+why is it singular? (in general).
+look at the columns. they all add up to 0.
+all columns of A - I add up to 0.
+that means that A-I is singular.
+why??
+
+we don't want to take it's determinant.
+being singular means these columns are dependent.
+or rows are dependent.
+
+in this case, adding rows gives 0 0 0.
+it's singular because rows are dependent because 1 1 1 is not in the null space of the matrix, but it is in the null space of the transpose N(A^T)
+eigenvector x1 is in N(A)
+
+that's why they must be dependent.
+and thus that matrix is the steady state.
+
+what can you say about eigenvalues of A and A^T?
+they're the same.
+
+because for A it will be |A-λI|=0.
+and for A^T we just use the property 10 that det A = det A^T, and I transposes to I, so we get the same eigenvalues: |A^T - λI| = 0.
+
+interesting how he computes the system. in the head.
+looks at one value on RHS and the simplest column on the LHS, and gets the easiest parameters, and from them gets the complex parameters in the different eqn.
+
+all components of x's of a Markov matrix are always > 0 (no proof for now).
+
+application of Markov matrices.
+u_k+1 = Au_k where A is Markov.
+say I look at people in California and Massachusets.
+by the end of the year some people moved from CA to MS or from MS to CA.
+so my A is "fractions of people that stayed or moved". they add to 1.
+probabilities of them moving.
+|u_cal|        = |.9 .2||u_cal|
+|u_mas|_(t=k+1)  |.1 .8||u_mas|_k
+
+.9 people stayed in cal.
+.1 people from cal. moved to mas.
+.8 people stayed in mas.
+.2 people of mas. moved to cal.
+k is "year"
+
+hm. like a graph.
+k. so what's the matrix.
+e.g. if all people started from mas. where they would be now (k = 100), or a million years from now (k = 1mil).
+
+|u_cal|  = |0   |
+|u_mas|_0  |1000|
+
+u_cal + u_mas = 1000.
+
+after one step (at time k=1) we get:
+|u_cal|   = |200|
+|u_mas|_1   |800|
+
+|u_cal|   = |200+|
+|u_mas|_2   |800-|
+
+as soon as I wanna solve anything I should get eigenvalues
+|.9 .2|
+|.1 .8|
+
+λ1 = 1
+λ2 = .7
+
+eigenvectors.
+subtract 1 from the diagonal.
+|-.1 .2|x1 = |0|
+|.1 -.2|     |0|
+
+x1 = |2|
+     |1|
+
+this eigenvector gives the steady state.
+other eigenvector is for λ<0, so it is not important.
+so at infinity, the steady state will be:
+|2 * 1000 / 3|
+|1 * 1000 / 3|
+
+because that column has to add up to 1000.
+so that's all I need to know to predict the population.
+there will always be 2x people in california than in massachusets.
+
+but if I need to know finite steps, I need the other eigenvector.
+
+.7 |.2 .2|x2 = |0|
+   |.1 .1|     |0|
+   
+x2 = | 1|
+     |-1|
+	 
+so the solution at k = 100 will be:
+u = c1 1^k |2| + c2 (.7)^k |-1|
+           |1|             |1 |
+		   
+u_0 = |0   | = 1000/3 |2| + 2000/3 |-1|
+      |1000|          |1|          | 1|
+	  
+1st part is stable
+2nd part is disappearing.
+
+that's an example of a markov matrix.
+they are often used in engeneering (sometimes with row vectors, so in some books the transpose is used, and the ROWS add to 1 in Markov matrices, but MIT way is columns).
+
+cool. 
+another application is projections / expantions with orthonormal basis.
+so basis q1,...,qn.
+since they are orthonormal, any vector v is:
+v = x1 q1 + x2 q2 + ... + xn qn.
+dot product of each one of them with each one of them is 0.
+so q1^T v = x1 q1^T q1 + 0 + ... + 0 = x1.
+for orthonormal vectors, x coefficients are easy to find.
+dot products with v.
+|q1 ... qn||x1 | = v.
+           |...|
+		   |xn |
+
+Qx = v.
+
+solution is:
+x = Q^-1 v.
+columns are orthonormal, so I know Q^-1.
+Q^-1 = Q^T when components of Q are orthonormal.
+
+so.
+x = Q^-1 v = Q^T v.
+
+x1 = q1^T v.
+...
+
+the key here is that q's are orthonormal.
+that is what Fourier series is built upon.
+
+fourier series is a function f(x) that is a combination like this:
+f(x) = a_0 + a_1 cos x + b_1 sin x + a2 cos 2x + b2 sin 2x + ...
+
+the key property of things being orthogonal is still true for sines and cosines.
+(after joseph fourier).
+he said I can work in the function space. instead of using q1 q2 q3 I can have an orthogonal function.
+infinitely many pieces that are all perpendicular.
+infinitely many because my space is infinite-dimentional.
+
+we leave finite dimentions and go to infinite dimentions.
+
+sin is orthogonal to cos.
+like I only know the dot product of vectors.
+but what's the dot product of functions?
+whavever it is, their dot product is 0.
+how do I compute a dot product?
+v^Tw = v1 w1 + ... + vn wn.
+
+but how for the functions?
+(inner product is another name for the dot product of functions).
+the function has the whole continuum.
+in other words, what does this mean?:
+f^T g
+best parallel is to multiply f(x)g(x) at every x, and add all of them.
+f^Tg = ∫f(x)g(x)dx.
+what are the limits of integration?
+for fourier series all the functions are periodic.
+from 0 to 2pi.
+so we get this:
+f^Tg = ∫_(from 0 to 2pi)f(x)g(x)dx.
+or τ
+f^Tg = ∫_(from 0 to τ)f(x)g(x)dx.
+
+so we get this:
+f(x) = f(x + 2pi).
+
+periodic function
+
+now I have a vector space, where instead of vectors I have functinos.
+I have inner product (the integral / continuous version of a dot product).
+I have the orthogonality
+check:
+ ∫_(from 0 to τ)sin(x)cos(x)dx = 1/2 (sin x)^2 (from 0 to τ) = 0.
+ same with other pairs.
+ so we have orthonormal infinite basis of a functino space, and we want to express in that space our function (omg).
+ omg so like describe the function in n-dimentionsl curved periodic space.
+ 
+we look at this:
+f(x) = a_0 + a_1 cos x + b_1 sin x + a2 cos 2x + b2 sin 2x + ...
+a_0 will be an average value.
+how do I get a_1? the 1st coefficient.
+just like with the dot product of q's.
+I take inner product of everything with cos x.
+∫_(from 0 to τ) f(x) cos(x) dx.
+multiply everything by cos x and integrate.
+this way I get a whole lot of 0's.
+I get only a1 cos x.
+the other stuff disappears.
+so we solve this:
+∫_(from 0 to τ) cos(x) * cos(x) dx.
+it's not zero because it is the length of the function squared.
+the answer is pi:
+∫_(from 0 to τ) cos(x) * cos(x) dx = π
+so to get 1 we need 1/π.
+
+so ALL the coefficients of fourier series can be found like so:
+1/π ∫_(from 0 to τ) f(x) * cos(x) dx
+
+which is EXACTLY AN EXPANSION IN THE ORTHONORMAL BASIS.
+wow.
+ok.
+done.
+
+
+дальше была задачка про перескакивание с одной позиции на другую или на себя саму. с вероятностями.
+и там был прикол что он сказал "я ассоциирую каждый ряд со стартовой позицией А и стартовой позицией В, а каждую колонку - с конечной позицией А и конечной позицией В".
+и вписал вероятности перепрыгивания частичек по этому графу.
+так как это вероятности, то это матрица Марков.
+the evolution of probabilities distributions uses this stuff all the time.
+and probabilities are then calculated as:
+p_n = A^n p_0.
+recall that we can write any matrix A as this:
+A = UDU^-1 where D is dioganizable matrix of eigenvalues, and U is matrix of eigenvectors.
+So. for Markov matrix we always have at least one λ = 1.
+p_n = A^n p_0 = UD^n U^-1 p0.
+
+for faster calculations, start at right-most side (p0 etc) and work backwards.
+of course you can do left to right.
+in probability we approach some multiple of eigenvector for which eigenvalue = 1.
+
+... 24B ...
+review.
+orthonormality.
+Q = |q1 ... qn|, Q^T Q = I.
+
+Grand-Shmidt unit orthonormal vectors.
+Big formula with checker board
+Cofactor formula
+A^-1
+eigenvalues/eigenvectors.
+Ax = λx
+S^-1As = Λ (which is Ax = λx for all eigenvectors at once).
+Projection matrix.
+Pb = p (where p is projection of b onto a).
+A(A^TA)^-1 A^T <- for projecting on a surface A
+aa^T/a^Ta <- for projecting on a vector
+
+u_k+1 = Pu_k
+u_0 = ...
+u_1 = Pu_0 = aa^Tu_0 / a^T a
+u_k = P^k u_0.
+
+note if P is a projection matrix, then P^k = P and we dno't need to calculate P^k.
+
+u_0 = c1x1 + c2x2 + ...
+find c's, x's.
+A^k u_0 = c1λ1^kx1 + c2λ2^kx2 + ...
+
+next.
+best fit line.
+y=Dt
+
+so I have xy points.
+and I put them into vectorx.
+xd = y.
+and do this:
+A^TA D = A^T b
+
+so best fit line is one way to look at it.
+but the other way to look at this is that I'm projecting n-dimentional vector of y's onto the column space of A (which is the line).
+
+I'm not projecting points.
+I'm projecting a vector of solution onto a subspace A.
+
+Gram-Shmidt says "start with 1st vector and make the 2nd perpendicular to 1st, and make 3rd perpendicular to previous two etc.
+
+det A^-1 is a multiple of 1/λ1 * 1/λ2 * 1/λ3 ...
+where λ1, λ2, λ3 are eigenvalues of A (not A^-1, but A).
+
+trace is a sum of diagonals. so if I shift the diagonal by constant c then the trace will change by +c * n where n is a number of elements in the diagonal (each one shifted by c).
+
+we can use the formula D_n = c1D_n-1 + c2D_n-2 backwords.
+in other words, for derivatives we were BUILDING the formula...
+|a b c d ... |
+|1 0 0 0 ... |
+|0 1 0 0 ... |
+|............|
+but we could also use that formula to solve  c1D_n-1 + c2D_n-2.
+the equality works both sides.
+oh no wait. 
+his point was different.
+he was calculating a determinant.
+|1 0 1 0 ... |
+|1 0 0 0 ... |
+|0 1 0 0 ... |
+|............|
+and the way he did it he...
+took say a position 1.1.
+so row 1 and column 1 are gone.
+and he calculates the determinant of everything that is left.
+then he took a position 1.3 (column 3 and row 1 are now crossed out). and determinant is now of everything that's left.
+but the point is that now he takes say position 2.1 (row 2 column 1 are gone). the cofactor now excludes not only row 2 column 1 but also column 1 row 1 and column 3 - as they were already considered). 
+it's that rule of linearity of determinants or something.
+and once he did that, all the determinants were gone (accounted). there were no determinants left to compute.
+and their sum is the det.
+that is what he meant by D_n = D_n-1 - D_n-2.
+then he did
+|D_n  | = |a b||D_n-1|
+|D_n-1|   |c d||D_n-2|
+
+always add up eigenvalues to see if you get a trace.
+
+also the way to speed up the determinant calculation is to skip zeros at the det. formula ∑± a1ɑ a2β a3ɣ a4ƍ (big summation matrix)
+
+then she changed the sign if ɑβɣƍ are not in ascending order and I need odd number of place swapping to get back to ascending order.
+
+
+... 25 ...
+symmetric matrices.
+A = A^T.
+(Real matrix).
+Some facts about them.
+1) The eigenvalues are also REAL. not Complex.
+2) Eigenvectors are (or can be chosen to be) perpendicular / orthogonal.
+I is also symm matrix. Its vectors are also perpendicular (orthonormal).
+For the identity every vector is an eigenvector.
+If eigenvalue repeats, there's the whole plane of eigenvectors.
+In that plane we can chose perpendicular ones.
+"can be chosen" part is all about repeated eigenvalues. for non repeated they will be perpendicular.
+having a complete set of eigenvectors means:
+for any A we can write it like this:
+A = SΛS^-1.
+
+But for symmetric case we can scale perpendicular eigenvectors to be orthonormal.
+and get this:
+A = QΛQ^-1.
+Q is square, whose columns are orthonormal eigenvectors of A.
+for Q we know that Q^-1 = Q^T.
+so we get
+A = QΛQ^T
+which completely displays the symmetry now.
+this is called a "spectal" theorem.
+spectral set of eigenvalues of a matrix.
+the idea is the same as with light spectrum when light consists of several independent pure things that when join together give something special.
+or principle access thm.
+it means if I have some material and look at it at right axis, it becomes diagonal.
+the directions don't couple together.
+
+Let's now talk why eigenvalues are real.
+Ax = λx.
+we can always do complex conjugate of everything.
+A x-  = λ- x- 
+"-" should be above letters, like a "hat" and mean "conjugate"
+
+so we do a+ib = a-ib.
+so any matrix always comes with λ and λ- pairs.
+
+transpose last eqn.
+x- ^T  A^T = x- ^T λ-  
+
+if A is symmetric, A^T = A.
+So we get
+x- ^T  A = x- ^T λ-
+x- ^T  A x = λ x- ^T x (with the first conjugate)
+x- ^T  A x = λ- x- ^T x (with the second conjugate).
+we compare both.
+and they have the same LHS.
+so...
+λ x- ^T x = λ- x- ^T x
+so...
+λ = λ-
+we just proved that for λ imaginary part does not exist.
+that λ is real.
+
+let's look at this part:
+x- ^T x
+|x1- x2- ... xn-||x1|
+                 |x2|
+                 |..|
+                 |xn|
+				 
+x^T x is length of x squared.
+here they are conjugates. so
+x1- x1 + x2- x2 + ...
+where x1- is a-ib
+and x1 is a+ib.
+(a+ib)(a+ib) = a^2 + b^2.
+imaginary part is gone.
+
+so this is the right thing to do.
+to multiply x by its conjugate.
+everything comes out positive (except for the zero vector).
+
+x- ^T x = |x|^2
+
+suppose A was a complex matrix.
+then suppose on RHS we have A-.
+
+Good matricies have real λ's, perpendicular x's and then A = A^T.
+but A-^T also satisfies these two criteria of being "a good matrix"
+A^T = A-^T when A is real.
+(shouldn't they point in opposite directions in the complex plane if A is not real?).
+matrices are real in 99% of cases.
+
+again.
+A = A^T = QΛQ^T =
+|q1 q2 ...||λ1 ...||q1^T| = λ1q1q1^T + λ2q2q2^T + ...
+           |... λn||q2^T|
+		           |... |
+				   
+(in matrix multiplication I can multiply "ALL columns" on "ALL ROWS" at the same time.)
+(because q1q1^T is a projection matrix with orthonormal vectors)
+(every symm matrix is a combination of perpendicular projection matrices)
+
+ok so we know symmetric matrices are real.
+are they positive or negative?
+
+30 years ago noone knew how to find eigenvalues of a 50x50 matrix, or 100x100 matrix.
+too much time.
+so the way of finding them (getting a determinant A-λI) is a long / bad / inefficient / unreliable way to find eigenvalues of big matrices.
+but we can find 50 pivots.
+but if I have a real matrix. and I find 50 pivots. and maybe 28 of them are positive, 22 are negative.
+and the great fact that it will mean that 28 eigenvalues will be positive and 22 will be negative.
+so number of positive /negative pivots (for symm. matrix) = # of positive/negative eigenvalues.
+signs of pivots for sym matrix are same as signs of eigenvalues.
+then we can shift eigenvalues. say by 7.
+and we can take pivots of that matrix.
+and know how many eigenvalues are NOW positive or negative.
+thus we'll know how many of them were less than 7.
+product of pivots = product of eigenvalues = determinant (for symm. matrix)
+
+ok now.
+Positive definite matrix.
+it's always symmetric.
+it's a subclass of symmetric matrices that is even better than symmetric.
+
+all eigenvalues (for this type of matrix) are positive.
+all pivots are positive.
+
+example"
+|5 2|
+|2 3|
+
+pivots: 
+5, product of the pivots is the determinant. so the other one is 11/5.
+5 and 11/5.
+both positive.
+so both eigenvalues are positive.
+λ^2 - 8λ+ 11 = 0.
+λ = 4 ± √5
+
+this is a good type of matrices for differential equations.
+because if you know the signs of eigenvalues you know the stability.
+
+all subdeterminants (cofactors, of positive definite matrix) are positive.
+
+for this one for example the last test fails.
+|-1 0|
+|0 -3|
+
+some facts derived from these properties:
+1) every PDM is invertable (because det = product of λ's, and it's λ's are always > 0, so det != 0).
+2) the only PDM projection matrix is I (because for projection matrix eigenvalues are either 0 or 1, and for PDM eigenvalues should be > 0, thus only 1 works).
+P = UIU^-1 = UU^-1 = I.
+3) diagonal matrix with positive diagonals is PDM.
+say D is diag(d1, d2, ..., dn)
+x^TDx = d1x1^2 + ... > 0.
+4) not all S are PDM.
+e.g.
+S = |-3 1|
+	|1 -2|
+
+det S = 6 - 1 = 5 > 0.
+x^TSx -> x = |1 0|^T -> x^TSx = -3 < 0.
+so it's not PDM.
+
+... 26 ...
+complex numbers.
+even a real matrix can have complex eigenvalues.
+example = fourier matrix.
+or fast fourier transform.
+FFT.
+how do I multiply by this nxn matrix fast?
+normally it's n^2 multiplications.
+with FFT there are n log_2(n) multiplications.
+z = |z1|
+    |z2|
+	|..|
+	|zn|
+	
+each z is complex.
+so z is in n-dimentional complex space C^n.
+z^Tz now is no good.
+|z1 z2 ... zn||z1| does not give the right answer, because the length should be always positive.
+              |z2|
+			  |..|
+			  |zn|
+			  
+|1 i||1| = 1 - 1 = 0 (which is wrong).
+     |i|
+we want:
+z1- z1 = |z1|^2.
+now if z1 is i.
+
+|z1- z2- ... zn-||z1| will now give correct answer.
+                 |z2|
+			     |..|
+			     |zn|
+
+z-^T z is good. it gives positive length.
+so when we transpose we also take a complex conjugate.
+|1 -i||1| = 1 + 1 = 2.
+      |i|
+
+one symbol to do both conjugate and transpose, H:
+z^H z = z-^T z.
+the name:
+z Hermitian z. 
+z H z.
+innre product of two vectors is no longer y^T x.
+it's y^H x.
+z^Hz = |z1|^2 + ... + |zn|^2.
+
+also we need to change the idea of a symmetric matrix.
+symmetric means A^T = A.
+but it's not good if A is complex.
+it works only for real matrices.
+but for complex matrices we want to do:
+A-^T = A.
+Or A^H = A.
+example:
+|2 3+i|
+|3-i 5|
+
+this kind of matrices is called Hermitian matrix.
+A^H = A.
+they have REAL eigenvalues, perpendicular eigenvectors.
+perpendicular means "inner product" of q_i-^T q_j for i != j.
+orthonormal basis.
+q1, q2, ..., qn 
+
+Q = |q1 q2 ... qn|
+Q^T Q = I for a real orthogonal matrix.
+but for complex vectors we have this:
+Q^H Q = I
+we change the name.
+symmetric -> hermitian.
+orthogonal -> unitary.
+
+mean the same thing but keeping in mind that vectors contain complex numbers.
+
+Hermitian is used in Fourier series.
+nxn case.
+nxn Fourier matrix:
+F_n = |1   1     1        ... 1        |, so we have (F_n)_ij = w^ij; i,j = 0, .., n-1
+      |1   w^2   w^2      ... w^n-1    |
+	  |1   w^3   w^4      ... w^2(n-1) |
+	  |... ...   ...      ... ...      |
+	  |1   w^n-1 w^2(n-1) ... w^(n-1)^2|
+	  
+w is a special number.
+w^n = 1.
+there are n numbers like that.
+one of them is 1.
+but the angle is 2pi/n.
+w_n = e^i2pi/n
+
+on the complex plane it is:
+cos 2pi/n + i sin 2pi/n.
+powers with rectangular complex coordinates are a mess.
+so we use e^i2pi/n
+
+2/nth of a full circle. 
+so if n = 6, then the angle will be 2pi/6 = 60 degrees.
+what is w^2?
+we divide complex unit circle by 6 parts.
+so when we raise 2pi/6 to the 6th power, we get to the coordinate (1, 0i) again.
+those are 6 roots.
+and each one of them is w^some power.
+w^2 is 2nd slice of a circle.
+w^4 is 4th evenly spaced slice of the circle.
+etc.
+e^τ/4 = i.
+
+so. for F_4 case.
+F_4 = |1 1   1   1  | = |1 1  1  1 |
+      |1 i   i^2 i^3|   |1 i  -1 -i|
+	  |1 i^2 i^4 i^6|   |1 -1 1  -1|
+	  |1 i^3 i^6 i^9|   |1 -i -1 i |
+	  
+so exponent is row number * column number but we start counting at 0.
+so that is 4point fourier transform.
+we multiply by this transform.
+or we multiply by F_r^-i.
+the inverse of this matrix will be a nice matrix also.
+Fourier did that. He knew the inverse of this matrix (that comes from the fact that columns are orthogonal).
+multiplication by it or its inverse factors with lots of zeros.
+because the columns are orthogonal.
+dot/inner product of each column with each column is 0.
+but remember that when we take dot/inner product of columns that contain complex numbers, we need to conjugate!.
+or you would not get zero.
+in this case we get 1 - 1 + 1 - 1 = 0.
+
+the columns are orthogonal. but they're not orthonormal.
+for them to be orthonormal we need to divide everything by their length.
+
+F_4 = 1/2 |1 1   1   1  | = 1/2 |1 1  1  1 |
+          |1 i   i^2 i^3|       |1 i  -1 -i|
+	      |1 i^2 i^4 i^6|       |1 -1 1  -1|
+	      |1 i^3 i^6 i^9|       |1 -i -1 i |
+		  
+F_4^H F^4 = I.
+
+now what of this makes this a "fast fourier transform"?
+
+F^6 will have a neat connection to F_3.
+There's connection of F_4 to F_2.
+so there's a connection to a matrix that is "half as big".
+E.g. F_64 has a connection to F_32.
+let's see.
+
+F_64 is a 64x64 matrix, whos w is 1/64th of the full complex unit circle.
+F_32 is a 32x32 matrix, whos w is 1/32nd of the full complex unit circle.
+so that's how they are connected. 
+w of F_32 is twice as big as w of F_64.
+so if I square the first I get the second:
+w_64^2 = w_32.
+
+|F_64|=|I D ||F_32   0||1 0 0 0 0 0 0 0 0 0 ...|
+       |I -D||0   F_32||0 0 1 0 0 0 0 0 0 0 ...|
+		               |0 0 0 0 1 0 0 0 0 0 ...|
+					   |0 0 0 0 0 0 1 0 0 0 ...|
+					   |0 0 0 0 0 0 0 0 1 0 ...|
+					   |0 1 0 0 0 0 0 0 0 0 ...|
+					   |0 0 0 1 0 0 0 0 0 0 ...|
+					   |0 0 0 0 0 1 0 0 0 0 ...|
+					   |0 0 0 0 0 0 0 1 0 0 ...|
+					   |0 0 0 0 0 0 0 0 0 1 ...|
+					   |.......................|
+		   
+so we had 64^2 calculations.
+now we have 2*32^2 + fix.
+
+the right most matrix separates the matrix in the middle into "even components" and "odd components".
+then do the 32 transform
+and then we put them together again with the left most matrix.
+
+so the "fix" cost comes from multiplying by D.
+which in this case is 32 multiplications.
+so the cost came from 64^2 to 2(32)^2 + 32.
+
+D = |1   0   0   ... 0   |
+    |0   w^2 0   ... 0   |
+	|0   0   w^3 ... 0   |
+	|....................|
+	|............... w^31|
+	
+this is a right way to see FFT.
+
+now do the 32.
+F_32 = |...||F_16 0   ||...|
+       |...||0    F_16||...|
+	   
+recursion.
+
+cost is now
+2[2[16]^2 + 16] + 32.
+
+repeat that more and more.
+but that repeats for two 16x16 matrices.
+|I D  0  0|
+|I -D 0  0|
+|0 0  I  D|
+|0 0  I -D|
+
+so I get log_2 n steps.
+6 * 32.
+
+so total cost is: 1/2 log_2 64.
+1/2 log_2 64. not log_2 64 as I said before. 1/2 log_2 64.
+
+now here's a bigger example.
+say F is a 1024x1024 matrix.
+n = 1024.
+n^2 = 1024 * 1024 = 2*10 calculations.
+1/2 n log 2 n = (1024) * 10/2 = 5 * 1024
+
+in scientific calculations where Fourier is happening all the time, we save a factor of 200 on each calculation.
+
+eigenvalue eqn is called |A-λI| "characteristic eqn"
+
+... 27 ...
+positive definite matrixes.
+brings the whole course together.
+how do I find that it's PDM and what does it mean? 
+geometry etc. ellipses.
+
+its symmetric.
+is it positive definite.
+test 1) are all eigenvalues positive
+test 2) are all subdeterminants positive and growing (north west 1x1, 2x2, 3x3...).
+test 3) are all pivots positive
+test 4) x^T A x > 0
+
+in many books #4 will be a "definition" and 1-3 will be "tests".
+
+Example.
+|2 6|
+|6 ?|
+what ? will make it PDM?
+the number should be more than 18 (say for 19 det is 38 - 36)
+semi definite is when det. is 0.
+say for ? = 18.
+will give a singular matrix with one λ = 0, and other λ = 20.
+pivots of it will be:
+2, - (no second one).
+2 6 is a multiple of 6 18.
+pivot test doesn't pass.
+
+|x1 x2||2  6||x1| = f(x1, x2) = |x1 x2||2x1 + 6x2 | = 2x1^2 + 12 x1 x2 + 18x2^2 [ax^2 + 2bxy + cy^2]
+       |6 18||x2|                      |6x1 + 18x2|
+	   
+so as soon as I have the matrix, the quadratic numbers will appear.
+so it's no longer linear.
+it's a quadratic form.
+purely degree 2.
+just because of transpose.
+is it positive? or not?
+for every x1 and x2?
+
+if I placed 7 instead of 18 it would totally failed:
+
+|x1 x2||2  6||x1| = f(x1, x2) = |x1 x2||2x1 + 6x2| = 2x1^2 + 12 x1 x2 + 7x2^2 [ax^2 + 2bxy + cy^2] - there will be some x1 x2 for which f(x1 x2) will be negative. say for 1 and -1 2-12+7=-3.
+       |6  7||x2|                      |6x1 + 7x2|
+	   
+pivots are now 2 and -11.
+
+graph of f(x y) = x^T Ax = ax^2 + 2bxy + cy^2
+
+z = 2x^2 + 12xy + 7y^2.
+
+this is a non-positive-definite.
+that's a "saddle" point in origin.
+up in some directions, down in other directions.
+perfect directions to look are the eigen directions.
+this is a not PDM.
+
+let's go back to 20 (make it "very PDM")
+
+|x1 x2||2  6||x1| = f(x1, x2) = |x1 x2||2x1 + 6x2 | = 2x1^2 + 12 x1 x2 + 20x2^2
+       |6 20||x2|                      |6x1 + 20x2|
+
+
+x^T A x > 0 except at x = 0.
+it does not have a saddle point now.
+f(x,y)=2x^2+12xy+20y^2.
+it always go up from the origin.
+origin is its minimum
+1st partial derivatives are 0.
+2nd derivatives is what this matrix is telling us.
+2nd derivative had to be positive for a point to be minimum.
+we're doing what we did in calculus.
+matrix of 2nd derivatives is positive.
+d^2u/dx^2 > 0 for a point to be considered a minimum).
+
+f(x1, x2, ..., xn). it will have a minimum if the matrix of 2nd derivatives is positive definite.
+(Hessian, you have it from 3blue1brown).
+
+so. complete the square.
+f(x,y) = 2x^2 + 12xy + 20y^2 = 2(x+3y)^2 + 2y^2.
+if we had a 7, we would have:
+2(x+3y)^2 - 11y^2.
+if I slice this bowl graph I would get an ellipse.
+2(x+3y)^2 + 2y^2 = 1 is a cross section of z = 1 and z = 2(x+3y)^2 + 2y^2.
+completing the square means pivots outside, and multiplyer inside.
+|2  6|             -> |2 6|
+|6 20|(which is A)    |0 2| (which is U)
+
+L = |1 0|
+    |3 1|
+	
+A = LU.
+completing the square is the elimination.
+
+now I see what's going on.
+I split this thing into a sum of squares.
+pivots go outside.
+
+2(x+3y)^2 + 2y^2. - 2 and 2 are pivots, 3 is a multiplyer of how many times the first row I need to substract from the second row.
+
+so. matrix of 2nd derivatives.
+|f_xx f_xy| (it's symmetric because f_xy = f_yx).
+|f_yx f_yy|
+
+it has to be "positive definite".
+
+condition for a minimum:
+1st derivatives have to be 0.
+2nd derivatives have to be positive.
+
+now we know nxn.
+
+example.
+
+A = |2  -1 0|
+    |-1 2 -1|
+	|0  -1 2|
+	
+determinants are 2,3,4
+pivots are 2,3/2,4/3 (because the product of pivots should give a determinant: 2 * 3/2 should give 3, 3 * 4/3 should give 4).
+
+eigenvalues?
+cubic eqn.
+3 eigenvalues to find.
+they are positive.
+because pivots are positive.
+2, 2 ± √2
+
+f(x1,x2,x3) = x^T Ax = 2x1^2 + 2x2^2 + 2x3^2 - 2x1x2 - 2x2x3 > 0.
+
+graph of this function goes upwards.
+it's a 4-d bowl.
+poraboloid sort of.
+
+if I cut though this 4d bowl at height 1:
+
+2x1^2 + 2x2^2 + 2x3^2 - 2x1x2 - 2x2x3 = 1
+it gave an ellipse.
+ellipsoid.
+a football.
+
+2x^2 + 2y^2 + 2z^2 - 2xy - 2yz = 1
+that's an eqn of a football.
+
+a football (a rugby ball as a rugby ball is less pointy).
+it has "principle eigen directions".
+two are equal and others are different.
+sphere comes from an identity matrix (all eigen values are the same).
+rugby ball comes from a case when 2 out of 3 eigenvalues are the same.
+it will have a major axis, middle axis and minor axis.
+and those axis will be along the direction of eigen vectors.
+and the length of those axis will be determined by eigen values.
+
+QΛQ^-1 - principle axis theorem.
+eigenvalues give us lengths of those axis.
+
+Q^-1 is matrix factorization / diagonalization (instead of an inverse I can write a transpose).
+QΛQ^T (most important eqn of linear algebra).
+
+determinant test (north west determinants: 1x1, 2x2 etc).
+positive definite if all of them are greater than zero.
+positive semi-definite if some of them are zero.
+sub-determinants are cofactors.
+determinant test is sometimes the fastest test.
+
+pivots test (elimination) is the 2nd by speed.
+
+energy test (completing the square) is the slowest.
+|x y z|B|x| = (multiply out) ... = (complete the square) ... >= 0.
+        |y|
+		|z|
+		
+(coefficients will always be pivots here).
+
+"kernel"... "it's pivots? or what. I remember smth like this. Don't remember what it means.
+
+... 28 ...
+similar matrices.
+x^T A x > 0 for x != 0 - PDM.
+
+start from a rectangular matrix.
+A^T A.
+assume A is symmetric PDM
+is A^-1 also symmetric PDM?
+I don't know much about pivots of A^-1 but I know that its eigenvalues are 1/λ
+if A is PDM (λ>0) then 1/λ is also > 0 (so A^-1 is also PDM).
+
+what about A+B where A and B are PDM's and A != B?
+is A+B PDM?
+we don't know pivots or λ's. we need to calculate.
+and x^T Ax > 0 is a good test:
+
+x^T A x > 0
+x^T B x > 0 
+x^T (A+B) x > 0 ?
+yes' just add 1st and 2nd. so it is.
+x^T (A+B) x > 0.
+
+now suppose A is rectangular.
+m by n.
+ 
+it's not symmetric (not square).
+but A^T A is square & symmetric.
+is A^T A PDM?
+well, A^T A is like squaring a number. so it should be PDM. or semi-PDM.
+I don't want to find pivots.
+I do this:
+x^T (A^T A) x = (Ax)^T Ax = |Ax|^2 >= 0.
+So it's either PDM or semi PDM.
+But I want it to be = 0 only when x = 0.
+So I want to eliminate opportunity |Ax| = 0.
+That means for mxn matrix A, rank should be n.
+n independent columns.
+then N(A) will be empty (A will not be zero).
+
+now. similar matrices.
+it's a key topic.
+as important as PDM's.
+A and B are similar nxn matrices if for some M matrix, B = M^-1 A M. 
+example.
+
+A (suppose it has a full set of eigenvectors in matrix S).
+S^-1 A S = Λ.
+
+So (in our new language) A is similar to Λ.
+Λ is the best family member of a family of matrices similar to A.
+
+Suppose, 
+A = |2 1|
+    |1 2|
+	
+Λ = |3 0|
+    |0 1|
+
+so Λ is similar to A.
+
+|1 -4||2 1||1 4| = |1 -4||2 9| = |-2 -15| = B.
+|0  1||1 2||0 1|   |0  1||1 6|   | 1   6|
+
+these are all similar matrices.
+so they all heve THE SAME EIGENVALUES.
+so out of family of similar matrices A, B and Λ I pick the simplest one (say Λ) and get eigenvalues from it (in this case 3 and 1).
+
+in this case, trace for B = 4 and determinant is 3, so eigenvalues are here also 3 and 1.
+
+here's another matrix with λ 3 and 1:
+|3 7|
+|0 1|
+
+|1 7|
+|0 3|
+
+the whole family of matricies with 3 and 1.
+
+suppose, Ax = λx.
+B = M^-1 A M.
+
+A M M^-1 x = λ x.
+
+M^-1 A M M^-1 x = λ M^-1 x.
+
+(M^-1 A M) M^-1 x = λ M^-1 x.
+
+B M^-1 x = λ M^-1 x.
+which means λ is an eigenvalue of B.
+the eigenvector of B = M^-1 * eigenvector of A.
+
+this family is "nice" because all the eigenvalues are different.
+but there's a "less happy" possibility that two eigenvalues could be the same.
+there might not be a full set of eigenvectors and we might not be able to diagonalize.
+
+so.
+Bad:
+if λ1 = λ2 then matrix may not be diagonalizable.
+suppose, λ1 = λ2 = 4.
+one family has:
+|4 0|
+|0 4|
+
+but also...
+
+|4 1|
+|0 4|
+
+and the point is that 2nd guy is not in the same family as the first guy. they are in different families.
+
+the "big" family includes:
+|4 1|
+|0 4| and whole lot of other matrices (where instead of 1 there are many numbers).
+
+and the only matrix similar to this:
+|4 0|
+|0 4|
+
+is itself.
+it's 4I.
+
+M^-1 4I M = 4I.
+I'm not getting more members of the family.
+so it is a "small" family that consists of 4I.
+
+the Big family consists of all other matrices with λ's 4 and 4.
+any of them will not be diagonalizable.
+if it was diagonalizable it would be similar to 4I which it isn't.
+it has only one eigenvector. and all the members of a "big" family have only one eigenvector.
+
+|4 1| <- Jordan form
+|0 4|
+
+Jordan form means "from the whole family of non-doagonalizable matrices pick the nicest one".
+it could be 
+|4 10000000000|
+|0           4|
+
+but this one is the nicest.
+best-looking matrix in each matrices.
+
+the point is that now we cover all the matrices including the non-diagonalizable.
+it's not easy to find Jordan form because it depends on λ's to be exactly the same.
+you have to know the rank.
+and slightest change in λ's breaks everything in Jordan forms.
+
+example:
+|4 1|  |5  1|  |4  0|  |a det-(a*(8-a))-b|
+|0 4|, |-1 3|, |17 4|, |b             8-a|, all matrices with trace=8 and det = 16 are similar, and they all have one eigenvector.
+
+so similar matrices satisfy these criteria:
+1) B = M^-1 A M
+2) same number of eigenvectors in A and B.
+3) ... Jordan's thm (described below)
+
+example of 3).
+|0 1 0 0|
+|0 0 1 0|
+|0 0 0 0|
+|0 0 0 0|
+
+λ = 0,0,0,0.
+
+how many eigenvectors does it have? 2.
+they have to be in the null space.
+
+rank = 2 (2 indep. cols and rows).
+
+λ = 0,0,0,0
+N(A) = 2.
+
+Now. suppose I change one 0 to 7.
+|0 1 7 0|
+|0 0 1 0|
+|0 0 0 0|
+|0 0 0 0|
+
+rank is still 2.
+but Jordan didn't pick the one with 7. it's not the nicest.
+he picked the one with 0.
+
+he put 1 above the diagonal for every missing eigen vector.
+2 eigenvectors and 2 are missing.
+but 2nd example is:
+
+|0 1 0 0|
+|0 0 0 0|
+|0 0 0 1|
+|0 0 0 0|
+
+same 0,0,0,0 eigenvalues.
+rank 2.
+but the darn thing is not similar to the previous one.
+a count of eigenvectors is not enough.
+
+the first one is like:
+|B 0|
+|0 0| (3x3 block, 1x1 block, 1x3 block and 3x1 block)
+
+and the second one is like
+|B 0|
+|0 0| (four 2x2 blocks).
+these blocks are called "Jordan blocks".
+
+J.
+J_i = |λ_i 0   0   0  |
+      |0   λ_i 0   0  |
+	  |... ... ... ...|
+	  |0   0   0   λ_i|
+	  
+so Jordan block has 1 eigen vector only.
+the blocks are different sizes.
+which makes them not similar.
+
+Jordan's thm
+Every square matrix A is similar to Jordan matrix J.
+J = |J1  0   0   ... 0  |
+    |0   J2  0   ... 0  |
+	|... ... ... ... ...|
+	|0   0   0   ... Jb |
+
+it isn't easy to compute these J's. 
+and we didn't cover it yet.
+but it is there somewhere.
+	
+the number of blocks is the number of eigenvectors.
+
+start with any A. 
+if it's eigenvectors are distinct, then what is it similar to?
+that's a good case.
+J is Λ.
+
+Jordan covered repeated eigenvalues and missing eigenvectors.
+
+(!) Also, if A is similar to B, then any polinomial of A will be similar to the same polinomial with B.
+
+adding the identity can show definitely if J1 is same as J2 (the if result is the same).
+
+... 29 ...
+singular value decomposition (SVD).
+final and best factorization of a matrix.
+factors will be orthogonal matrix - diagonal matrix - orthogonal matrix.
+A = UΣV^T
+symmetric positive definite - because they are symmetric, their eigenvectors are orthogonal.
+
+A = QΛQ^T is what I want. not A = SΛS^-1.
+
+U1 = AV1 (vector V in row space gets moved to a column space and becomes U).
+U2 = AV2
+if V2 perpendicular to V1 then U2 is perpendicular to U1 if A is orthogonal basis matrix.
+Null space for row space
+null space for column space
+
+null space is not a problem. it will show up as zero in Σ.
+
+A |v1 v2 ... vr| = |u1 u2 ... ur|||σ1.......|
+                                  |...σ2....|
+								  |.........|
+								  |.......σr|
+								  
+Av1 = σ1u1
+Av2 = σ2u2
+...
+
+AV = UΣ (this is the goal - to find an orthonormal basis in the row space V and the orthonormal base in the column space U to diagonalize the matrix A - make it Σ).
+I allow myself two different basis: V and U.
+
+Example.
+A = |4  4|
+    |-3 3|
+	
+in other words,
+find v1 v2 in row space R2.
+find u1 u2 in column space R2.
+find σ1 > 0 and σ2 > 0
+
+A isn't symmetric here, so I can't use its eigenvectors (they're not orthogonal).
+but somehow I have to get orthonormal guys that make it work (v's u's etc).
+Av1 = σ1u1
+Av2 = σ2u2.
+
+so.
+AV = UΣ
+A = UΣV^-1 = UΣV^T.
+I'd like U's to disappear and leave only V's.
+multiply by A^T.
+A^TA = VΣ^TU^TUΣV
+U's cancel out.
+Σ's are diagonal, so we have Σ^2.
+so we get:
+A^T A = VΣ^2 V^T = V |σ1^2 .......| V^T
+                     |... σ2^2 ...|
+					 |............|
+					 |....... σn^2|
+					 
+So what are V's?
+this is basically a QΛQ^T for A^T A.
+So V's are eigenvectors of A^TA
+And Σ's are eigenvalues of A^T A.
+U's (which are not here for now) will be eigenvectors of AA^T.
+
+A^TA = |4 -3||4  4| = |25 7|
+       |4  3||-3 3|   |7 25|
+	   
+its eigenvectors will be the V's.
+its eigenvalues will be the squares of σ's.
+
+v1 = |1|
+     |1|
+	 
+v2 = | 1|
+     |-1|
+
+A^TA|1| = 32 |1|
+    |1|      |1|
+
+A^TA| 1| = 18 | 1|
+    |-1|      |-1|
+
+normalize them.
+|1/√2|
+|1/√2|
+
+|-1/√2|
+| 1/√2|
+
+A = UΣV^T.
+
+|4  4| = |..u's.||√32 0||1/√2  1/√2|
+|-3 3|   |..u's.||0 √18||1/√2 -1/√2|
+
+AA^T = UΣV^TVΣ^TU^T = UΣΣ^TU^T = UΣ^2U^T
+so U's are eigenvectors of AA^T.
+
+AA^T = |4  4||4 -3| = |32 0|
+       |-3 3||4  3|   |0 18|
+	   
+AA^T|1| = 32|1|
+    |0|     |0|
+	
+AA^T|0| = 18|1|
+    |1|     |0|
+
+note that 18 and 32 remain because eigenvectors don't change.
+eigenvalues of AB = eigenvalues of BA.
+
+so our final eqn is:
+
+|4  4| = |1 0||√32 0||1/√2  1/√2|
+|-3 3|   |0 1||0 √18||1/√2 -1/√2|
+
+(there was a mistake on the board that should be fixed later).
+
+Example 2.
+matrix is singular.
+Rank 1.
+
+A = |4 3|
+    |8 6|
+	
+row space is just a line of multiples of |4|
+                                         |3|
+null space N(A) is a perpendicular line.
+
+column space is 1-dimentional line of multiples of |4|
+                                                   |8|
+null space N(A^T) is perpendicular to it.
+OMG null SPACE. a SPACE along which everything dotted with column space gives 0. omg.
+that's what they mean when they say "null space is empty" etc.
+
+v1 = |.8|
+     |.6|
+
+u1 = |1/√5|
+     |2/√5|
+
+A^TA = |4 8||4 3| = |80 60| (rank 1).
+       |3 6||8 6|   |60 45|
+
+eigenvalues:
+0 (because it's singular) and 125 (trace - 0)
+
+A = UΣV^-1
+|4 3| = 1/√5|1  2||√125 0||.8  .6|
+|8 6|       |2 -1||0    0||.6 -.8|
+
+v_1, ..., v_r is an orthonormal basis for the row space.
+u_1, ..., u_r is an orthonormal basis for the column space.
+v_r+1, ..., v_n is an orthonormal basis for the null space of A.
+v_r+1, ..., v_m is an orthonormal basis for the null space of A^T.
+
+these bases make the matrix diagonal.
+Av_i = σ_i u_i.
+dimention of the row space is rank r.
+dimention of the null space is n-r.
+dimension for left null space is m-r.
+
+eigenvalues are the numbers in Σ^TΣ.
+or roots? I think he took a root of an eigenvalue.
+yeah. inside of Σ he puts a root of an eigenvalue. for sure.
+so if eigenvalue is 20, inside Σ's diagonal value I put √20.
+
+... 30 ...
+linear transformation.
+this is what Linear Algebra has to begin with.
+people don't want numbers/coordinates. they want to see what's going on with the whole space.
+
+example 1.projection.
+linear transformation
+T: R^2 -> R^2
+(every vector from a plane onto another plane or onto a line).
+it's like a function.
+you give me an input, transformation produces an output.
+coordinates and axis aren't needed.
+project vector w onto a line T(w).
+there a lot of different transformations.
+but in Lin. Alg. I want LINEAR transformation.
+so it has to follow the rules.
+T(v+w) = T(v) + T(w)
+T(cv) = cT(v)
+they combine.
+T(cv + dw) = cT(v) + dT(w).
+this makes a transformation linear.
+
+Example 2.
+shift the plane by vector v_0 (in other words, move the tip of the vector v that is on a plane say to the left).
+it is not linear.
+doubling length of v, I move left by save v_0, I don't move by 2v_0.
+in other words:
+T(0) must be 0 according to cT(w) rule.
+but here T(0) = 0 + v_0.
+
+also non-example would be:
+- squaring
+- T(v) = |v| (say any vector produces it's length).
+that is T:R^3 -> R^1.
+if I double a vector it doubles the length.
+but if I multiply it by -2 it doubles (|cv| != cv for c < 0).
+
+Example.
+Rotation by 45 degrees.
+T:R^2 -> R^2.
+so every vector v gets rotated by 45 deg. to a vector T(v).
+you see to describe it I don't need any coordinates.
+sum of vectors v+w also gets satisfied (T(v+w) = T(v) + T(w)) - rotate and then add or add and then rotate. same thing.
+
+Example.
+A house drawing. in R^2.
+/ \
+| |
+___
+
+I can take all the vectors at once and see where they all go (where the whole house goes).
+so with T being rotation transformation, the entire house tilts.
+
+Example 3 (!!)
+Matrix A.
+T(v) = Av.
+there's a linear transformation.
+every matrix produces transformation by this simple rule.
+and it's linear:
+A(v+w) = Av + Aw.
+A(cv) = cAv.
+apply it to all vectors in the plane, it will produce a bunch of outputs.
+the whole plane gets transformed. every vector in the plane.
+A = |1  0|
+    |0 -1|
+	
+what happens with the house?
+the house is not rotated any more.
+x stays the same, y component flips the sign.
+so house flips upside down (below x axis).
+output is an upside down house.
+
+linear transformation is an abstract description of matrix multiplication.
+goal is to find a matrix that lies behind the transformation.
+to do it we have to bring in coordinates and choose a basis.
+
+start
+suppose we have linear transformation T (let T stand for linear transformation).
+suppose it's inputs are vectors in R3: T: R3.
+suppose it's outputs are vectors in R2: T: R3 -> R2.
+what's an example of such a tranformation?
+any matrix of the right size will do this.
+Example:
+T(v) = Av.
+v is input in R3.
+T(v) is the output in R2.
+A is a 2by3 matrix.
+there are no other examples. every 2x3 matrix is associated with this example.
+
+how much information is needed to know the transformation T(v) for all inputs v?
+I check these:
+T(v1), T(v2)
+does it answer what it does to whole space?
+we know onw what T does to all combinations of v1 and v2.
+v1 and v2 have to be independent.
+if I know what transformation does for every vector in the basis, I know everything.
+T(v_n) for any basis (v1, ..., v_n).
+this is enough to know T(v) for all v.
+because every v is some combination of ...
+v = c1v1 + ... + cn vn.
+T(v) = c1T(v1) + ... + cn T(vn).
+what's the step now to go from transformation without coordinates to a matrix with coordinates?
+a coordinate system.
+once you decide what "a basis" is.
+then every vector v has a coordinate in that basis.
+so numbers c1 v1 + ... + cn vn are "the changes of coordinates in the coordinate system".
+
+for example.
+v = |3| = 3|1| + 2|0| + 4|0|
+    |2|    |0|    |1|    |0|
+	|4|    |0|    |0|    |1|
+	
+this is a standard basis. 
+but I could have chosen a different basis.
+e.g. I might have had eigen vectors of a matrix.
+c1, ..., cn - the amounts of each basis.
+
+Example.
+construct the matrix A that tells me a linear transformation T.
+some projection, some movement, some T:Rn -> Rm transformation
+I need two basis.
+I need an input basis to describe input.
+And output basis to get numbers from the output.
+choose basis v1, ..., vn for the input (they come from Rn).
+choose basis w1, ..., wm for the output (from Rm).
+
+that sattles a basis.
+I now work with coordinates.
+I take a vector v. 
+I express it in its basis v1,...,vn
+I multiply that vector by the matrix A.
+and that gives me the output.
+
+I want a matrix A.
+That does what the linear transformation does.
+
+take a projection
+suppose I take a projection where n = m = 2.
+every vector in the plane gets projected onto a line.
+but my basis will be the same for input and for output.
+my first basis vector will be a unit vector right on the line (v1)
+and the second basis will be perpendicular to that line.
+take any vector v which is some combination of v1 and v2:
+v = c1 v1 + c2 v2.
+
+T(v) = ?
+suppose the input is v1. what's the output? v1. the projection leaves this vector alone.
+what does it do with a second vector v2? it kills it. since it's zero.
+(oh so he chose as a "coordinate system" the system of the output, not the system of the input.
+T(v) = c1 v1
+
+so I need a matrix that for the input of the 1st coordinate leaves v1, and for the output of v2 it gives 0.
+coords of input:
+(c1, c2)
+
+coords of the output:
+(c1, 0).
+the matrix that will do that is:
+|1 0|
+|0 0|
+
+because:
+|1 0||c1| = |c1|
+|0 0||c2|   | 0|
+
+I chose the basis for the input and the output, and once I have it I found the matrix that does this job.
+I always can find a matrix that does this transformation.
+
+Here
+Input basis = Output base = |v1 v2| where v1 is along the line, v2 is perpendicular to that line.
+
+as a result (of choosing such basis, the eigenvector basis) this matrix came out diagonal (so basically it came out to be Λ).
+that's a great choice of basis.
+the eigenvectors.
+
+I can do the whole thing in the standard basis.
+say we're projecting onto a 45 degree line.
+use standard basis.
+
+v1 = |1| = w1
+     |0|
+	 
+v2 = |0| = w2
+     |1|
+
+the result will be a projection matrix.
+P = aa^T/a^Ta = |1/2 1/2|
+                |1/2 1/2|
+				
+this matrix will do the job of projecting onto a 45deg line.
+but this matrix is not diagonal. because we chose not the best basis.
+but for the best basis, the matrix would be:
+|1 0|
+|0 0|.
+
+the result would be diagonal. a lot easier to work with.
+
+Rule to find a matrix A. Given input basis v1, ..., vn and output basis w1, ..., wn.
+1st column of A: 
+take the 1st basis vector,
+apply the transformation
+then express it as some combination of output spaces.
+T(v1) = a11 w1 + a21 w2 + ... + am1 wm 
+where a11, ..., am1 are the numbers of the first column of the matrix A.
+2nd column:
+take a second basis vector v2.
+apply transformation to it T(v2)
+get an output.
+express that output as a combination of output basis.
+T(v2) = a21 w1 + ... + am2 wm
+this is the second column of the matrix.
+etc.
+
+I get the matrix.
+and the matrix I get does the right job.
+that's the same thing as:
+get input coords, apply matrix and get output coords.
+
+in general:
+A(input coords) = (output coords).
+
+so if the input is |1 0| then the output is v1.
+                   |0 0|
+				   
+those are the output coords.
+
+another example.
+
+T = d/dx.
+
+suppose Input is:
+c1 + c2x + c3x^2
+
+so the basis is 1, x, x^2.
+
+whats the output?
+it's the derivative.
+
+c2 + 2c3 x.
+
+so the output basis is 1, x.
+so we go from R3 in put to R2 output.
+
+derivative is LINEAR.
+if it wasn't linear, taking derivatives would take forever.
+it allows taking combinations of simple functions.
+
+A|c1| = | c2|
+ |c2|   |2c3|
+ |c2|
+ 
+so what do I want from my matrix?
+I want c2 as output and 2c3 as output.
+A = |0 1 0|
+    |0 0 2|
+	
+that's the matrix for this transformation with those coords.
+all I needed was c's.
+
+the whole point is that it's inverse gives inverse to the linear transformation.
+the product of two matrixes gives the matrix for the product of two transformations (2nd derivative? wow).
+
+all this came from matrix transformation.
+
+Another example.
+T = Transpose.
+T^2 = I => T^1 = T.
+
+so.
+we have 
+Tv1 = 473v2
+Tv2 = 93v3
+Tv3 = v3
+then our matrix is for this transformation is:
+|0   0  0|
+|473 0  0|
+|0   93 1|
+
+same if instead of v's we have w's.
+
+... 31 ...
+change of basis.
+from one basis to another basis.
+
+matrix is a coordinate base description of a linear transformation.
+
+E.g. image compression.
+still image.
+computation of the climate.
+there's huge amount of data.
+some compressions can be lossless (removing redundancies).
+but we talk about lossy compressions.
+say image:
+512x512.
+pixel number 1,1 (gray scale value from 0 to 255).
+8 bits.
+that is for every pixel.
+so x is a vector in R^n.
+but n = (512)^2.
+
+color image is 3x that number (3 numbers to get the color).
+Enormous amount of information.
+JPEG is one of types of compression.
+It's a change of basis.
+current basis is "every pixel give a value".
+vector x 512^2 long and in i'th position we have a value say 121.
+there are lots of pixels of similar colors close to each other.
+so.
+there's no point to give the info pixel by pixel if all of them are the same.
+standard basis is lousy.
+it has no use. 
+neighboring pixels tend to have the same value as their neighbours.
+standard basis is "diagonal ones"
+|1  | |0  |
+|0  | |1  |
+|0  | |0  |
+|...| |...| etc.
+
+but better is to have basis of all ones:
+|1  |
+|1  |
+|1  |
+|...|
+
+one such vector gives complete information of entire solid image.
+
+another option is checkerboard.
+|1  |
+|-1 |
+|1  |
+|-1 |
+|...|
+
+half image is white half is black.
+|1 |
+|1 |
+|-1|
+|-1|
+
+so the basis is something we can manipulate.
+
+and different photo technologies and image display technologies would prefer different basis.
+
+so what basis we choose?
+
+best known basis (that jpeg uses) is Fourier basis.
+8x8.
+so 512x512 gets broken into 8x8 blocks.
+so each block gets needs 64 coefficients.
+
+so we choose this:
+|1  |
+|w  |
+|w^2|
+|...|
+
+so we change basis into R64.
+this is a lossless step.
+
+choose better basis.
+it produces coefficients. c.
+now comes the compression (lossy).
+
+one thing we could do is throw away small coefficients.
+set a treshhold (if our eye can hardly see the difference, we throw it away).
+
+so we produce a vector c^ (c-hat) with lots of zeros.
+
+x^ = Σ c_i^ v_i 
+
+with good basis that sum will be very small.
+
+a choise of what basis to choose is based on the task (say if I later want to compress images, I might want to pick a different base).
+
+For video, you can treat it as "one still image after another still image".
+But in video you have a sequence of images but one image usually extremely similar to the next one.
+so you digitize only the corrections (small changes).
+
+the problem in compression is always to use correlation.
+in time-space things never change instantly.
+
+Basis:
+Wavelets:
+|1|| 1|| 1|0|| 1|| 0|| 0|| 0|
+|1|| 1|| 1|0||-1|| 0|| 0|| 0|
+|1|| 1||-1|0|| 0|| 1|| 0|| 0|
+|1|| 1||-1|0|| 0||-1|| 0|| 0|
+|1||-1|| 0|1|| 0|| 0|| 1|| 0|
+|1||-1|| 0|1|| 0|| 0||-1|| 0|
+|1||-1|| 0|1|| 0|| 0|| 0|| 1|
+|1||-1|| 0|1|| 0|| 0|| 0||-1|
+
+this is 8 vectors (wavelets) in 8D space.
+one of the options.
+and using these 8 vectors we can express any combination.
+any 8d vector is efficiently expressed with these.
+
+find the coefficients.
+
+so we do:
+p = c1 v1 + c2 v2 + ... + c8 v8.
+
+where each v is one of those 8 wavelets.
+
+this is a lossless step.
+we want to see it as a matrix:
+
+p = Wc.
+p = |1  1  1 0  1  0  0  0||c1|
+    |1  1  1 0 -1  0  0  0||c2|
+    |1  1 -1 0  0  1  0  0||c3|
+    |1  1 -1 0  0 -1  0  0||c4|
+    |1 -1  0 1  0  0  1  0||c5|
+    |1 -1  0 1  0  0 -1  0||c6|
+    |1 -1  0 1  0  0  0  1||c7|
+    |1 -1  0 1  0  0  0 -1||c8|
+
+so we need to solve 
+p = Wc
+c = W^-1 p.
+
+a good basis has a nice fast inverse.
+"good basis" (and best one is still not found, people still compete over that) means:
+a) fast (multiplication by W and by W^-1 should be fast).
+the choice here currently is FFT.
+b) fast wavelet invertion.
+caused by orthogonal or orthonormal basis (dot product between them should be zero vectors).
+(for orthonormal matrices W^-1 = W^T).
+c) good compression. throwing away 90% of pixels should cause minimum image distortion (like if I throw away 90% of pixels I don't want the image to become dark)
+a few basis signals should give enough info to show what image was that.
+
+omg and then he said the "upcoming standart of JPEG". 
+
+ok come back to the linear algebra.
+
+change of basis.
+let columns of W be new basis vectors.
+so
+
+x_old basis -> c_new_basis
+
+x = Wc.
+
+suppose I have a linear transformation T: R8 -> R8.
+
+with respect to v1, ..., v8 it has a matrix A.
+with respect to w1, ..., w8 it has a matrix B.
+
+because B came from same transformation, there should be a relation between A and B.
+they are similar.
+
+B = M^-1 A M.
+
+M is a "change of basis" matrix.
+every transformation has a new matrix.
+
+What is A? (Using basis v1, ..., v8).
+
+I know everything about T from knowing T(v1), T(v2), ..., T(v8).
+
+Because every x = c1v1 + c2v2 + ... + c8v8.
+
+T(x) = c1T(v1) + c2T(v2) + ... + c8T(v8).
+
+Write T(v1) = a11 v1 + a21 v2 + ... + a81 v8.
+
+T(v2) = a12 v1 + a22 v2 + ... + a82 v8.
+
+A = |a11 a21 ...|
+    |... ... ...|
+	|a18 a28 ...|
+	
+so I only need the basis and the transformation.
+to know the matrix.
+
+suppose the basis is the eigenvectors (very best option)
+T(v_i) = λ_i v_i.
+
+What is A?
+A = |λ1 0  ...|  1st input is v1, its output is λ1v1.
+    |0  λ2 ...|
+	|0  0  ...|
+	|0  0  ...|
+	|0  0  ...|
+	|0  0  ...|
+	|0  0  ...|
+	
+so in eigenvector basis the matrix is diagonal.
+
+... 33 ...
+4 subspaces.
+left inverses
+right inverses
+pseudo inverses
+basic stuff for mxn matrix of rank r.
+
+main pic:
+R^n           R^m
+/\row space   /\column space
+\/r           \/r
+/\null space  /\null space of A^T
+\/n-r         \/m-r
+
+2-sided inverse is just an inverse.
+AA^-1 = I = A^-1 A.
+r = m = n. full rank.
+
+there was smth called "column rank".
+this is a "left inverse".
+r = n (n cols are independent, but more rows).
+nullspace is 0.
+indep. columns.
+0 or 1 solutions to Ax=b.
+(because other stuff is added from the null space and there is nothing to add)
+n<m case(?)
+A^TA if rank of A is n and it's invertable then then A^TA also nxn and is full rank (invertable)
+(A^TA)^-1 A^T A 
+A^-1_left = (A^TA)^-1 A^T
+(one sided left inverse).
+A^-1_left is nxm
+A is mxn.
+A^-1_left A = I_nxn.
+
+but putting "left inverse" on the other side will fail.
+AA^T is bad (not invertable) for mxn.
+so A^-1_left is not a two-sided inverse
+multiplying it on the right will give this:
+A(A^TA)^-1A^T = P (projection onto the column space).
+It's trying to be an identity matrix.
+but you've given it an impossible job.
+
+
+
+now the right inverse.
+for full row rank.
+r = m
+N(A^T) = {0} (independent rows now, no null space in row space)
+oh now I get it. that picture. a column space and whatever's left (whatever's perpendicular to it).
+m < n case.
+
+so now we want the right inverse.
+A A^-1_right = I.
+A^-1_right = A^T(AA^T)^-1
+
+what happens if I put it on the left?
+A^T(AA^T)^-1 A = P projection onto a row space.
+It's trying to be an identity but there is only so much a matrix can do.
+
+so.
+a general case.
+pseudo inverse.
+null spaces are screqing up inverses.
+because if a matrix puts a vector to zero, there is no way for an inverse to bring the vector from a null space back to life.
+(?).
+
+Ax is always in the column space.
+so all the vectors in the row space multiplied by A are a bunch of vectors in the column space.
+so row space converts to column space with one to one ratio.
+
+almost all vectors have a row space component and a null space component, and it's killing the null space component.
+so.
+if x,y are in row space and x!=y then Ax != Ay.
+they're both in the column space but they're different.
+
+so a pseudo inverse is an inverse that goes from x to Ax and back.
+symbol for pseudo inverse is A+ (+ on the top).
+y = A+(Ay).
+x = A+(Ax).
+
+so in R dimentional space our matrix is perfect.
+
+Proof.
+suppose x!=y but Ax = Ay.
+A(x-y) = 0.
+it's sitting in the null space.
+but it's also in the row space.
+so the only vector that can be in row space and null space is the zero vector.
+so conclude that x = y.
+proof done.
+
+pseudo inverse is very useful in statistics.
+e.g. repeating an experiment to make sure the results are correct.
+at that moment we get two same vectors (columns or rows).
+and matrix stops being invertable.
+that's where we use a pseudo inverse.
+
+So.
+How to find the pseudo inverse A+
+1) start from SVD (A = UΣV^T).
+Σ had some non-zeros on diagonal, and zeros everything else).
+the rank of Σ is r.
+n columns 
+m rows
+r rank.
+if Σ was a proper matrix (didn't have 0's on the diagonal) the inverse would be:
+Σ+ =
+|1/σ1 ...|
+|... 1/σr|
+and it would be mxn with rank r.
+
+so pseudoinverse is the closest I can come to an inverse.
+ΣΣ+ = |1 0 ...|
+      |0 1 ...|
+	  |.......|
+	  |0 0 0 0|
+
+it doesn't have a left inverse or right inverse, but every matrix has a pseudo inverse.
+
+Σ+ Σ = nxn matrix |1 0 ...|
+                  |0 1 ...|
+				  |.......|
+				  |0 0 0 0|
+
+It's not the same thing as ΣΣ+ (it's different size).
+but it's the projection.
+
+so you don't get the identity.
+you get the projection that brings you into two good spaces (column/row space) and wipes out the null space.
+
+So.
+A = UΣV^T.
+A+ = (UΣV^T)+ = VΣU^T.
+this is how you find the pseudo inverse.
+the inverse of non-full-rank matrix.
+
+[1] is an identity matrix "number 1" (T).
+for sure.
+so [2] + [3] = [5] is matrix multiplication.
+but then it's not clear what "extracting a constant" means.
+probably doing A(cx) = cAx = cIAx = cIIAx ... not clear. they can't be the same thing, but they want to.
+
+SVD.
+
+
+...32... 
+review of unit 3.
+λ and x (eigenvalues/eigenvectors)
+du/dt = Au and e^At (dif. eqn)
+A=A^T (symmetric matrices) - their eigenvalues are real. and there's always enough eigenvectors.
+and we can choose eigenvectors to be orthogonal.
+QΛQ^T.
+
+similar matrixes.
+B = M^-1AM
+have the same eigenvalues.
+if one grows the other one grows.
+(powers of A will look like powers of B).
+
+I closed it. I'm sorry I'm not getting any new information out of it. I just finished all of them and don't have any questions.
+I want to skip to full course review.
+
+... 34 ...
+final lecture.
+problem solvings. no big picture.
+I guess n-dimentional systems is the big picture on its own.
+so... yeah... I'm done. I know kung fu.
+
+In the end he said "Above all, thanks for taking the course".
+:)
+
+ok. pleasant.
+I go away. see ya in 3 days (48 + 12 hours).
+thanks for spending a year learning math.
