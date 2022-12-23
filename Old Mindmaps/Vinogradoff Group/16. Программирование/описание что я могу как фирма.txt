@@ -1,0 +1,47 @@
+Разработка вэб-платформ, Интернет-проектов, социальных сетей и технических заданий.
+
+Опыт работы - с 2012 года (социальные сети, проекты-хабы для синхронизации сетей компьютеров и прочего оборудования, высоконагружаемые среды с тысячами запросов в минуту, финансовые транзакции, высокий упор на безопасность данных и т.д.).
+
+Могу взять Ваш бизнес-план или идею и превратить его в исчерпывающее техническое задание проекта (полную картину всех функций).
+Техническое задание могу превратить в техническую архитектуру (от подбора программных решений и оптимального расположения элементов до подбора технической инфраструктуры любого класса для информационных нужд проекта).
+И потом под это могу сделать Код (будь то сайт, сеть, набор плагинов или что либо ещё).
+
+Языки обычно Ruby on Rails + Postgres + Javascript (для Вэба они показали себя наилучшим образом при разработке многих международных высоко нагружаемых социальных сетей).
+Сервер - скорее всего либо на Амазоне, либо Ваш личный (если политика заказчика требует хранить внутреннюю информацию в физических пределах компании).
+
+Составление исчерпывающей архитектуры на основе вашего бизнес плана проводится в формате брейнсторм-консультации, во время которой я записываю все ваши мысли по поводу проекта в ментальную карту, и структурирую их при Вас, превращая их в список необходимых функций.
+Это защитит Вас от экспериментальных "путей не туда", от "неуспеваний за рынком или за нуждами клиентов" и т.д.
+Составленное Техническое Задание будет совместимо со всеми современными практиками разработки (BDD/TDD и т.д.) и безопасности.
+Составленный код будет соответствовать современным эфективным международным стандартам.
+Технической Зависимости от разработчика нету (в любой момент можно передать разработку проекта другому разработчику если возникнет необходимость). 
+
+Отличный опыт работы с Высшей Математикой (графы элементов сети, построение алгоритмов анализа связей компонентов на основе линейной алгебры и т.д.).
+Большой опыт в сфере метапрограммирования (создания инструментов генерирующих код - что позволяет снизить сроки исполнения заказа).
+
+Дёшево не будет.
+Но постараюсь сделать в сроки.
+
+==
+
+Development of web platforms, Internet projects, social networks and technical tasks.
+
+Work experience - since 2012 (social networks, hub projects for synchronizing computer networks and other equipment, high-load environments with thousands of requests per minute, financial transactions, high emphasis on data security, etc.).
+
+I can take your business plan or idea and turn it into an exhaustive technical task of the project (a complete picture of all functions).
+I can turn the technical task into a technical architecture (from the selection of software solutions and the optimal arrangement of elements to the selection of technical infrastructure of any class for the information needs of the project).
+And then I can make a Code for this (be it a website, a network, a set of plugins, or something else).
+
+The languages ​​are usually Ruby on Rails + Postgres + Javascript (for the Web, they have proven themselves to be the best in the development of many international high-load social networks).
+The server is most likely either on Amazon, or your personal (if the customer's policy requires keeping internal information within the physical limits of the company).
+
+Drawing up a comprehensive architecture based on your business plan is carried out in the format of a brainstorm consultation, during which I write down all your thoughts about the project in a Mind Map and structure them in front of you, turning them into a list of necessary functions.
+This will protect you from experimental "wrong paths", from "failing to follow the market or customer needs", and so on.
+The prepared Technical Task will be compatible with all modern development practices (BDD / TDD, etc.) and security.
+The compiled code will comply with modern effective international standards.
+There is no technical dependence on the developer (at any time, you can transfer the development of the project to another developer if the need arises).
+
+Excellent experience in Higher Mathematics (graphs of network elements, construction of algorithms for the analysis of connections of components based on linear algebra, etc.).
+Extensive experience in the field of metaprogramming (creating tools that generate code - which allows you to reduce the lead time).
+
+It won't be cheap.
+But I will try to do it on time.
