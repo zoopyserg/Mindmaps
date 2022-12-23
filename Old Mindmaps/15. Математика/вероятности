@@ -1,0 +1,136 @@
+Вероятности 101 (MIT 18.05).
+
+total probability = ( Likelihood * Hypotesis ) / probability
+
+probability function sums to 1.
+likelihood function is not a probability function because it doesn't sum to 1.
+
+likelihood means "how many options actually CAN get this result".
+(2, or 5, or 7 dies etc).
+Say I got result 5. that means that all options that can't get a result "5" drop out (their likelihood is zero).
+
+H - hypotesis (which item I think I have)
+P(H) - prior, probability of hypotesis (how likely that I am correct)
+P(D|H) - likelihood (is my hypotesis physically able to get that result)
+P(D|H) * P(H) - unnormalized pasterior (probability of getting this result of ALL possible dies), probability of the data. I.e. what is a chance that I got 13? First I got the one that CAN get that result at all, and then I rolled it.
+P(H|D) - posterior (normalized posterior) - tells "what was the most probable die based on what I know about what result I rolled". We get it by dividing unnormalized pasterior by the sum of all unnormalized pasteriors.
+
+
+If I didn't have probability theory I'd have to plot a graph (of which options I have at each step) which would be an enormoys tree (say 5 different dies, and from each one 6-20 branches of what I could roll, and then eliminate). Probability simplifies it a lot.
+
+when data comes in, I use it to update my existing data.
+
+If I want to figure out what die it was based on the fact that I girst got 5 and then 9, I can multiply unnormalized pasterior of 5 by unnormalized pasterior of 9, and only then normialize it.
+will save me an extra step.
+
+when I "normalize" I basically take a vector (of unnormalized pasteriors) and rescale it to have a unit length.
+
+in two rolls we multiply probabilities of 5 and 9.
+say 1/20th * 1/20th = 1/400th
+
+hm.
+
+yes I can analyze "all rolls at once". 
+but the skill of updating roll data is useful in real life.
+
+because in real life new data comes in all the time. two rolls (patients) today, seven tomorrow etc.
+
+All this so far is equivalent of my step of "vorposnik" where I don't know anything and I analyze to see at least something.
+
+Interestingly, if my initial hypotesis is that "this roll is impossible" (say this reason can't cause this reaction) - then I set my likelihood to 0.
+that means that no number of throws will convince me that this reason CAN cause this reaction. No matter how many throws I get I won't believe it (at least until I get a result and my world shutters).
+So you should always be easy on the situations of "being sure something is impossible", or you might be missing the evidence that proves otherwise.
+
+Everything is POSSIBLE (a little bit). that's a better way to go through life.
+
+Next level of complexity (after we can guess which die I rolled - with how many side) we can try to guess what is the probability of getting a 4 on my next roll.
+that's called "predictive probabilities".
+based on data we know we assume what will come next.
+in conditions where we don't control the outcome.
+
+end of lecture 1.
+the rest is probably on youtube.
+
+остальное надо читать здесь:
+https://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/calendar/
+
+честно не хочу...
+конспект конспекта...
+
+Есть ещё какой-то курс:
+https://www.youtube.com/watch?v=j9WZyLZCBzs
+
+MIT 6.041 Probabilistic Systems Analysis and Applied Probability, Fall 2010
+https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
+
+Но мне кажется это слишком круто. Хоть он и есть на ютюбе.
+
+Ладно короче читаю.
+
+Вероятности и статистика тесно связаны.
+Вероятности логически сами в себе.
+Статистика может использовать вероятности для того чтоб сделать выводы по информации.
+
+Отклонение рандомных событий от вероятностно предопределённого распределения указывает, действительно ли система случайна или там есть связь.
+Т.е. если у тебя есть монета, то должно быть 50/50. Ты кидаешь 1000 раз и получаешь 30/70.
+Вывод статиста будет что оно не совсем независимо. Что-то там таки химичит.
+
+Frequentist vs. Bayesian Interpretations
+Frequentist-ы говорят что ТВ (Теория Вероятности) считает частоты исходов эксперимента. Напр. 50% шанс исхода А и 50% исхода Б. Укоренился в таких сферах как биология, медицина, здоровье, социология.
+Bayesian-ы говорят что ТВ это абстрактный концепт измеряющий состояние знания или степень веры в предположение. Т.е. они не говорят что событие А имеет 50%-й шанс. Они говорят что есть некое событие "0.5А". Используется в основном компьютерщиками (напр. для ввода новых данных в систему опознания лиц или голоса).
+Статисты используют оба подхода.
+
+Сферы где используют ТВ: tests of one medical treatment against another(or a placebo),measures of genetic linkage,the search for elementary particles,machine learningforvisionorspeech,gamblingprobabilitiesandstrategies,climatemodeling,economicforecasting,epidemiology,marketing,googling... Короче много где.
+
+Иногда юзают комп. симмуляции для того чтоб изучить вероятности.
+Используют язык R.
+
+Дальше идут сэты.
+У меня это есть.
+x принадлежит А
+А сабсет Б
+А комплимент Б
+Юнион
+Интерсекшн
+Емпти Сэт
+Дисджоин (т.е. те которые и в А и в Б)
+Разница.
+Всё это есть.
+
+Venn Diagrams это рисунки этих соотношений (круги где штрихуют нужную область).
+Дальше пошли те нотейшены {x|...}. Рассмотрел.
+
+Инклужн-Ексклужн Принципл
+|AUB| = |A| + |B| - |commons of A and B|
+И рисунок (два круга пересекаются).
+Блин. Азы-азы.
+
+Закон умножения.
+If action 1 has m ways to occur, and action 2 has n ways to occur, then there are m * n ways to perform action 1 followed by action 2.
+Ifyouhave3shirtsand4pantsthenyoucanmake3·4=12outfits.
+
+Пермутейшн это набор последовательностей элементов сэта.
+Длину пермутаций можно ограничивать.
+
+Я всё это знаю.
+
+Комбинации...
+В комбинациях порядок не важен (потому их меньше чем пермутаций).
+
+Дальше идут все эти факториалы...
+perm. n!/(n-k)!
+comb. n!)k!(n-k)!
+
+В вероятностях всегда один верный ответ.
+В статистике ни один ответ не может считаться верным, есть только график вероятностей.
+
+Термины
+Эксперимент - событие которое я повторяю.
+Семпл Спейс - список всех возможных исходов (S или омега).
+Ивент - сабсет семпл спейса
+Пробабилити Фанкшн - функция, которая каждому исходу ω приписывает число Р(ω) которое называют вероятностью ω. Р всегда [0, 1], и сумма всех Р всегда 1.
+Вероятность Ивента (группы исходов) равна сумме возможностей исходов которые в ивегт входят. 
+Пробабилити Денсити - распределение континуус вероятностей
+Рандом Вариабл - случайное число.
+Дескрит Семпл Спейс - семпл спейс, который листабл (можно пронумеровать исходы - будь то конечный или есконечный сэт)
+Континуус Сэмпл Спейс - противоположность Дискрит Спейсу, он не листабл (исходы посчитать нельзя, пример - интервал между 0 и 1).
