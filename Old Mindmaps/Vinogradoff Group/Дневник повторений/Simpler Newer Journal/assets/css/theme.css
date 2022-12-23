@@ -1,0 +1,49 @@
+.hint {
+  color: red;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: small;
+}
+
+.votingarrows {
+  margin-right: 10px;
+}
+
+.columnaddrecordbutton {
+  margin-right: 8px;
+}
+
+.columnactions a {
+  margin-left: 10px;
+}
+
+.accordioncollapse .card-header {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  /*padding-left: 0px;*/
+  padding-right: 0px;
+}
+
+@media (min-width: 300px) {
+  .btn-group.btn-group-sm.horizontalmenu {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .btn-group.btn-group-sm.horizontalmenu {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .btn-group-vertical.btn-group-sm.verticalmenu {
+    display: none;
+  }
+}
+
+.recordactionbutton {
+  padding: 1px;
+  font-size: small;
+}
+
